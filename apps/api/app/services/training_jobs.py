@@ -71,7 +71,7 @@ class TrainingJobStore:
             if not job:
                 return None, None
             events = list(job.events[index:])
-            done = job.status in {"succeeded", "failed"} and index >= len(job.events)
+            done = job.status in {"succeeded", "failed"} and index == len(job.events)
             return events, done
 
 

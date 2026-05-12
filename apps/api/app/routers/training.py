@@ -1,4 +1,3 @@
-import asyncio
 import json
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -21,7 +20,7 @@ class TrainingJobRead(BaseModel):
 async def create_job(_principal: Principal = Depends(require_role("owner", "admin", "member"))) -> TrainingJobRead:
     job = jobs.create()
     job.status = "running"
-    asyncio.create_task(jobs.run_job(job.id))
+    jobs.start_job(job.id)
     return TrainingJobRead(id=job.id, status=job.status, progress=job.progress)
 
 

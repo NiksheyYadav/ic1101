@@ -1,4 +1,5 @@
 import asyncio
+import threading
 import uuid
 from dataclasses import dataclass, field
 
@@ -24,6 +25,10 @@ class TrainingJobStore:
             job.events.append(event)
         job.status = "succeeded"
         job.events.append({"type": "state", "status": "succeeded"})
+
+    def start_job(self, job_id: str) -> None:
+        worker = threading.Thread(target=lambda: asyncio.run(self.run_job(job_id)), daemon=True)
+        worker.start()
 
     def create(self) -> TrainingJob:
         job = TrainingJob(id=str(uuid.uuid4()), status="queued")

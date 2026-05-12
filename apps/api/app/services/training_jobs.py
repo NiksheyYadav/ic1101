@@ -18,23 +18,30 @@ class TrainingJobStore:
         self._lock = threading.Lock()
 
     def run_job(self, job_id: str) -> None:
-        for i in range(1, 6):
-            time.sleep(0.1)
+        try:
+            for i in range(1, 6):
+                time.sleep(0.1)
+                with self._lock:
+                    job = self.jobs[job_id]
+                    job.progress = i * 20
+                    event = {"type": "metric", "progress": job.progress, "loss": round(1.0 / i, 4)}
+                    job.events.append(event)
             with self._lock:
                 job = self.jobs[job_id]
-                job.progress = i * 20
-                event = {"type": "metric", "progress": job.progress, "loss": round(1.0 / i, 4)}
-                job.events.append(event)
-        with self._lock:
-            job = self.jobs[job_id]
-            job.status = "succeeded"
-            job.events.append({"type": "state", "status": "succeeded"})
+                job.status = "succeeded"
+                job.events.append({"type": "state", "status": "succeeded"})
+        except Exception as exc:
+            with self._lock:
+                job = self.jobs.get(job_id)
+                if job:
+                    job.status = "failed"
+                    job.events.append({"type": "state", "status": "failed", "error": str(exc)})
 
     def start_job(self, job_id: str) -> None:
         with self._lock:
             job = self.jobs[job_id]
             job.status = "running"
-        worker = threading.Thread(target=self.run_job, args=(job_id,), daemon=True)
+        worker = threading.Thread(target=self.run_job, args=(job_id,), daemon=False)
         worker.start()
 
     def create(self) -> TrainingJob:
@@ -60,7 +67,7 @@ class TrainingJobStore:
             if not job:
                 return None, None
             events = list(job.events[index:])
-            done = job.status == "succeeded" and index >= len(job.events)
+            done = job.status in {"succeeded", "failed"} and index >= len(job.events)
             return events, done
 
 

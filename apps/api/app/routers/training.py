@@ -23,7 +23,7 @@ async def create_job(_principal: Principal = Depends(require_role("owner", "admi
     jobs.start_job(job.id)
     job_data = jobs.read(job.id)
     if not job_data:
-        raise HTTPException(status_code=500, detail="job creation failed")
+        raise HTTPException(status_code=500, detail="failed to retrieve job after creation")
     return TrainingJobRead(**job_data)
 
 

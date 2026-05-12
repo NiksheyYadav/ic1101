@@ -1,0 +1,28 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, sans-serif;
+}
+body {
+  margin: 0;
+  background: #050816;
+  color: #eef2ff;
+}
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.card {
+  border: 1px solid #1f2a44;
+  border-radius: 12px;
+  padding: 16px;
+  background: #0b1021;
+}
+strong[data-status="ok"] { color: #3ddc97; }
+strong[data-status="down"] { color: #ff6b6b; }
+strong[data-status="loading"] { color: #ffd166; }

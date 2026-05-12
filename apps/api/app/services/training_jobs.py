@@ -15,28 +15,53 @@ class TrainingJob:
 class TrainingJobStore:
     def __init__(self) -> None:
         self.jobs: dict[str, TrainingJob] = {}
+        self._lock = threading.Lock()
 
     def run_job(self, job_id: str) -> None:
-        job = self.jobs[job_id]
         for i in range(1, 6):
             time.sleep(0.1)
-            job.progress = i * 20
-            event = {"type": "metric", "progress": job.progress, "loss": round(1.0 / i, 4)}
-            job.events.append(event)
-        job.status = "succeeded"
-        job.events.append({"type": "state", "status": "succeeded"})
+            with self._lock:
+                job = self.jobs[job_id]
+                job.progress = i * 20
+                event = {"type": "metric", "progress": job.progress, "loss": round(1.0 / i, 4)}
+                job.events.append(event)
+        with self._lock:
+            job = self.jobs[job_id]
+            job.status = "succeeded"
+            job.events.append({"type": "state", "status": "succeeded"})
 
     def start_job(self, job_id: str) -> None:
+        with self._lock:
+            job = self.jobs[job_id]
+            job.status = "running"
         worker = threading.Thread(target=self.run_job, args=(job_id,), daemon=True)
         worker.start()
 
     def create(self) -> TrainingJob:
         job = TrainingJob(id=str(uuid.uuid4()), status="queued")
-        self.jobs[job.id] = job
+        with self._lock:
+            self.jobs[job.id] = job
         return job
 
     def get(self, job_id: str) -> TrainingJob | None:
-        return self.jobs.get(job_id)
+        with self._lock:
+            return self.jobs.get(job_id)
+
+    def read(self, job_id: str) -> dict | None:
+        with self._lock:
+            job = self.jobs.get(job_id)
+            if not job:
+                return None
+            return {"id": job.id, "status": job.status, "progress": job.progress}
+
+    def events_since(self, job_id: str, index: int) -> tuple[list[dict], bool] | tuple[None, None]:
+        with self._lock:
+            job = self.jobs.get(job_id)
+            if not job:
+                return None, None
+            events = list(job.events[index:])
+            done = job.status == "succeeded" and index >= len(job.events)
+            return events, done
 
 
 jobs = TrainingJobStore()

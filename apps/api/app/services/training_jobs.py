@@ -22,12 +22,16 @@ class TrainingJobStore:
             for i in range(1, 6):
                 time.sleep(0.1)
                 with self._lock:
-                    job = self.jobs[job_id]
+                    job = self.jobs.get(job_id)
+                    if not job:
+                        return
                     job.progress = i * 20
                     event = {"type": "metric", "progress": job.progress, "loss": round(1.0 / i, 4)}
                     job.events.append(event)
             with self._lock:
-                job = self.jobs[job_id]
+                job = self.jobs.get(job_id)
+                if not job:
+                    return
                 job.status = "succeeded"
                 job.events.append({"type": "state", "status": "succeeded"})
         except Exception as exc:
@@ -41,7 +45,7 @@ class TrainingJobStore:
         with self._lock:
             job = self.jobs[job_id]
             job.status = "running"
-        worker = threading.Thread(target=self.run_job, args=(job_id,), daemon=False)
+        worker = threading.Thread(target=self.run_job, args=(job_id,), daemon=True)
         worker.start()
 
     def create(self) -> TrainingJob:

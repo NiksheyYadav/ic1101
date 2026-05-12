@@ -1,5 +1,5 @@
-import asyncio
 import threading
+import time
 import uuid
 from dataclasses import dataclass, field
 
@@ -16,10 +16,10 @@ class TrainingJobStore:
     def __init__(self) -> None:
         self.jobs: dict[str, TrainingJob] = {}
 
-    async def run_job(self, job_id: str) -> None:
+    def run_job(self, job_id: str) -> None:
         job = self.jobs[job_id]
         for i in range(1, 6):
-            await asyncio.sleep(0.1)
+            time.sleep(0.1)
             job.progress = i * 20
             event = {"type": "metric", "progress": job.progress, "loss": round(1.0 / i, 4)}
             job.events.append(event)
@@ -27,7 +27,7 @@ class TrainingJobStore:
         job.events.append({"type": "state", "status": "succeeded"})
 
     def start_job(self, job_id: str) -> None:
-        worker = threading.Thread(target=lambda: asyncio.run(self.run_job(job_id)), daemon=True)
+        worker = threading.Thread(target=self.run_job, args=(job_id,), daemon=True)
         worker.start()
 
     def create(self) -> TrainingJob:

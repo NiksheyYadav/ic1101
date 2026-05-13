@@ -29,7 +29,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body { height: 100%; overflow: hidden; }
+html, body { height: 100%; }
 
 body {
   font-family: var(--font-sans);
@@ -45,7 +45,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
 /* ── Layout ── */
-.app-layout { display: flex; height: 100vh; }
+.app-layout { display: flex; height: 100vh; overflow: hidden; }
 .sidebar {
   width: var(--sidebar-w); min-width: var(--sidebar-w);
   background: var(--bg-surface); border-right: 1px solid var(--border);

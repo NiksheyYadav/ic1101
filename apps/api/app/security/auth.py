@@ -1,6 +1,6 @@
 import os
 from dataclasses import dataclass
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import jwt
 from fastapi import Depends, Header, HTTPException, status
@@ -16,7 +16,7 @@ class Principal:
 
 
 def create_access_token(user_id: str, role: str, expires_minutes: int = 60) -> str:
-    now = datetime.now(UTC)
+    now = datetime.now(timezone.utc)
     payload = {
         "sub": user_id,
         "role": role,

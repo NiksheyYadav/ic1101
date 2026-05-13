@@ -15,6 +15,8 @@ class Settings(BaseModel):
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:8000",
+        "http://aetheris-api-prod.eba-3ijumbws.ap-south-1.elasticbeanstalk.com",
+        os.getenv("FRONTEND_URL", "http://localhost:3000"),
     ]
 
 

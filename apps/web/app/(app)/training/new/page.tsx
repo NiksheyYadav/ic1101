@@ -1,31 +1,53 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Cpu, Database, Box, Settings2, Zap, Rocket, ChevronLeft } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { Cpu, Database, Box, Settings2, Zap, Rocket, ChevronLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { apiFetch } from "../../../../lib/api";
 
 export default function NewTrainingJobPage() {
   const router = useRouter();
   
-  const [model, setModel] = useState("vision-transformer-v3");
+  const [model, setModel] = useState("image");
   const [dataset, setDataset] = useState("imagenet-1k-subset");
   
-  const [epochs, setEpochs] = useState(100);
-  const [batchSize, setBatchSize] = useState("64");
+  const [epochs, setEpochs] = useState(10);
+  const [batchSize, setBatchSize] = useState("32");
   const [learningRate, setLearningRate] = useState("0.001");
   const [optimizer, setOptimizer] = useState("AdamW");
   
-  const [gpus, setGpus] = useState(4);
-  const [precision, setPrecision] = useState("bf16");
+  const [gpus, setGpus] = useState(1);
+  const [precision, setPrecision] = useState("fp32");
+  
+  const [launching, setLaunching] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLaunch = () => {
-    // In a real app, we would submit this config to the API
-    // For now, redirect back to the monitor to simulate job starting
-    router.push("/training");
+  const handleLaunch = async () => {
+    setLaunching(true);
+    setError(null);
+    try {
+      const job = await apiFetch<{ id: string }>("/v1/training-jobs", {
+        method: "POST",
+        body: JSON.stringify({
+          workspace_id: "default",
+          model_type: model,
+          epochs,
+          batch_size: parseInt(batchSize),
+          learning_rate: parseFloat(learningRate),
+          optimizer,
+          precision,
+        }),
+      });
+      // Redirect to the training monitor page
+      router.push("/training");
+    } catch (err: any) {
+      setError(err.message || "Failed to start training");
+      setLaunching(false);
+    }
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -33,7 +55,7 @@ export default function NewTrainingJobPage() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
   };
@@ -66,16 +88,14 @@ export default function NewTrainingJobPage() {
           </h3>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
             <div>
-              <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "#A1A1AA", marginBottom: 8, textTransform: "uppercase", letterSpacing: 1 }}>Base Architecture</label>
+              <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "#A1A1AA", marginBottom: 8, textTransform: "uppercase", letterSpacing: 1 }}>Model Type</label>
               <select 
                 value={model}
                 onChange={(e) => setModel(e.target.value)}
                 style={{ width: "100%", padding: "14px 16px", borderRadius: 8, background: "rgba(0,0,0,0.4)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", appearance: "none", fontFamily: "var(--font-sans)", fontSize: 14 }}
               >
-                <option value="vision-transformer-v3">VisionTransformer-v3</option>
-                <option value="resnet-152">ResNet-152</option>
-                <option value="llama-7b">LLaMA-7B</option>
-                <option value="stable-diffusion-xl">Stable Diffusion XL</option>
+                <option value="image">MobileNetV2 — Image Classification</option>
+                <option value="text">TextCNN — Text Classification</option>
               </select>
             </div>
             <div>
@@ -85,9 +105,8 @@ export default function NewTrainingJobPage() {
                 onChange={(e) => setDataset(e.target.value)}
                 style={{ width: "100%", padding: "14px 16px", borderRadius: 8, background: "rgba(0,0,0,0.4)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", appearance: "none", fontFamily: "var(--font-sans)", fontSize: 14 }}
               >
-                <option value="imagenet-1k-subset">ImageNet-1k (Subset)</option>
-                <option value="coco-2017">COCO 2017</option>
-                <option value="custom-telemetry">Telemetry Logs 2026</option>
+                <option value="imagenet-1k-subset">Synthetic Demo Dataset</option>
+                <option value="custom-upload">Custom Upload</option>
               </select>
             </div>
           </div>
@@ -95,7 +114,6 @@ export default function NewTrainingJobPage() {
 
         {/* Hyperparameters */}
         <motion.div variants={itemVariants} className="pro-glass-panel" style={{ padding: 32, borderRadius: 16, background: "rgba(10,10,15,0.4)", position: "relative", overflow: "hidden" }}>
-          {/* Subtle glow effect inside the panel */}
           <div style={{ position: "absolute", top: 0, right: 0, width: 300, height: 300, background: "radial-gradient(circle, rgba(0,212,255,0.05) 0%, rgba(0,0,0,0) 70%)", pointerEvents: "none" }} />
           
           <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 24, display: "flex", alignItems: "center", gap: 8 }}>
@@ -110,7 +128,7 @@ export default function NewTrainingJobPage() {
               </div>
               <input 
                 type="range" 
-                min="1" max="500" 
+                min="1" max="100" 
                 value={epochs} 
                 onChange={(e) => setEpochs(Number(e.target.value))}
                 style={{ width: "100%", accentColor: "#00D4FF", cursor: "pointer" }} 
@@ -140,7 +158,6 @@ export default function NewTrainingJobPage() {
                 <option value="32">32</option>
                 <option value="64">64</option>
                 <option value="128">128</option>
-                <option value="256">256</option>
               </select>
             </div>
 
@@ -168,21 +185,17 @@ export default function NewTrainingJobPage() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
             <div>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                <label style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1 }}>GPU Count</label>
-                <span className="mono" style={{ color: "#F59E0B", fontSize: 14 }}>{gpus}x H100</span>
+                <label style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1 }}>Device</label>
+                <span className="mono" style={{ color: "#F59E0B", fontSize: 14 }}>Auto-detect</span>
               </div>
-              <input 
-                type="range" 
-                min="1" max="16" step="1"
-                value={gpus} 
-                onChange={(e) => setGpus(Number(e.target.value))}
-                style={{ width: "100%", accentColor: "#F59E0B", cursor: "pointer" }} 
-              />
+              <p style={{ fontSize: 13, color: "#A1A1AA", lineHeight: 1.6 }}>
+                The backend will automatically use CUDA if available, otherwise CPU. Training runs server-side on the Elastic Beanstalk instance.
+              </p>
             </div>
             <div>
               <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "#A1A1AA", marginBottom: 8, textTransform: "uppercase", letterSpacing: 1 }}>Precision</label>
               <div style={{ display: "flex", gap: 12 }}>
-                {["fp32", "fp16", "bf16", "int8"].map(p => (
+                {["fp32", "fp16", "bf16"].map(p => (
                   <button 
                     key={p}
                     onClick={() => setPrecision(p)}
@@ -207,11 +220,23 @@ export default function NewTrainingJobPage() {
           </div>
         </motion.div>
 
+        {/* Error */}
+        {error && (
+          <motion.div variants={itemVariants} style={{ padding: 16, borderRadius: 8, background: "rgba(239, 68, 68, 0.1)", border: "1px solid rgba(239, 68, 68, 0.3)", color: "#EF4444", fontSize: 14 }}>
+            ⚠ {error}
+          </motion.div>
+        )}
+
         {/* Action */}
         <motion.div variants={itemVariants} style={{ display: "flex", justifyContent: "flex-end", marginTop: 16 }}>
-          <button onClick={handleLaunch} className="btn-cinematic" style={{ padding: "16px 32px", fontSize: 16, display: "flex", alignItems: "center", gap: 12 }}>
-            <Rocket size={20} />
-            Initialize Training Cluster
+          <button 
+            onClick={handleLaunch} 
+            disabled={launching}
+            className="btn-cinematic" 
+            style={{ padding: "16px 32px", fontSize: 16, display: "flex", alignItems: "center", gap: 12, opacity: launching ? 0.7 : 1, cursor: launching ? "not-allowed" : "pointer" }}
+          >
+            {launching ? <Loader2 size={20} className="spin" /> : <Rocket size={20} />}
+            {launching ? "Initializing..." : "Initialize Training Cluster"}
           </button>
         </motion.div>
 

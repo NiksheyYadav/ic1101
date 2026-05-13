@@ -43,8 +43,8 @@ export function InteractiveMesh() {
       size: number;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * canvas!.width;
+        this.y = Math.random() * canvas!.height;
         this.vx = (Math.random() - 0.5) * 0.5;
         this.vy = (Math.random() - 0.5) * 0.5;
         this.size = Math.random() * 1.95 + 0.65;
@@ -54,8 +54,8 @@ export function InteractiveMesh() {
         this.x += this.vx;
         this.y += this.vy;
 
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        if (this.x < 0 || this.x > canvas!.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas!.height) this.vy *= -1;
       }
 
       draw() {
@@ -89,14 +89,14 @@ export function InteractiveMesh() {
 
     const initParticles = () => {
       particles = [];
-      const numberOfParticles = Math.floor((canvas.width * canvas.height) / 10000);
+      const numberOfParticles = Math.floor((canvas!.width * canvas!.height) / 10000);
       for (let i = 0; i < numberOfParticles; i++) {
         particles.push(new Particle());
       }
     };
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas!.width, canvas!.height);
       
       // Draw radial gradient under mouse
       if (mouse.x !== -1000 && mouse.y !== -1000) {
@@ -104,7 +104,7 @@ export function InteractiveMesh() {
         gradient.addColorStop(0, 'rgba(0, 212, 255, 0.06)');
         gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
         ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvas!.width, canvas!.height);
       }
 
       for (let i = 0; i < particles.length; i++) {

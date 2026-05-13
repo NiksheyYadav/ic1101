@@ -6,7 +6,7 @@ from fastapi.responses import RedirectResponse
 
 from app.core.config import settings
 from app.db.session import init_db
-from app.routers import auth, dataset, experiments, models, preprocessing, project, training, workspace
+from app.routers import auth, dataset, experiments, models, preprocessing, project, system, training, workspace
 
 
 @asynccontextmanager
@@ -54,3 +54,4 @@ app.include_router(training.router, prefix="/v1/training-jobs", tags=["training"
 app.include_router(preprocessing.router, prefix="/v1/preprocessing-pipelines", tags=["preprocessing"])
 app.include_router(experiments.router, prefix="/v1/experiments", tags=["experiments"])
 app.include_router(models.router, prefix="/v1/models", tags=["models"])
+app.include_router(system.router, prefix="/v1/system", tags=["system"])

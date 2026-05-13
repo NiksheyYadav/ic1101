@@ -1,6 +1,6 @@
-import uuid
+import json
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
@@ -22,30 +22,44 @@ class PipelineRead(BaseModel):
     workspace_id: str
     name: str
     steps: list[dict]
-
-
-def parse_uuid(raw: str, field_name: str) -> uuid.UUID:
-    try:
-        return uuid.UUID(raw)
-    except ValueError as exc:
-        raise HTTPException(status_code=422, detail=f"invalid {field_name}") from exc
+    created_at: str | None = None
 
 
 @router.post("", response_model=PipelineRead, status_code=status.HTTP_201_CREATED)
-def create_pipeline(payload: PipelineCreate, principal: Principal = Depends(require_role("owner", "admin", "member")), db: Session = Depends(get_db)) -> PipelineRead:
+def create_pipeline(
+    payload: PipelineCreate,
+    principal: Principal = Depends(require_role("owner", "admin", "member")),
+    db: Session = Depends(get_db),
+) -> PipelineRead:
     item = PreprocessingPipeline(
-        workspace_id=parse_uuid(payload.workspace_id, "workspace_id"),
+        workspace_id=payload.workspace_id,
         name=payload.name,
-        steps_json=payload.steps,
-        created_by=parse_uuid(principal.user_id, "user_id"),
+        steps_json=json.dumps(payload.steps),
+        created_by=principal.user_id,
     )
     db.add(item)
     db.commit()
     db.refresh(item)
-    return PipelineRead(id=str(item.id), workspace_id=str(item.workspace_id), name=item.name, steps=item.steps_json)
+    return _to_read(item)
 
 
 @router.get("", response_model=list[PipelineRead])
-def list_pipelines(workspace_id: str, _principal: Principal = Depends(require_role("owner", "admin", "member", "viewer")), db: Session = Depends(get_db)) -> list[PipelineRead]:
-    items = db.query(PreprocessingPipeline).filter(PreprocessingPipeline.workspace_id == parse_uuid(workspace_id, "workspace_id")).all()
-    return [PipelineRead(id=str(i.id), workspace_id=str(i.workspace_id), name=i.name, steps=i.steps_json) for i in items]
+def list_pipelines(
+    workspace_id: str | None = None,
+    _principal: Principal = Depends(require_role("owner", "admin", "member", "viewer")),
+    db: Session = Depends(get_db),
+) -> list[PipelineRead]:
+    query = db.query(PreprocessingPipeline)
+    if workspace_id:
+        query = query.filter(PreprocessingPipeline.workspace_id == workspace_id)
+    return [_to_read(i) for i in query.all()]
+
+
+def _to_read(p: PreprocessingPipeline) -> PipelineRead:
+    return PipelineRead(
+        id=p.id,
+        workspace_id=p.workspace_id,
+        name=p.name,
+        steps=json.loads(p.steps_json) if p.steps_json else [],
+        created_at=str(p.created_at) if p.created_at else None,
+    )

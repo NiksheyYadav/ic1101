@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
-import "./styles.css";
+import "./globals.css";
+import { Sidebar } from "../components/sidebar";
 
 export const metadata: Metadata = {
-  title: "Aetheris Studio",
-  description: "No-code AI training platform"
+  title: "Aetheris AI — The Operating System for Artificial Intelligence",
+  description: "No-code AI training platform. Train, Monitor, Optimize, Deploy.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="app-layout">
+          <Sidebar />
+          <main className="main-content">{children}</main>
+        </div>
+      </body>
     </html>
   );
 }

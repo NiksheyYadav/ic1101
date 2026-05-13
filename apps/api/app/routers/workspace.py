@@ -1,5 +1,3 @@
-import uuid
-
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
@@ -17,12 +15,20 @@ def healthz() -> dict[str, str]:
 
 
 @router.get("", response_model=list[WorkspaceRead])
-def list_workspaces(_principal: Principal = Depends(require_role("owner", "admin", "member", "viewer")), db: Session = Depends(get_db)) -> list[Workspace]:
-    return db.query(Workspace).order_by(Workspace.created_at.desc()).limit(100).all()
+def list_workspaces(
+    _principal: Principal = Depends(require_role("owner", "admin", "member", "viewer")),
+    db: Session = Depends(get_db),
+) -> list[WorkspaceRead]:
+    items = db.query(Workspace).order_by(Workspace.created_at.desc()).limit(100).all()
+    return [WorkspaceRead(id=w.id, name=w.name, slug=w.slug, owner_user_id=w.owner_user_id) for w in items]
 
 
 @router.post("", response_model=WorkspaceRead, status_code=status.HTTP_201_CREATED)
-def create_workspace(payload: WorkspaceCreate, _principal: Principal = Depends(require_role("owner", "admin")), db: Session = Depends(get_db)) -> Workspace:
+def create_workspace(
+    payload: WorkspaceCreate,
+    _principal: Principal = Depends(require_role("owner", "admin")),
+    db: Session = Depends(get_db),
+) -> WorkspaceRead:
     exists = db.query(Workspace).filter(Workspace.slug == payload.slug).first()
     if exists:
         raise HTTPException(status_code=409, detail="workspace slug already exists")
@@ -30,16 +36,9 @@ def create_workspace(payload: WorkspaceCreate, _principal: Principal = Depends(r
     workspace = Workspace(
         name=payload.name,
         slug=payload.slug,
-        owner_user_id=parse_uuid(payload.owner_user_id, "owner_user_id"),
+        owner_user_id=payload.owner_user_id,
     )
     db.add(workspace)
     db.commit()
     db.refresh(workspace)
-    return workspace
-
-
-def parse_uuid(raw: str, field_name: str) -> uuid.UUID:
-    try:
-        return uuid.UUID(raw)
-    except ValueError as exc:
-        raise HTTPException(status_code=422, detail=f"invalid {field_name}") from exc
+    return WorkspaceRead(id=workspace.id, name=workspace.name, slug=workspace.slug, owner_user_id=workspace.owner_user_id)

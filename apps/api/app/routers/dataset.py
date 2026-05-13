@@ -1,5 +1,6 @@
 import csv
 import io
+import json
 import uuid
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
@@ -28,13 +29,6 @@ class DatasetRead(BaseModel):
     versions: list[DatasetVersionRead]
 
 
-def parse_uuid(raw: str, field_name: str) -> uuid.UUID:
-    try:
-        return uuid.UUID(raw)
-    except ValueError as exc:
-        raise HTTPException(status_code=422, detail=f"invalid {field_name}") from exc
-
-
 @router.post("", response_model=DatasetRead, status_code=status.HTTP_201_CREATED)
 async def upload_dataset(
     workspace_id: str = Form(...),
@@ -43,7 +37,7 @@ async def upload_dataset(
     principal: Principal = Depends(require_role("owner", "admin", "member")),
     db: Session = Depends(get_db),
 ) -> DatasetRead:
-    if not file.filename.endswith(".csv"):
+    if not file.filename or not file.filename.endswith(".csv"):
         raise HTTPException(status_code=400, detail="only csv supported in m1")
 
     content = await file.read()
@@ -52,10 +46,9 @@ async def upload_dataset(
     if not reader.fieldnames:
         raise HTTPException(status_code=422, detail="missing headers")
 
-    ws_id = parse_uuid(workspace_id, "workspace_id")
-    dataset = db.query(Dataset).filter(Dataset.workspace_id == ws_id, Dataset.name == name).first()
+    dataset = db.query(Dataset).filter(Dataset.workspace_id == workspace_id, Dataset.name == name).first()
     if not dataset:
-        dataset = Dataset(workspace_id=ws_id, name=name, created_by=parse_uuid(principal.user_id, "user_id"))
+        dataset = Dataset(workspace_id=workspace_id, name=name, created_by=principal.user_id)
         db.add(dataset)
         db.flush()
 
@@ -67,37 +60,57 @@ async def upload_dataset(
         filename=file.filename,
         rows_count=len(rows),
         columns_count=len(reader.fieldnames),
-        headers_json=list(reader.fieldnames),
+        headers_json=json.dumps(list(reader.fieldnames)),
     )
     db.add(record)
     db.commit()
 
     versions = db.query(DatasetVersion).filter(DatasetVersion.dataset_id == dataset.id).order_by(DatasetVersion.version.asc()).all()
     return DatasetRead(
-        id=str(dataset.id),
-        workspace_id=str(dataset.workspace_id),
+        id=dataset.id,
+        workspace_id=dataset.workspace_id,
         name=dataset.name,
-        versions=[DatasetVersionRead(version=v.version, filename=v.filename, rows=v.rows_count, columns=v.columns_count, headers=v.headers_json) for v in versions],
+        versions=[DatasetVersionRead(version=v.version, filename=v.filename, rows=v.rows_count, columns=v.columns_count, headers=json.loads(v.headers_json)) for v in versions],
     )
 
 
 @router.get("", response_model=list[DatasetRead])
 def list_datasets(
-    workspace_id: str,
+    workspace_id: str | None = None,
     _principal: Principal = Depends(require_role("owner", "admin", "member", "viewer")),
     db: Session = Depends(get_db),
 ) -> list[DatasetRead]:
-    ws_id = parse_uuid(workspace_id, "workspace_id")
-    datasets = db.query(Dataset).filter(Dataset.workspace_id == ws_id).all()
+    query = db.query(Dataset)
+    if workspace_id:
+        query = query.filter(Dataset.workspace_id == workspace_id)
+    datasets = query.all()
     result: list[DatasetRead] = []
     for ds in datasets:
         versions = db.query(DatasetVersion).filter(DatasetVersion.dataset_id == ds.id).order_by(DatasetVersion.version.asc()).all()
         result.append(
             DatasetRead(
-                id=str(ds.id),
-                workspace_id=str(ds.workspace_id),
+                id=ds.id,
+                workspace_id=ds.workspace_id,
                 name=ds.name,
-                versions=[DatasetVersionRead(version=v.version, filename=v.filename, rows=v.rows_count, columns=v.columns_count, headers=v.headers_json) for v in versions],
+                versions=[DatasetVersionRead(version=v.version, filename=v.filename, rows=v.rows_count, columns=v.columns_count, headers=json.loads(v.headers_json)) for v in versions],
             )
         )
     return result
+
+
+@router.get("/{dataset_id}", response_model=DatasetRead)
+def get_dataset(
+    dataset_id: str,
+    _principal: Principal = Depends(require_role("owner", "admin", "member", "viewer")),
+    db: Session = Depends(get_db),
+) -> DatasetRead:
+    ds = db.query(Dataset).filter(Dataset.id == dataset_id).first()
+    if not ds:
+        raise HTTPException(status_code=404, detail="dataset not found")
+    versions = db.query(DatasetVersion).filter(DatasetVersion.dataset_id == ds.id).order_by(DatasetVersion.version.asc()).all()
+    return DatasetRead(
+        id=ds.id,
+        workspace_id=ds.workspace_id,
+        name=ds.name,
+        versions=[DatasetVersionRead(version=v.version, filename=v.filename, rows=v.rows_count, columns=v.columns_count, headers=json.loads(v.headers_json)) for v in versions],
+    )

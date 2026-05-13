@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.routers import auth, dataset, project, training, workspace
+from app.routers import auth, dataset, preprocessing, project, training, workspace
 
 app = FastAPI(title="Aetheris API Gateway", version="0.1.0")
 
@@ -20,3 +20,5 @@ app.include_router(workspace.router, prefix="/v1/workspaces", tags=["workspaces"
 app.include_router(project.router, prefix="/v1/projects", tags=["projects"])
 app.include_router(dataset.router, prefix="/v1/datasets", tags=["datasets"])
 app.include_router(training.router, prefix="/v1/training-jobs", tags=["training"])
+
+app.include_router(preprocessing.router, prefix="/v1/preprocessing-pipelines", tags=["preprocessing"])

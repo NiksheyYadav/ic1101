@@ -1,11 +1,17 @@
 {
   "name": "aetheris-studio",
   "private": true,
-  "workspaces": ["apps/web"],
+  "workspaces": [
+    "apps/web"
+  ],
   "scripts": {
-    "dev": "npm --workspace apps/web run dev",
+    "dev": "concurrently -n api,web -c blue,cyan \"python -m uvicorn app.main:app --app-dir apps/api --host 0.0.0.0 --port 8000 --reload\" \"npm --workspace apps/web run dev\"",
+    "dev:api": "python -m uvicorn app.main:app --app-dir apps/api --host 0.0.0.0 --port 8000 --reload",
     "dev:web": "npm --workspace apps/web run dev",
     "build:web": "npm --workspace apps/web run build",
     "start:web": "npm --workspace apps/web run start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

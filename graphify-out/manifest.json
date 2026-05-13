@@ -1,0 +1,134 @@
+{
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\main.py": {
+    "mtime": 1778651476.7310052,
+    "hash": "98e04d55259ca97da62c7ad74f6c4ee2"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\core\\config.py": {
+    "mtime": 1778651476.7278762,
+    "hash": "4abcda63ae6b6abec2c955f5abd581c9"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py": {
+    "mtime": 1778651476.7290187,
+    "hash": "0345a6173b2c0c8b58378cb2b661e223"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\db\\session.py": {
+    "mtime": 1778651476.7300074,
+    "hash": "dff2bb50c0f5eeac93f6d94f65b25d01"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\routers\\auth.py": {
+    "mtime": 1778651476.732366,
+    "hash": "4be344ede327de9a2d169c18d84699ef"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\routers\\dataset.py": {
+    "mtime": 1778651476.7333932,
+    "hash": "2d52ecae3fac37238f84f281d1012e54"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\routers\\project.py": {
+    "mtime": 1778651476.7333932,
+    "hash": "b762e470b4fa9d9fdffdddc4cd83518e"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py": {
+    "mtime": 1778651476.7348785,
+    "hash": "0945d37b9896c5366b0623f6f851719a"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\routers\\workspace.py": {
+    "mtime": 1778651476.7348785,
+    "hash": "6040ed13c3041e71f606d83cf8779465"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\routers\\__init__.py": {
+    "mtime": 1778651476.7310052,
+    "hash": "4be0a8111f72c8ba3ccdbd02181c4b52"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\project.py": {
+    "mtime": 1778651476.7360518,
+    "hash": "2b115a9d488b84cc91bdf4af7a1b7365"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\workspace.py": {
+    "mtime": 1778651476.737113,
+    "hash": "6f764da33d0118c4e173bf5a03cb68e3"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\security\\auth.py": {
+    "mtime": 1778651476.738595,
+    "hash": "f693acf7a84a42ceeec1b606deeccfbe"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py": {
+    "mtime": 1778651476.738595,
+    "hash": "c147839cdc7e1f2f974c7c91ced9faf8"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py": {
+    "mtime": 1778651476.740065,
+    "hash": "9e5ac28736cd79768703f9c41c6fad15"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\tests\\test_health.py": {
+    "mtime": 1778651476.7432988,
+    "hash": "4c5d71bac31513c0a09a45f69b48b433"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\tests\\test_project_workspace_validation.py": {
+    "mtime": 1778651476.7432988,
+    "hash": "4549a488de33ef37395703a525295b20"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py": {
+    "mtime": 1778651476.742304,
+    "hash": "9c45909fa7dd802724e4517e73637164"
+  },
+  "D:\\ic1101\\ic1101\\apps\\web\\next-env.d.ts": {
+    "mtime": 1778651613.9468408,
+    "hash": "da547da2ebeb322abd0257ae82d0f1bf"
+  },
+  "D:\\ic1101\\ic1101\\apps\\web\\next.config.mjs": {
+    "mtime": 1778651476.7482996,
+    "hash": "4b88713396a6dcabff15f8fd59d3283e"
+  },
+  "D:\\ic1101\\ic1101\\apps\\web\\app\\layout.tsx": {
+    "mtime": 1778651476.7452989,
+    "hash": "9fc103d071566ff9b8d2a0ef23eb91d3"
+  },
+  "D:\\ic1101\\ic1101\\apps\\web\\app\\page.tsx": {
+    "mtime": 1778651476.7452989,
+    "hash": "8316206473777daae2f126a8ccd145e4"
+  },
+  "D:\\ic1101\\ic1101\\apps\\web\\components\\service-status.tsx": {
+    "mtime": 1778651476.747299,
+    "hash": "6c680057f84eb5b8d7617fe0aad0d81d"
+  },
+  "D:\\ic1101\\ic1101\\db\\migrations\\0001_init.down.sql": {
+    "mtime": 1778651476.7513041,
+    "hash": "d61da1405dc5608c0f336dbdf1ea4d30"
+  },
+  "D:\\ic1101\\ic1101\\db\\migrations\\0001_init.up.sql": {
+    "mtime": 1778651476.752764,
+    "hash": "0f8cda0175d2c8377f7626799c53784b"
+  },
+  "D:\\ic1101\\ic1101\\README.md": {
+    "mtime": 1778651476.7265685,
+    "hash": "ebddc5df65f781eae22dded02aac048c"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\requirements-dev.txt": {
+    "mtime": 1778651476.7410722,
+    "hash": "cfb226193f41cd171d88ca09913c5259"
+  },
+  "D:\\ic1101\\ic1101\\apps\\api\\requirements.txt": {
+    "mtime": 1778651701.4852579,
+    "hash": "41abfb34eace0c7f821ed3e15e4c4589"
+  },
+  "D:\\ic1101\\ic1101\\docs\\v1-api-spec.md": {
+    "mtime": 1778651476.7542932,
+    "hash": "2c5837ccd8d6fff173af10c7fa16f9a3"
+  },
+  "D:\\ic1101\\ic1101\\docs\\v1-architecture.md": {
+    "mtime": 1778651476.7553325,
+    "hash": "4e67b37968532360f73a6b4d6b53689e"
+  },
+  "D:\\ic1101\\ic1101\\docs\\v1-build-plan.md": {
+    "mtime": 1778651476.7563295,
+    "hash": "b278ec8f3ed7d7034d4f5250140e6b82"
+  },
+  "D:\\ic1101\\ic1101\\docs\\v1-prd.md": {
+    "mtime": 1778651476.7563295,
+    "hash": "5795a9a84b67b2e6fa59e53504a6ceb4"
+  },
+  "D:\\ic1101\\ic1101\\docs\\v1-ux-flows.md": {
+    "mtime": 1778651476.7573273,
+    "hash": "7a92e7c35ab6a5afa79962527125d6cb"
+  }
+}

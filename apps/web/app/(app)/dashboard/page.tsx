@@ -1,112 +1,193 @@
 "use client";
+import { useState, useEffect } from "react";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 import { Zap, Upload, Rocket, GitCompare, TrendingUp, TrendingDown, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
-const lossData = Array.from({ length: 30 }, (_, i) => ({
+const initialLossData = Array.from({ length: 30 }, (_, i) => ({
   epoch: i + 1, loss: +(1 / (i + 1) + Math.random() * 0.05).toFixed(4),
   acc: +(0.5 + (i / 50) + Math.random() * 0.02).toFixed(4),
 }));
-const gpuData = Array.from({ length: 12 }, (_, i) => ({ h: `${i * 2}:00`, usage: 60 + Math.random() * 30 }));
-const jobs = [
-  { name: "VisionTransformer-v3", progress: 71, acc: "94.28%", eta: "1h 42m", status: "running" },
-  { name: "BERT-FineTune-v2", progress: 45, acc: "88.71%", eta: "3h 15m", status: "running" },
-  { name: "ResNet-50-Retrain", progress: 92, acc: "96.12%", eta: "12m", status: "running" },
-];
-const experiments = [
-  { id: "EXP-042", model: "VisionTransformer", acc: "96.2%", loss: "0.041", status: "completed" },
-  { id: "EXP-041", model: "EfficientNet-B4", acc: "94.8%", loss: "0.058", status: "completed" },
-  { id: "EXP-039", model: "XGBoost-v3", acc: "91.3%", loss: "0.092", status: "completed" },
-];
+
+const initialGpuData = Array.from({ length: 12 }, (_, i) => ({ 
+  h: `${i * 2}:00`, usage: 60 + Math.random() * 30 
+}));
 
 export default function DashboardPage() {
+  const [lossData, setLossData] = useState(initialLossData);
+  const [gpuData, setGpuData] = useState(initialGpuData);
+  const [jobs, setJobs] = useState([
+    { name: "VisionTransformer-v3", progress: 71, acc: "94.28%", eta: "1h 42m", status: "running" },
+    { name: "BERT-FineTune-v2", progress: 45, acc: "88.71%", eta: "3h 15m", status: "running" },
+    { name: "ResNet-50-Retrain", progress: 92, acc: "96.12%", eta: "12m", status: "running" },
+  ]);
+
+  const experiments = [
+    { id: "EXP-042", model: "VisionTransformer", acc: "96.2%", loss: "0.041", status: "completed" },
+    { id: "EXP-041", model: "EfficientNet-B4", acc: "94.8%", loss: "0.058", status: "completed" },
+    { id: "EXP-039", model: "XGBoost-v3", acc: "91.3%", loss: "0.092", status: "completed" },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Live tick the loss data
+      setLossData(prev => {
+        const last = prev[prev.length - 1];
+        let newLoss = last.loss * 0.98 + (Math.random() * 0.008 - 0.004);
+        if (newLoss < 0.001) newLoss = 0.001;
+        let newAcc = last.acc + (1 - last.acc) * 0.03 + (Math.random() * 0.006 - 0.003);
+        if (newAcc > 0.999) newAcc = 0.999;
+        return [...prev.slice(1), { epoch: last.epoch + 1, loss: +newLoss.toFixed(4), acc: +newAcc.toFixed(4) }];
+      });
+
+      // Live jitter the GPU usage
+      setGpuData(prev => prev.map(d => ({
+        ...d,
+        usage: Math.max(10, Math.min(100, d.usage + (Math.random() * 6 - 3)))
+      })));
+
+      // Tick the progress bars
+      setJobs(prev => prev.map(job => {
+        if (job.status === "running" && job.progress < 100) {
+          const newProgress = job.progress + (Math.random() * 0.5);
+          return { ...job, progress: newProgress > 100 ? 100 : newProgress };
+        }
+        return job;
+      }));
+
+    }, 800);
+    return () => clearInterval(interval);
+  }, []);
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+  };
+
   return (
-    <div className="animate-in">
-      <div className="page-header">
+    <motion.div variants={container} initial="hidden" animate="show" className="animate-in" style={{ paddingBottom: 60 }}>
+      <motion.div variants={item} className="page-header" style={{ marginBottom: 40 }}>
         <div>
-          <h2>Welcome back, Admin 👋</h2>
-          <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 4 }}>Here&apos;s what&apos;s happening across your AI infrastructure.</p>
+          <h2 style={{ fontSize: 28, fontWeight: 600, color: "#fff", letterSpacing: "-0.02em" }}>Welcome back, Admin 👋</h2>
+          <p style={{ fontSize: 14, color: "var(--text-muted)", marginTop: 8 }}>Here&apos;s what&apos;s happening across your AI infrastructure.</p>
         </div>
         <div className="flex-row">
-          <button className="btn btn-primary"><Zap size={14} /> New Training</button>
-          <button className="btn btn-secondary"><Upload size={14} /> Upload Dataset</button>
+          <button className="btn-cinematic" style={{ padding: "8px 20px", fontSize: 14 }}><Zap size={16} /> New Training</button>
+          <button className="btn-outline-cinematic" style={{ padding: "8px 20px", fontSize: 14 }}><Upload size={16} /> Upload Dataset</button>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="kpi-grid">
-        <div className="kpi-card"><div className="kpi-label">Active Trainings</div><div className="kpi-value cyan">3</div><div className="kpi-trend up"><TrendingUp size={12} /> +1 from yesterday</div></div>
-        <div className="kpi-card emerald"><div className="kpi-label">GPU Utilization</div><div className="kpi-value emerald">87%</div><div className="kpi-trend up"><TrendingUp size={12} /> Optimal</div></div>
-        <div className="kpi-card violet"><div className="kpi-label">Data Volume</div><div className="kpi-value violet">61.3 GB</div><div className="kpi-trend up"><TrendingUp size={12} /> +2.4 GB today</div></div>
-        <div className="kpi-card amber"><div className="kpi-label">Models in Production</div><div className="kpi-value amber">12</div><div className="kpi-trend up"><TrendingUp size={12} /> All healthy</div></div>
-      </div>
+      <motion.div variants={item} className="kpi-grid" style={{ marginBottom: 40, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+        <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)" }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Active Trainings</div>
+          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#00D4FF", marginBottom: 12 }}>3</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> +1 from yesterday</div>
+        </div>
+        <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)", borderLeft: "2px solid var(--emerald)" }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>GPU Utilization</div>
+          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#3DDC97", marginBottom: 12 }}>87%</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> Optimal</div>
+        </div>
+        <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)", borderLeft: "2px solid var(--violet)" }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Data Volume</div>
+          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#8B5CF6", marginBottom: 12 }}>61.3 GB</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> +2.4 GB today</div>
+        </div>
+        <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)", borderLeft: "2px solid var(--amber)" }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Models in Production</div>
+          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#F59E0B", marginBottom: 12 }}>12</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> All healthy</div>
+        </div>
+      </motion.div>
 
-      <div className="grid-2-1 mb-24">
-        <div className="chart-card">
-          <h3>Training Progress</h3>
+      <motion.div variants={item} className="grid-2-1" style={{ marginBottom: 40, display: "grid", gridTemplateColumns: "2fr 1fr", gap: 24 }}>
+        <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)" }}>
+          <h3 style={{ marginBottom: 24, fontSize: 16, fontWeight: 600 }}>Training Progress</h3>
           <ResponsiveContainer width="100%" height={260}>
             <AreaChart data={lossData}>
               <defs>
-                <linearGradient id="glowCyan" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#00D4FF" stopOpacity={0.3} /><stop offset="100%" stopColor="#00D4FF" stopOpacity={0} /></linearGradient>
-                <linearGradient id="glowViolet" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.3} /><stop offset="100%" stopColor="#8B5CF6" stopOpacity={0} /></linearGradient>
+                <linearGradient id="glowCyan" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#00D4FF" stopOpacity={0.4} /><stop offset="100%" stopColor="#00D4FF" stopOpacity={0} /></linearGradient>
+                <linearGradient id="glowViolet" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.4} /><stop offset="100%" stopColor="#8B5CF6" stopOpacity={0} /></linearGradient>
               </defs>
-              <XAxis dataKey="epoch" tick={{ fill: "#4A5578", fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: "#4A5578", fontSize: 11 }} axisLine={false} tickLine={false} />
-              <Tooltip contentStyle={{ background: "#0D1225", border: "1px solid #1A2140", borderRadius: 8, fontSize: 12 }} />
-              <Area type="monotone" dataKey="loss" stroke="#00D4FF" fill="url(#glowCyan)" strokeWidth={2} dot={false} />
-              <Area type="monotone" dataKey="acc" stroke="#8B5CF6" fill="url(#glowViolet)" strokeWidth={2} dot={false} />
+              <XAxis dataKey="epoch" tick={{ fill: "#A1A1AA", fontSize: 11 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: "#A1A1AA", fontSize: 11 }} axisLine={false} tickLine={false} />
+              <Tooltip contentStyle={{ background: "rgba(10,10,15,0.9)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, fontSize: 12, backdropFilter: "blur(10px)" }} />
+              <Area type="monotone" dataKey="loss" stroke="#00D4FF" fill="url(#glowCyan)" strokeWidth={3} dot={false} isAnimationActive={false} />
+              <Area type="monotone" dataKey="acc" stroke="#8B5CF6" fill="url(#glowViolet)" strokeWidth={3} dot={false} isAnimationActive={false} />
             </AreaChart>
           </ResponsiveContainer>
         </div>
-        <div className="chart-card">
-          <h3>GPU Usage (24h)</h3>
+        <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)" }}>
+          <h3 style={{ marginBottom: 24, fontSize: 16, fontWeight: 600 }}>GPU Usage (Live)</h3>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={gpuData}>
-              <XAxis dataKey="h" tick={{ fill: "#4A5578", fontSize: 10 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: "#4A5578", fontSize: 10 }} axisLine={false} tickLine={false} domain={[0, 100]} />
-              <Tooltip contentStyle={{ background: "#0D1225", border: "1px solid #1A2140", borderRadius: 8, fontSize: 12 }} />
-              <Bar dataKey="usage" fill="#3DDC9766" radius={[4, 4, 0, 0]} />
+              <XAxis dataKey="h" tick={{ fill: "#A1A1AA", fontSize: 10 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: "#A1A1AA", fontSize: 10 }} axisLine={false} tickLine={false} domain={[0, 100]} />
+              <Tooltip cursor={{ fill: "rgba(255,255,255,0.05)" }} contentStyle={{ background: "rgba(10,10,15,0.9)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, fontSize: 12, backdropFilter: "blur(10px)" }} />
+              <Bar dataKey="usage" fill="#3DDC97" opacity={0.8} radius={[4, 4, 0, 0]} isAnimationActive={false} />
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="grid-2 mb-24">
-        <div className="card">
-          <h3 style={{ marginBottom: 16, fontSize: 14, fontWeight: 600 }}>Active Training Jobs</h3>
+      <motion.div variants={item} className="grid-2" style={{ marginBottom: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+        <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)" }}>
+          <h3 style={{ marginBottom: 24, fontSize: 16, fontWeight: 600 }}>Active Training Jobs</h3>
           {jobs.map((j) => (
-            <div key={j.name} style={{ padding: "12px 0", borderBottom: "1px solid var(--border)" }}>
-              <div className="flex-between" style={{ marginBottom: 8 }}>
-                <span style={{ fontWeight: 600, fontSize: 13 }}>{j.name}</span>
-                <span className="badge badge-cyan">{j.status}</span>
+            <div key={j.name} style={{ padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+              <div className="flex-between" style={{ marginBottom: 16 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div className="pulse-dot" style={{ backgroundColor: "#00D4FF" }} />
+                  <span style={{ fontWeight: 600, fontSize: 15 }}>{j.name}</span>
+                </div>
+                <span className="mono" style={{ fontSize: 11, color: "#00D4FF", background: "rgba(0, 212, 255, 0.1)", padding: "4px 8px", borderRadius: 4, letterSpacing: 1 }}>{j.status.toUpperCase()}</span>
               </div>
-              <div className="progress-bar"><div className="progress-fill" style={{ width: `${j.progress}%` }} /></div>
-              <div className="flex-between" style={{ marginTop: 6, fontSize: 11, color: "var(--text-muted)" }}>
-                <span>Accuracy: <span style={{ color: "var(--emerald)" }}>{j.acc}</span></span>
-                <span>ETA: {j.eta}</span>
+              <div style={{ height: 6, background: "rgba(255,255,255,0.05)", borderRadius: 3, overflow: "hidden" }}>
+                <div style={{ width: `${j.progress}%`, height: "100%", background: "linear-gradient(90deg, #8B5CF6, #00D4FF)", transition: "width 0.2s linear" }} />
+              </div>
+              <div className="flex-between" style={{ marginTop: 12, fontSize: 13, color: "var(--text-muted)" }}>
+                <span>Accuracy: <span style={{ color: "var(--emerald)", fontWeight: 600 }}>{j.acc}</span></span>
+                <span className="mono">ETA: {j.eta}</span>
               </div>
             </div>
           ))}
         </div>
-        <div>
-          <div className="card mb-16">
-            <h3 style={{ marginBottom: 16, fontSize: 14, fontWeight: 600 }}>Recent Experiments</h3>
-            <table className="data-table">
-              <thead><tr><th>ID</th><th>Model</th><th>Accuracy</th><th>Loss</th></tr></thead>
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)" }}>
+            <h3 style={{ marginBottom: 20, fontSize: 16, fontWeight: 600 }}>Recent Experiments</h3>
+            <table className="data-table" style={{ width: "100%", textAlign: "left", borderCollapse: "collapse" }}>
+              <thead><tr style={{ color: "#A1A1AA", fontSize: 12, textTransform: "uppercase", letterSpacing: 1 }}><th style={{ paddingBottom: 16, fontWeight: 600 }}>ID</th><th style={{ paddingBottom: 16, fontWeight: 600 }}>Model</th><th style={{ paddingBottom: 16, fontWeight: 600 }}>Accuracy</th><th style={{ paddingBottom: 16, fontWeight: 600 }}>Loss</th></tr></thead>
               <tbody>{experiments.map((e) => (
-                <tr key={e.id}><td className="mono" style={{ color: "var(--cyan)" }}>{e.id}</td><td>{e.model}</td><td style={{ color: "var(--emerald)" }}>{e.acc}</td><td className="mono">{e.loss}</td></tr>
+                <tr key={e.id} style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+                  <td className="mono" style={{ padding: "16px 0", color: "var(--cyan)", fontSize: 13 }}>{e.id}</td>
+                  <td style={{ padding: "16px 0", fontSize: 14 }}>{e.model}</td>
+                  <td style={{ padding: "16px 0", color: "var(--emerald)", fontWeight: 600 }}>{e.acc}</td>
+                  <td className="mono" style={{ padding: "16px 0", fontSize: 13 }}>{e.loss}</td>
+                </tr>
               ))}</tbody>
             </table>
           </div>
-          <div className="ai-insight">
-            <div className="ai-insight-label"><Sparkles size={14} /> AI Insight</div>
-            <p>Training accuracy is improving steadily. Consider reducing learning rate by 12% after epoch 150 for optimal convergence. GPU memory at 87% — safe for current batch size.</p>
-          </div>
+          <motion.div whileHover={{ scale: 1.02 }} className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(0, 212, 255, 0.05))", border: "1px solid rgba(139, 92, 246, 0.2)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#8B5CF6", fontWeight: 600, fontSize: 14, marginBottom: 12 }}>
+              <Sparkles size={16} /> AI Insight
+            </div>
+            <p style={{ color: "#D4D4D8", fontSize: 14, lineHeight: 1.6 }}>Training accuracy is improving steadily. Consider reducing learning rate by 12% after epoch 150 for optimal convergence. GPU memory at 87% — safe for current batch size.</p>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="flex-row">
-        <button className="btn btn-secondary"><GitCompare size={14} /> Compare Runs</button>
-        <button className="btn btn-secondary"><Rocket size={14} /> Deploy Model</button>
-      </div>
-    </div>
+      <motion.div variants={item} className="flex-row" style={{ gap: 16 }}>
+        <button className="btn-outline-cinematic" style={{ padding: "10px 24px", fontSize: 14 }}><GitCompare size={16} /> Compare Runs</button>
+        <button className="btn-cinematic" style={{ padding: "10px 24px", fontSize: 14 }}><Rocket size={16} /> Deploy Model</button>
+      </motion.div>
+    </motion.div>
   );
 }

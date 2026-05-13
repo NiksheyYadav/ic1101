@@ -3,6 +3,7 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "rec
 import { Pause, Play, Square, Download, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 import { apiFetch, fetchEventStream } from "../../../lib/api";
+import Link from "next/link";
 
 const telemetry = [
   { label: "GPU", value: 82, color: "var(--emerald)" },
@@ -79,6 +80,9 @@ export default function TrainingMonitorPage() {
           }
           <button className="btn btn-danger" onClick={() => handleAction('cancel')}><Square size={14} /> Cancel</button>
           <button className="btn btn-secondary"><Download size={14} /> Checkpoint</button>
+          <Link href="/training/new" className="btn-cinematic" style={{ padding: "8px 20px", textDecoration: "none", display: "flex", alignItems: "center", gap: 8 }}>
+            <Sparkles size={14} /> New Job
+          </Link>
         </div>
       </div>
 

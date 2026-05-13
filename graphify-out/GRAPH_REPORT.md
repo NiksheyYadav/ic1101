@@ -1,11 +1,11 @@
 # Graph Report - C:\ic1101\ic1101  (2026-05-14)
 
 ## Corpus Check
-- 50 files · ~38,066 words
+- 50 files · ~47,697 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 185 nodes · 247 edges · 54 communities detected
+- 184 nodes · 246 edges · 53 communities detected
 - Extraction: 70% EXTRACTED · 30% INFERRED · 0% AMBIGUOUS · INFERRED: 74 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
@@ -63,7 +63,6 @@
 - [[_COMMUNITY_Community 50|Community 50]]
 - [[_COMMUNITY_Community 51|Community 51]]
 - [[_COMMUNITY_Community 52|Community 52]]
-- [[_COMMUNITY_Community 53|Community 53]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Principal` - 15 edges
@@ -96,16 +95,16 @@ Cohesion: 0.16
 Nodes (16): TrainingEvent, TrainingJob, _append_event(), create_job(), get_job(), _job_to_read(), append_event(), create() (+8 more)
 
 ### Community 1 - "Community 1"
+Cohesion: 0.17
+Nodes (11): create_access_token(), get_principal(), issue_token(), Principal, TokenRequest, PreprocessingPipeline, create_pipeline(), list_pipelines() (+3 more)
+
+### Community 2 - "Community 2"
 Cohesion: 0.29
 Nodes (13): BaseModel, Settings, deploy_model(), Deployment, DeployRead, DeployRequest, get_model(), list_models() (+5 more)
 
-### Community 2 - "Community 2"
+### Community 3 - "Community 3"
 Cohesion: 0.33
 Nodes (11): Base, DatasetRead, DatasetVersionRead, get_dataset(), list_datasets(), upload_dataset(), Dataset, DatasetVersion (+3 more)
-
-### Community 3 - "Community 3"
-Cohesion: 0.22
-Nodes (5): create_access_token(), get_principal(), issue_token(), Principal, TokenRequest
 
 ### Community 4 - "Community 4"
 Cohesion: 0.22
@@ -124,39 +123,39 @@ Cohesion: 0.46
 Nodes (7): compare_experiments(), CompareRequest, create_experiment_from_job(), _exp_to_read(), ExperimentRead, list_experiments(), Experiment
 
 ### Community 8 - "Community 8"
-Cohesion: 0.52
-Nodes (6): PreprocessingPipeline, create_pipeline(), list_pipelines(), PipelineCreate, PipelineRead, _to_read()
-
-### Community 9 - "Community 9"
 Cohesion: 0.43
 Nodes (3): DatasetRecord, DatasetStore, DatasetVersion
 
-### Community 10 - "Community 10"
+### Community 9 - "Community 9"
 Cohesion: 0.53
 Nodes (4): test_dataset_upload_and_versioning_happy_path(), test_rbac_viewer_cannot_create_training_job(), test_training_job_lifecycle_and_events(), token()
 
-### Community 11 - "Community 11"
+### Community 10 - "Community 10"
 Cohesion: 0.33
 Nodes (0): 
 
-### Community 12 - "Community 12"
+### Community 11 - "Community 11"
 Cohesion: 0.4
 Nodes (2): apiFetch(), handleAction()
 
-### Community 13 - "Community 13"
+### Community 12 - "Community 12"
 Cohesion: 0.4
 Nodes (5): API Datasets, Dataset Service, M2 Data Pipeline, Dataset Manager, Preprocessing Studio
 
-### Community 14 - "Community 14"
+### Community 13 - "Community 13"
 Cohesion: 0.5
 Nodes (0): 
 
-### Community 15 - "Community 15"
+### Community 14 - "Community 14"
 Cohesion: 0.5
 Nodes (4): API Training Jobs, Training Orchestrator, M3 Training Realtime, Training Setup Wizard
 
-### Community 16 - "Community 16"
+### Community 15 - "Community 15"
 Cohesion: 0.67
+Nodes (0): 
+
+### Community 16 - "Community 16"
+Cohesion: 1.0
 Nodes (0): 
 
 ### Community 17 - "Community 17"
@@ -173,23 +172,23 @@ Nodes (0):
 
 ### Community 20 - "Community 20"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (2): Aetheris Studio, Primary Flow
 
 ### Community 21 - "Community 21"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (2): Experiment Service, Experimentation
 
 ### Community 22 - "Community 22"
 Cohesion: 1.0
-Nodes (2): Aetheris Studio, Primary Flow
+Nodes (2): Deployment Service, Deployment Center
 
 ### Community 23 - "Community 23"
 Cohesion: 1.0
-Nodes (2): Experiment Service, Experimentation
+Nodes (0): 
 
 ### Community 24 - "Community 24"
 Cohesion: 1.0
-Nodes (2): Deployment Service, Deployment Center
+Nodes (0): 
 
 ### Community 25 - "Community 25"
 Cohesion: 1.0
@@ -277,62 +276,60 @@ Nodes (0):
 
 ### Community 46 - "Community 46"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (1): Real-time Monitoring
 
 ### Community 47 - "Community 47"
 Cohesion: 1.0
-Nodes (1): Real-time Monitoring
+Nodes (1): Web UI
 
 ### Community 48 - "Community 48"
 Cohesion: 1.0
-Nodes (1): Web UI
+Nodes (1): API Gateway
 
 ### Community 49 - "Community 49"
 Cohesion: 1.0
-Nodes (1): API Gateway
+Nodes (1): Auth Service
 
 ### Community 50 - "Community 50"
 Cohesion: 1.0
-Nodes (1): Auth Service
+Nodes (1): Model Registry
 
 ### Community 51 - "Community 51"
 Cohesion: 1.0
-Nodes (1): Model Registry
-
-### Community 52 - "Community 52"
-Cohesion: 1.0
 Nodes (1): M1 Foundations
 
-### Community 53 - "Community 53"
+### Community 52 - "Community 52"
 Cohesion: 1.0
 Nodes (1): M4 Experiment Registry Deploy
 
 ## Knowledge Gaps
 - **21 isolated node(s):** `Create all tables — used in dev mode.`, `Config`, `Config`, `Aetheris Studio`, `Preprocessing Studio` (+16 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 17`** (2 nodes): `middleware.ts`, `middleware()`
+- **Thin community `Community 16`** (2 nodes): `middleware.ts`, `middleware()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 18`** (2 nodes): `layout.tsx`, `AppLayout()`
+- **Thin community `Community 17`** (2 nodes): `page.tsx`, `handleLogin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (2 nodes): `page.tsx`, `handleLogin()`
+- **Thin community `Community 18`** (2 nodes): `InteractiveMesh.tsx`, `InteractiveMesh()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (2 nodes): `InteractiveMesh.tsx`, `InteractiveMesh()`
+- **Thin community `Community 19`** (2 nodes): `service-status.tsx`, `ServiceStatus()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (2 nodes): `service-status.tsx`, `ServiceStatus()`
+- **Thin community `Community 20`** (2 nodes): `Aetheris Studio`, `Primary Flow`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (2 nodes): `Aetheris Studio`, `Primary Flow`
+- **Thin community `Community 21`** (2 nodes): `Experiment Service`, `Experimentation`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 23`** (2 nodes): `Experiment Service`, `Experimentation`
+- **Thin community `Community 22`** (2 nodes): `Deployment Service`, `Deployment Center`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 24`** (2 nodes): `Deployment Service`, `Deployment Center`
+- **Thin community `Community 23`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 25`** (1 nodes): `__init__.py`
+- **Thin community `Community 24`** (1 nodes): `next-env.d.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 26`** (1 nodes): `next-env.d.ts`
+- **Thin community `Community 25`** (1 nodes): `next.config.mjs`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 27`** (1 nodes): `next.config.mjs`
+- **Thin community `Community 26`** (1 nodes): `layout.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 28`** (1 nodes): `layout.tsx`
+- **Thin community `Community 27`** (1 nodes): `layout.tsx`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 28`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 29`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -354,46 +351,44 @@ Nodes (1): M4 Experiment Registry Deploy
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 38`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 39`** (1 nodes): `page.tsx`
+- **Thin community `Community 39`** (1 nodes): `layout.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 40`** (1 nodes): `layout.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 41`** (1 nodes): `layout.tsx`
+- **Thin community `Community 41`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 42`** (1 nodes): `page.tsx`
+- **Thin community `Community 42`** (1 nodes): `BackgroundSimulation.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 43`** (1 nodes): `BackgroundSimulation.tsx`
+- **Thin community `Community 43`** (1 nodes): `BootLoader.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 44`** (1 nodes): `BootLoader.tsx`
+- **Thin community `Community 44`** (1 nodes): `sidebar.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 45`** (1 nodes): `sidebar.tsx`
+- **Thin community `Community 45`** (1 nodes): `dev-up.ps1`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 46`** (1 nodes): `dev-up.ps1`
+- **Thin community `Community 46`** (1 nodes): `Real-time Monitoring`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 47`** (1 nodes): `Real-time Monitoring`
+- **Thin community `Community 47`** (1 nodes): `Web UI`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 48`** (1 nodes): `Web UI`
+- **Thin community `Community 48`** (1 nodes): `API Gateway`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 49`** (1 nodes): `API Gateway`
+- **Thin community `Community 49`** (1 nodes): `Auth Service`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 50`** (1 nodes): `Auth Service`
+- **Thin community `Community 50`** (1 nodes): `Model Registry`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 51`** (1 nodes): `Model Registry`
+- **Thin community `Community 51`** (1 nodes): `M1 Foundations`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 52`** (1 nodes): `M1 Foundations`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 53`** (1 nodes): `M4 Experiment Registry Deploy`
+- **Thin community `Community 52`** (1 nodes): `M4 Experiment Registry Deploy`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Principal` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 7`, `Community 8`?**
-  _High betweenness centrality (0.052) - this node is a cross-community bridge._
-- **Why does `upload_dataset()` connect `Community 2` to `Community 9`?**
+- **Why does `Principal` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 7`?**
+  _High betweenness centrality (0.053) - this node is a cross-community bridge._
+- **Why does `upload_dataset()` connect `Community 3` to `Community 8`?**
   _High betweenness centrality (0.038) - this node is a cross-community bridge._
-- **Why does `TrainingJob` connect `Community 0` to `Community 1`, `Community 2`, `Community 7`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+- **Why does `TrainingJob` connect `Community 0` to `Community 2`, `Community 3`, `Community 7`?**
+  _High betweenness centrality (0.036) - this node is a cross-community bridge._
 - **Are the 13 inferred relationships involving `Principal` (e.g. with `DatasetVersionRead` and `DatasetRead`) actually correct?**
   _`Principal` has 13 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 12 inferred relationships involving `TrainingJob` (e.g. with `ExperimentRead` and `CompareRequest`) actually correct?**

@@ -1,0 +1,2124 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/main.py",
+      "source_location": "L1",
+      "id": "apps_api_app_main_py",
+      "community": 12,
+      "norm_label": "main.py"
+    },
+    {
+      "label": "healthz()",
+      "file_type": "code",
+      "source_file": "apps/api/app/main.py",
+      "source_location": "L9",
+      "id": "app_main_healthz",
+      "community": 12,
+      "norm_label": "healthz()"
+    },
+    {
+      "label": "v1()",
+      "file_type": "code",
+      "source_file": "apps/api/app/main.py",
+      "source_location": "L14",
+      "id": "app_main_v1",
+      "community": 12,
+      "norm_label": "v1()"
+    },
+    {
+      "label": "config.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/core/config.py",
+      "source_location": "L1",
+      "id": "apps_api_app_core_config_py",
+      "community": 1,
+      "norm_label": "config.py"
+    },
+    {
+      "label": "Settings",
+      "file_type": "code",
+      "source_file": "apps/api/app/core/config.py",
+      "source_location": "L4",
+      "id": "core_config_settings",
+      "community": 1,
+      "norm_label": "settings"
+    },
+    {
+      "label": "BaseModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "basemodel",
+      "community": 1,
+      "norm_label": "basemodel"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L1",
+      "id": "apps_api_app_db_models_py",
+      "community": 2,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "User",
+      "file_type": "code",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L11",
+      "id": "db_models_user",
+      "community": 2,
+      "norm_label": "user"
+    },
+    {
+      "label": "Base",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "base",
+      "community": 2,
+      "norm_label": "base"
+    },
+    {
+      "label": "Workspace",
+      "file_type": "code",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L21",
+      "id": "db_models_workspace",
+      "community": 2,
+      "norm_label": "workspace"
+    },
+    {
+      "label": "Project",
+      "file_type": "code",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L32",
+      "id": "db_models_project",
+      "community": 2,
+      "norm_label": "project"
+    },
+    {
+      "label": "session.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/db/session.py",
+      "source_location": "L1",
+      "id": "apps_api_app_db_session_py",
+      "community": 15,
+      "norm_label": "session.py"
+    },
+    {
+      "label": "get_db()",
+      "file_type": "code",
+      "source_file": "apps/api/app/db/session.py",
+      "source_location": "L14",
+      "id": "db_session_get_db",
+      "community": 15,
+      "norm_label": "get_db()"
+    },
+    {
+      "label": "auth.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L1",
+      "id": "apps_api_app_routers_auth_py",
+      "community": 3,
+      "norm_label": "auth.py"
+    },
+    {
+      "label": "TokenRequest",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L9",
+      "id": "routers_auth_tokenrequest",
+      "community": 3,
+      "norm_label": "tokenrequest"
+    },
+    {
+      "label": "healthz()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L15",
+      "id": "routers_auth_healthz",
+      "community": 3,
+      "norm_label": "healthz()"
+    },
+    {
+      "label": "issue_token()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L20",
+      "id": "routers_auth_issue_token",
+      "community": 3,
+      "norm_label": "issue_token()"
+    },
+    {
+      "label": "me()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L25",
+      "id": "routers_auth_me",
+      "community": 3,
+      "norm_label": "me()"
+    },
+    {
+      "label": "dataset.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L1",
+      "id": "apps_api_app_routers_dataset_py",
+      "community": 0,
+      "norm_label": "dataset.py"
+    },
+    {
+      "label": "DatasetVersionRead",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L10",
+      "id": "routers_dataset_datasetversionread",
+      "community": 0,
+      "norm_label": "datasetversionread"
+    },
+    {
+      "label": "DatasetRead",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L18",
+      "id": "routers_dataset_datasetread",
+      "community": 0,
+      "norm_label": "datasetread"
+    },
+    {
+      "label": "upload_dataset()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L25",
+      "id": "routers_dataset_upload_dataset",
+      "community": 0,
+      "norm_label": "upload_dataset()"
+    },
+    {
+      "label": "list_datasets()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L42",
+      "id": "routers_dataset_list_datasets",
+      "community": 0,
+      "norm_label": "list_datasets()"
+    },
+    {
+      "label": "project.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L1",
+      "id": "apps_api_app_routers_project_py",
+      "community": 7,
+      "norm_label": "project.py"
+    },
+    {
+      "label": "healthz()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L15",
+      "id": "routers_project_healthz",
+      "community": 7,
+      "norm_label": "healthz()"
+    },
+    {
+      "label": "list_projects()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L20",
+      "id": "routers_project_list_projects",
+      "community": 7,
+      "norm_label": "list_projects()"
+    },
+    {
+      "label": "create_project()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L32",
+      "id": "routers_project_create_project",
+      "community": 7,
+      "norm_label": "create_project()"
+    },
+    {
+      "label": "parse_uuid()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L49",
+      "id": "routers_project_parse_uuid",
+      "community": 7,
+      "norm_label": "parse_uuid()"
+    },
+    {
+      "label": "training.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L1",
+      "id": "apps_api_app_routers_training_py",
+      "community": 8,
+      "norm_label": "training.py"
+    },
+    {
+      "label": "TrainingJobRead",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L14",
+      "id": "routers_training_trainingjobread",
+      "community": 8,
+      "norm_label": "trainingjobread"
+    },
+    {
+      "label": "create_job()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L21",
+      "id": "routers_training_create_job",
+      "community": 8,
+      "norm_label": "create_job()"
+    },
+    {
+      "label": "get_job()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L29",
+      "id": "routers_training_get_job",
+      "community": 8,
+      "norm_label": "get_job()"
+    },
+    {
+      "label": "stream_events()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L37",
+      "id": "routers_training_stream_events",
+      "community": 8,
+      "norm_label": "stream_events()"
+    },
+    {
+      "label": "workspace.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L1",
+      "id": "apps_api_app_routers_workspace_py",
+      "community": 2,
+      "norm_label": "workspace.py"
+    },
+    {
+      "label": "healthz()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L15",
+      "id": "routers_workspace_healthz",
+      "community": 2,
+      "norm_label": "healthz()"
+    },
+    {
+      "label": "list_workspaces()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L20",
+      "id": "routers_workspace_list_workspaces",
+      "community": 2,
+      "norm_label": "list_workspaces()"
+    },
+    {
+      "label": "create_workspace()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L25",
+      "id": "routers_workspace_create_workspace",
+      "community": 2,
+      "norm_label": "create_workspace()"
+    },
+    {
+      "label": "parse_uuid()",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L41",
+      "id": "routers_workspace_parse_uuid",
+      "community": 2,
+      "norm_label": "parse_uuid()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/routers/__init__.py",
+      "source_location": "L1",
+      "id": "apps_api_app_routers_init_py",
+      "community": 20,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "project.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L1",
+      "id": "apps_api_app_schemas_project_py",
+      "community": 1,
+      "norm_label": "project.py"
+    },
+    {
+      "label": "ProjectCreate",
+      "file_type": "code",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L4",
+      "id": "schemas_project_projectcreate",
+      "community": 1,
+      "norm_label": "projectcreate"
+    },
+    {
+      "label": "ProjectRead",
+      "file_type": "code",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L11",
+      "id": "schemas_project_projectread",
+      "community": 1,
+      "norm_label": "projectread"
+    },
+    {
+      "label": "Config",
+      "file_type": "code",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L18",
+      "id": "schemas_project_config",
+      "community": 1,
+      "norm_label": "config"
+    },
+    {
+      "label": "workspace.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L1",
+      "id": "apps_api_app_schemas_workspace_py",
+      "community": 1,
+      "norm_label": "workspace.py"
+    },
+    {
+      "label": "WorkspaceCreate",
+      "file_type": "code",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L4",
+      "id": "schemas_workspace_workspacecreate",
+      "community": 1,
+      "norm_label": "workspacecreate"
+    },
+    {
+      "label": "WorkspaceRead",
+      "file_type": "code",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L10",
+      "id": "schemas_workspace_workspaceread",
+      "community": 1,
+      "norm_label": "workspaceread"
+    },
+    {
+      "label": "Config",
+      "file_type": "code",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L16",
+      "id": "schemas_workspace_config",
+      "community": 1,
+      "norm_label": "config"
+    },
+    {
+      "label": "auth.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L1",
+      "id": "apps_api_app_security_auth_py",
+      "community": 3,
+      "norm_label": "auth.py"
+    },
+    {
+      "label": "Principal",
+      "file_type": "code",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L13",
+      "id": "security_auth_principal",
+      "community": 3,
+      "norm_label": "principal"
+    },
+    {
+      "label": "create_access_token()",
+      "file_type": "code",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L18",
+      "id": "security_auth_create_access_token",
+      "community": 3,
+      "norm_label": "create_access_token()"
+    },
+    {
+      "label": "get_principal()",
+      "file_type": "code",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L29",
+      "id": "security_auth_get_principal",
+      "community": 3,
+      "norm_label": "get_principal()"
+    },
+    {
+      "label": "require_role()",
+      "file_type": "code",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L42",
+      "id": "security_auth_require_role",
+      "community": 3,
+      "norm_label": "require_role()"
+    },
+    {
+      "label": "dataset_store.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L1",
+      "id": "apps_api_app_services_dataset_store_py",
+      "community": 0,
+      "norm_label": "dataset_store.py"
+    },
+    {
+      "label": "DatasetVersion",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L8",
+      "id": "services_dataset_store_datasetversion",
+      "community": 0,
+      "norm_label": "datasetversion"
+    },
+    {
+      "label": "DatasetRecord",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L17",
+      "id": "services_dataset_store_datasetrecord",
+      "community": 0,
+      "norm_label": "datasetrecord"
+    },
+    {
+      "label": "DatasetStore",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L23",
+      "id": "services_dataset_store_datasetstore",
+      "community": 0,
+      "norm_label": "datasetstore"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L24",
+      "id": "services_dataset_store_datasetstore_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".upload_csv()",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L27",
+      "id": "services_dataset_store_datasetstore_upload_csv",
+      "community": 0,
+      "norm_label": ".upload_csv()"
+    },
+    {
+      "label": ".list()",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L50",
+      "id": "services_dataset_store_datasetstore_list",
+      "community": 0,
+      "norm_label": ".list()"
+    },
+    {
+      "label": "training_jobs.py",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L1",
+      "id": "apps_api_app_services_training_jobs_py",
+      "community": 4,
+      "norm_label": "training_jobs.py"
+    },
+    {
+      "label": "TrainingJob",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L7",
+      "id": "services_training_jobs_trainingjob",
+      "community": 4,
+      "norm_label": "trainingjob"
+    },
+    {
+      "label": "TrainingJobStore",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L14",
+      "id": "services_training_jobs_trainingjobstore",
+      "community": 4,
+      "norm_label": "trainingjobstore"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L15",
+      "id": "services_training_jobs_trainingjobstore_init",
+      "community": 4,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".run_job()",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L18",
+      "id": "services_training_jobs_trainingjobstore_run_job",
+      "community": 4,
+      "norm_label": ".run_job()"
+    },
+    {
+      "label": ".create()",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L28",
+      "id": "services_training_jobs_trainingjobstore_create",
+      "community": 4,
+      "norm_label": ".create()"
+    },
+    {
+      "label": ".get()",
+      "file_type": "code",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L33",
+      "id": "services_training_jobs_trainingjobstore_get",
+      "community": 4,
+      "norm_label": ".get()"
+    },
+    {
+      "label": "test_health.py",
+      "file_type": "code",
+      "source_file": "apps/api/tests/test_health.py",
+      "source_location": "L1",
+      "id": "apps_api_tests_test_health_py",
+      "community": 10,
+      "norm_label": "test_health.py"
+    },
+    {
+      "label": "test_root_healthz()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/test_health.py",
+      "source_location": "L8",
+      "id": "tests_test_health_test_root_healthz",
+      "community": 10,
+      "norm_label": "test_root_healthz()"
+    },
+    {
+      "label": "test_v1_info()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/test_health.py",
+      "source_location": "L14",
+      "id": "tests_test_health_test_v1_info",
+      "community": 10,
+      "norm_label": "test_v1_info()"
+    },
+    {
+      "label": "test_auth_me_placeholder()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/test_health.py",
+      "source_location": "L20",
+      "id": "tests_test_health_test_auth_me_placeholder",
+      "community": 10,
+      "norm_label": "test_auth_me_placeholder()"
+    },
+    {
+      "label": "test_project_workspace_validation.py",
+      "file_type": "code",
+      "source_file": "apps/api/tests/test_project_workspace_validation.py",
+      "source_location": "L1",
+      "id": "apps_api_tests_test_project_workspace_validation_py",
+      "community": 13,
+      "norm_label": "test_project_workspace_validation.py"
+    },
+    {
+      "label": "test_workspace_list_requires_auth()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/test_project_workspace_validation.py",
+      "source_location": "L8",
+      "id": "tests_test_project_workspace_validation_test_workspace_list_requires_auth",
+      "community": 13,
+      "norm_label": "test_workspace_list_requires_auth()"
+    },
+    {
+      "label": "test_project_filter_invalid_uuid_returns_401_without_auth()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/test_project_workspace_validation.py",
+      "source_location": "L13",
+      "id": "tests_test_project_workspace_validation_test_project_filter_invalid_uuid_returns_401_without_auth",
+      "community": 13,
+      "norm_label": "test_project_filter_invalid_uuid_returns_401_without_auth()"
+    },
+    {
+      "label": "test_auth_rbac_dataset_training.py",
+      "file_type": "code",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L1",
+      "id": "apps_api_tests_integration_test_auth_rbac_dataset_training_py",
+      "community": 5,
+      "norm_label": "test_auth_rbac_dataset_training.py"
+    },
+    {
+      "label": "token()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L11",
+      "id": "integration_test_auth_rbac_dataset_training_token",
+      "community": 5,
+      "norm_label": "token()"
+    },
+    {
+      "label": "test_dataset_upload_requires_auth()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L17",
+      "id": "integration_test_auth_rbac_dataset_training_test_dataset_upload_requires_auth",
+      "community": 5,
+      "norm_label": "test_dataset_upload_requires_auth()"
+    },
+    {
+      "label": "test_dataset_upload_and_versioning_happy_path()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L22",
+      "id": "integration_test_auth_rbac_dataset_training_test_dataset_upload_and_versioning_happy_path",
+      "community": 5,
+      "norm_label": "test_dataset_upload_and_versioning_happy_path()"
+    },
+    {
+      "label": "test_training_job_lifecycle_and_events()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L36",
+      "id": "integration_test_auth_rbac_dataset_training_test_training_job_lifecycle_and_events",
+      "community": 5,
+      "norm_label": "test_training_job_lifecycle_and_events()"
+    },
+    {
+      "label": "test_rbac_viewer_cannot_create_training_job()",
+      "file_type": "code",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L53",
+      "id": "integration_test_auth_rbac_dataset_training_test_rbac_viewer_cannot_create_training_job",
+      "community": 5,
+      "norm_label": "test_rbac_viewer_cannot_create_training_job()"
+    },
+    {
+      "label": "next-env.d.ts",
+      "file_type": "code",
+      "source_file": "apps/web/next-env.d.ts",
+      "source_location": "L1",
+      "id": "apps_web_next_env_d_ts",
+      "community": 21,
+      "norm_label": "next-env.d.ts"
+    },
+    {
+      "label": "next.config.mjs",
+      "file_type": "code",
+      "source_file": "apps/web/next.config.mjs",
+      "source_location": "L1",
+      "id": "apps_web_next_config_mjs",
+      "community": 16,
+      "norm_label": "next.config.mjs"
+    },
+    {
+      "label": "nextConfig",
+      "file_type": "code",
+      "source_file": "apps/web/next.config.mjs",
+      "source_location": "L2",
+      "id": "web_next_config_nextconfig",
+      "community": 16,
+      "norm_label": "nextconfig"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "apps/web/app/layout.tsx",
+      "source_location": "L1",
+      "id": "apps_web_app_layout_tsx",
+      "community": 14,
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "apps/web/app/layout.tsx",
+      "source_location": "L4",
+      "id": "app_layout_metadata",
+      "community": 14,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "apps/web/app/layout.tsx",
+      "source_location": "L9",
+      "id": "app_layout_rootlayout",
+      "community": 14,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "apps/web/app/page.tsx",
+      "source_location": "L1",
+      "id": "apps_web_app_page_tsx",
+      "community": 6,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "services",
+      "file_type": "code",
+      "source_file": "apps/web/app/page.tsx",
+      "source_location": "L3",
+      "id": "app_page_services",
+      "community": 6,
+      "norm_label": "services"
+    },
+    {
+      "label": "HomePage()",
+      "file_type": "code",
+      "source_file": "apps/web/app/page.tsx",
+      "source_location": "L10",
+      "id": "app_page_homepage",
+      "community": 6,
+      "norm_label": "homepage()"
+    },
+    {
+      "label": "service-status.tsx",
+      "file_type": "code",
+      "source_file": "apps/web/components/service-status.tsx",
+      "source_location": "L1",
+      "id": "apps_web_components_service_status_tsx",
+      "community": 6,
+      "norm_label": "service-status.tsx"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "apps/web/components/service-status.tsx",
+      "source_location": "L5",
+      "id": "components_service_status_props",
+      "community": 6,
+      "norm_label": "props"
+    },
+    {
+      "label": "ServiceStatus()",
+      "file_type": "code",
+      "source_file": "apps/web/components/service-status.tsx",
+      "source_location": "L10",
+      "id": "components_service_status_servicestatus",
+      "community": 6,
+      "norm_label": "servicestatus()"
+    },
+    {
+      "label": "Aetheris Studio",
+      "file_type": "document",
+      "source_file": "docs/v1-prd.md",
+      "id": "v1_prd_aetheris_studio",
+      "community": 17,
+      "norm_label": "aetheris studio"
+    },
+    {
+      "label": "Dataset Manager",
+      "file_type": "document",
+      "source_file": "docs/v1-prd.md",
+      "id": "v1_prd_dataset_manager",
+      "community": 9,
+      "norm_label": "dataset manager"
+    },
+    {
+      "label": "Preprocessing Studio",
+      "file_type": "document",
+      "source_file": "docs/v1-prd.md",
+      "id": "v1_prd_preprocessing_studio",
+      "community": 9,
+      "norm_label": "preprocessing studio"
+    },
+    {
+      "label": "Training Setup Wizard",
+      "file_type": "document",
+      "source_file": "docs/v1-prd.md",
+      "id": "v1_prd_training_setup_wizard",
+      "community": 11,
+      "norm_label": "training setup wizard"
+    },
+    {
+      "label": "Real-time Monitoring",
+      "file_type": "document",
+      "source_file": "docs/v1-prd.md",
+      "id": "v1_prd_real_time_monitoring",
+      "community": 22,
+      "norm_label": "real-time monitoring"
+    },
+    {
+      "label": "Experimentation",
+      "file_type": "document",
+      "source_file": "docs/v1-prd.md",
+      "id": "v1_prd_experimentation",
+      "community": 19,
+      "norm_label": "experimentation"
+    },
+    {
+      "label": "Deployment Center",
+      "file_type": "document",
+      "source_file": "docs/v1-prd.md",
+      "id": "v1_prd_deployment_center",
+      "community": 18,
+      "norm_label": "deployment center"
+    },
+    {
+      "label": "Web UI",
+      "file_type": "document",
+      "source_file": "docs/v1-architecture.md",
+      "id": "v1_architecture_web_ui",
+      "community": 23,
+      "norm_label": "web ui"
+    },
+    {
+      "label": "API Gateway",
+      "file_type": "document",
+      "source_file": "docs/v1-architecture.md",
+      "id": "v1_architecture_api_gateway",
+      "community": 24,
+      "norm_label": "api gateway"
+    },
+    {
+      "label": "Auth Service",
+      "file_type": "document",
+      "source_file": "docs/v1-architecture.md",
+      "id": "v1_architecture_auth_service",
+      "community": 25,
+      "norm_label": "auth service"
+    },
+    {
+      "label": "Dataset Service",
+      "file_type": "document",
+      "source_file": "docs/v1-architecture.md",
+      "id": "v1_architecture_dataset_service",
+      "community": 9,
+      "norm_label": "dataset service"
+    },
+    {
+      "label": "Training Orchestrator",
+      "file_type": "document",
+      "source_file": "docs/v1-architecture.md",
+      "id": "v1_architecture_training_orchestrator",
+      "community": 11,
+      "norm_label": "training orchestrator"
+    },
+    {
+      "label": "Experiment Service",
+      "file_type": "document",
+      "source_file": "docs/v1-architecture.md",
+      "id": "v1_architecture_experiment_service",
+      "community": 19,
+      "norm_label": "experiment service"
+    },
+    {
+      "label": "Model Registry",
+      "file_type": "document",
+      "source_file": "docs/v1-architecture.md",
+      "id": "v1_architecture_model_registry",
+      "community": 26,
+      "norm_label": "model registry"
+    },
+    {
+      "label": "Deployment Service",
+      "file_type": "document",
+      "source_file": "docs/v1-architecture.md",
+      "id": "v1_architecture_deployment_service",
+      "community": 18,
+      "norm_label": "deployment service"
+    },
+    {
+      "label": "API Datasets",
+      "file_type": "document",
+      "source_file": "docs/v1-api-spec.md",
+      "id": "v1_api_spec_datasets",
+      "community": 9,
+      "norm_label": "api datasets"
+    },
+    {
+      "label": "API Training Jobs",
+      "file_type": "document",
+      "source_file": "docs/v1-api-spec.md",
+      "id": "v1_api_spec_training_jobs",
+      "community": 11,
+      "norm_label": "api training jobs"
+    },
+    {
+      "label": "M1 Foundations",
+      "file_type": "document",
+      "source_file": "docs/v1-build-plan.md",
+      "id": "v1_build_plan_m1_foundations",
+      "community": 27,
+      "norm_label": "m1 foundations"
+    },
+    {
+      "label": "M2 Data Pipeline",
+      "file_type": "document",
+      "source_file": "docs/v1-build-plan.md",
+      "id": "v1_build_plan_m2_data_pipeline",
+      "community": 9,
+      "norm_label": "m2 data pipeline"
+    },
+    {
+      "label": "M3 Training Realtime",
+      "file_type": "document",
+      "source_file": "docs/v1-build-plan.md",
+      "id": "v1_build_plan_m3_training_realtime",
+      "community": 11,
+      "norm_label": "m3 training realtime"
+    },
+    {
+      "label": "M4 Experiment Registry Deploy",
+      "file_type": "document",
+      "source_file": "docs/v1-build-plan.md",
+      "id": "v1_build_plan_m4_experiment_registry_deploy",
+      "community": 28,
+      "norm_label": "m4 experiment registry deploy"
+    },
+    {
+      "label": "Primary Flow",
+      "file_type": "document",
+      "source_file": "docs/v1-ux-flows.md",
+      "id": "v1_ux_flows_primary_flow",
+      "community": 17,
+      "norm_label": "primary flow"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/main.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "apps_api_app_main_py",
+      "target": "app_main_healthz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/main.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "apps_api_app_main_py",
+      "target": "app_main_v1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/core/config.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "apps_api_app_core_config_py",
+      "target": "core_config_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/core/config.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "core_config_settings",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "routers_auth_tokenrequest",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "routers_dataset_datasetversionread",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "routers_dataset_datasetread",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "routers_training_trainingjobread",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "schemas_project_projectcreate",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "schemas_project_projectread",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "schemas_workspace_workspacecreate",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "schemas_workspace_workspaceread",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "apps_api_app_db_models_py",
+      "target": "db_models_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "apps_api_app_db_models_py",
+      "target": "db_models_workspace",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "apps_api_app_db_models_py",
+      "target": "db_models_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "db_models_user",
+      "target": "base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "db_models_workspace",
+      "target": "base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/db/models.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "db_models_project",
+      "target": "base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "routers_workspace_create_workspace",
+      "target": "db_models_workspace"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "routers_project_create_project",
+      "target": "db_models_project"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/db/session.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "apps_api_app_db_session_py",
+      "target": "db_session_get_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_auth_py",
+      "target": "routers_auth_tokenrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_auth_py",
+      "target": "routers_auth_healthz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_auth_py",
+      "target": "routers_auth_issue_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_auth_py",
+      "target": "routers_auth_me",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "apps/api/app/routers/auth.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "routers_auth_issue_token",
+      "target": "security_auth_create_access_token"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_dataset_py",
+      "target": "routers_dataset_datasetversionread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_dataset_py",
+      "target": "routers_dataset_datasetread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_dataset_py",
+      "target": "routers_dataset_upload_dataset",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_dataset_py",
+      "target": "routers_dataset_list_datasets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L4",
+      "weight": 0.8,
+      "source": "routers_dataset_datasetversionread",
+      "target": "security_auth_principal",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "routers_dataset_datasetversionread",
+      "target": "services_dataset_store_datasetrecord",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L4",
+      "weight": 0.8,
+      "source": "routers_dataset_datasetread",
+      "target": "security_auth_principal",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "apps/api/app/routers/dataset.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "routers_dataset_datasetread",
+      "target": "services_dataset_store_datasetrecord",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_project_py",
+      "target": "routers_project_healthz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_project_py",
+      "target": "routers_project_list_projects",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_project_py",
+      "target": "routers_project_create_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_project_py",
+      "target": "routers_project_parse_uuid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "routers_project_list_projects",
+      "target": "routers_project_parse_uuid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/project.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "routers_project_create_project",
+      "target": "routers_project_parse_uuid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_training_py",
+      "target": "routers_training_trainingjobread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_training_py",
+      "target": "routers_training_create_job",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_training_py",
+      "target": "routers_training_get_job",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_training_py",
+      "target": "routers_training_stream_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "routers_training_create_job",
+      "target": "routers_training_trainingjobread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "routers_training_get_job",
+      "target": "routers_training_trainingjobread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "apps/api/app/routers/training.py",
+      "source_location": "L8",
+      "weight": 0.8,
+      "source": "routers_training_trainingjobread",
+      "target": "security_auth_principal",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_workspace_py",
+      "target": "routers_workspace_healthz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_workspace_py",
+      "target": "routers_workspace_list_workspaces",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_workspace_py",
+      "target": "routers_workspace_create_workspace",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "apps_api_app_routers_workspace_py",
+      "target": "routers_workspace_parse_uuid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/routers/workspace.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "routers_workspace_create_workspace",
+      "target": "routers_workspace_parse_uuid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "apps_api_app_schemas_project_py",
+      "target": "schemas_project_projectcreate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "apps_api_app_schemas_project_py",
+      "target": "schemas_project_projectread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/project.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "apps_api_app_schemas_project_py",
+      "target": "schemas_project_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "apps_api_app_schemas_workspace_py",
+      "target": "schemas_workspace_workspacecreate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "apps_api_app_schemas_workspace_py",
+      "target": "schemas_workspace_workspaceread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/schemas/workspace.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "apps_api_app_schemas_workspace_py",
+      "target": "schemas_workspace_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "apps_api_app_security_auth_py",
+      "target": "security_auth_principal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "apps_api_app_security_auth_py",
+      "target": "security_auth_create_access_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "apps_api_app_security_auth_py",
+      "target": "security_auth_get_principal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "apps_api_app_security_auth_py",
+      "target": "security_auth_require_role",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/security/auth.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "security_auth_get_principal",
+      "target": "security_auth_principal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "apps_api_app_services_dataset_store_py",
+      "target": "services_dataset_store_datasetversion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "apps_api_app_services_dataset_store_py",
+      "target": "services_dataset_store_datasetrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "apps_api_app_services_dataset_store_py",
+      "target": "services_dataset_store_datasetstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "services_dataset_store_datasetstore_upload_csv",
+      "target": "services_dataset_store_datasetversion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "services_dataset_store_datasetstore_upload_csv",
+      "target": "services_dataset_store_datasetrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "services_dataset_store_datasetstore",
+      "target": "services_dataset_store_datasetstore_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "services_dataset_store_datasetstore",
+      "target": "services_dataset_store_datasetstore_upload_csv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "services_dataset_store_datasetstore",
+      "target": "services_dataset_store_datasetstore_list",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/dataset_store.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "services_dataset_store_datasetstore_upload_csv",
+      "target": "services_dataset_store_datasetstore_list",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "apps_api_app_services_training_jobs_py",
+      "target": "services_training_jobs_trainingjob",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "apps_api_app_services_training_jobs_py",
+      "target": "services_training_jobs_trainingjobstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "services_training_jobs_trainingjobstore_create",
+      "target": "services_training_jobs_trainingjob",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "services_training_jobs_trainingjobstore",
+      "target": "services_training_jobs_trainingjobstore_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "services_training_jobs_trainingjobstore",
+      "target": "services_training_jobs_trainingjobstore_run_job",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "services_training_jobs_trainingjobstore",
+      "target": "services_training_jobs_trainingjobstore_create",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/app/services/training_jobs.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "services_training_jobs_trainingjobstore",
+      "target": "services_training_jobs_trainingjobstore_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/test_health.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "apps_api_tests_test_health_py",
+      "target": "tests_test_health_test_root_healthz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/test_health.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "apps_api_tests_test_health_py",
+      "target": "tests_test_health_test_v1_info",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/test_health.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "apps_api_tests_test_health_py",
+      "target": "tests_test_health_test_auth_me_placeholder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/test_project_workspace_validation.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "apps_api_tests_test_project_workspace_validation_py",
+      "target": "tests_test_project_workspace_validation_test_workspace_list_requires_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/test_project_workspace_validation.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "apps_api_tests_test_project_workspace_validation_py",
+      "target": "tests_test_project_workspace_validation_test_project_filter_invalid_uuid_returns_401_without_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "apps_api_tests_integration_test_auth_rbac_dataset_training_py",
+      "target": "integration_test_auth_rbac_dataset_training_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "apps_api_tests_integration_test_auth_rbac_dataset_training_py",
+      "target": "integration_test_auth_rbac_dataset_training_test_dataset_upload_requires_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "apps_api_tests_integration_test_auth_rbac_dataset_training_py",
+      "target": "integration_test_auth_rbac_dataset_training_test_dataset_upload_and_versioning_happy_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "apps_api_tests_integration_test_auth_rbac_dataset_training_py",
+      "target": "integration_test_auth_rbac_dataset_training_test_training_job_lifecycle_and_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "apps_api_tests_integration_test_auth_rbac_dataset_training_py",
+      "target": "integration_test_auth_rbac_dataset_training_test_rbac_viewer_cannot_create_training_job",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "integration_test_auth_rbac_dataset_training_test_dataset_upload_and_versioning_happy_path",
+      "target": "integration_test_auth_rbac_dataset_training_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "integration_test_auth_rbac_dataset_training_test_training_job_lifecycle_and_events",
+      "target": "integration_test_auth_rbac_dataset_training_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/api/tests/integration/test_auth_rbac_dataset_training.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "integration_test_auth_rbac_dataset_training_test_rbac_viewer_cannot_create_training_job",
+      "target": "integration_test_auth_rbac_dataset_training_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/next.config.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "apps_web_next_config_mjs",
+      "target": "web_next_config_nextconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/app/layout.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "apps_web_app_layout_tsx",
+      "target": "app_layout_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/app/layout.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "apps_web_app_layout_tsx",
+      "target": "app_layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/app/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "apps_web_app_page_tsx",
+      "target": "apps_web_components_service_status_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/app/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "apps_web_app_page_tsx",
+      "target": "components_service_status_servicestatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/app/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "apps_web_app_page_tsx",
+      "target": "app_page_services",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/app/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "apps_web_app_page_tsx",
+      "target": "app_page_homepage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/components/service-status.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "apps_web_components_service_status_tsx",
+      "target": "components_service_status_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/components/service-status.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "apps_web_components_service_status_tsx",
+      "target": "components_service_status_servicestatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "describes",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/v1-ux-flows.md",
+      "weight": 1.0,
+      "source": "v1_ux_flows_primary_flow",
+      "target": "v1_prd_aetheris_studio"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/v1-prd.md",
+      "weight": 1.0,
+      "source": "v1_prd_dataset_manager",
+      "target": "v1_architecture_dataset_service"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/v1-build-plan.md",
+      "weight": 1.0,
+      "source": "v1_build_plan_m2_data_pipeline",
+      "target": "v1_prd_dataset_manager"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/v1-prd.md",
+      "weight": 1.0,
+      "source": "v1_prd_preprocessing_studio",
+      "target": "v1_architecture_dataset_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/v1-prd.md",
+      "weight": 1.0,
+      "source": "v1_prd_training_setup_wizard",
+      "target": "v1_architecture_training_orchestrator"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/v1-build-plan.md",
+      "weight": 1.0,
+      "source": "v1_build_plan_m3_training_realtime",
+      "target": "v1_prd_training_setup_wizard"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/v1-prd.md",
+      "weight": 1.0,
+      "source": "v1_prd_experimentation",
+      "target": "v1_architecture_experiment_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/v1-prd.md",
+      "weight": 1.0,
+      "source": "v1_prd_deployment_center",
+      "target": "v1_architecture_deployment_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/v1-api-spec.md",
+      "weight": 1.0,
+      "source": "v1_api_spec_datasets",
+      "target": "v1_architecture_dataset_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/v1-api-spec.md",
+      "weight": 1.0,
+      "source": "v1_api_spec_training_jobs",
+      "target": "v1_architecture_training_orchestrator"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "78971d8093fca28c7d6ccd03d9a2ea85917ff081"
+}

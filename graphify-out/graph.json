@@ -9,7 +9,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\main.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_main_py",
-      "community": 4,
+      "community": 5,
       "norm_label": "main.py"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\main.py",
       "source_location": "L13",
       "id": "main_lifespan",
-      "community": 4,
+      "community": 5,
       "norm_label": "lifespan()"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\main.py",
       "source_location": "L35",
       "id": "main_root",
-      "community": 4,
+      "community": 5,
       "norm_label": "root()"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\main.py",
       "source_location": "L40",
       "id": "main_healthz",
-      "community": 4,
+      "community": 5,
       "norm_label": "healthz()"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\main.py",
       "source_location": "L45",
       "id": "main_v1",
-      "community": 4,
+      "community": 5,
       "norm_label": "v1()"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\core\\config.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_core_config_py",
-      "community": 2,
+      "community": 1,
       "norm_label": "config.py"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\core\\config.py",
       "source_location": "L6",
       "id": "config_settings",
-      "community": 2,
+      "community": 1,
       "norm_label": "settings"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 2,
+      "community": 1,
       "norm_label": "basemodel"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_db_models_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "models.py"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L12",
       "id": "models_user",
-      "community": 3,
+      "community": 4,
       "norm_label": "user"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "",
       "source_location": "",
       "id": "base",
-      "community": 3,
+      "community": 4,
       "norm_label": "base"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L22",
       "id": "models_workspace",
-      "community": 3,
+      "community": 4,
       "norm_label": "workspace"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L33",
       "id": "models_project",
-      "community": 3,
+      "community": 4,
       "norm_label": "project"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L47",
       "id": "models_dataset",
-      "community": 3,
+      "community": 4,
       "norm_label": "dataset"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L57",
       "id": "models_datasetversion",
-      "community": 3,
+      "community": 4,
       "norm_label": "datasetversion"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L70",
       "id": "models_preprocessingpipeline",
-      "community": 1,
+      "community": 10,
       "norm_label": "preprocessingpipeline"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L83",
       "id": "models_trainingjob",
-      "community": 0,
+      "community": 1,
       "norm_label": "trainingjob"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L100",
       "id": "models_trainingevent",
-      "community": 0,
+      "community": 2,
       "norm_label": "trainingevent"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L112",
       "id": "models_experiment",
-      "community": 7,
+      "community": 6,
       "norm_label": "experiment"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L123",
       "id": "models_mlmodel",
-      "community": 2,
+      "community": 1,
       "norm_label": "mlmodel"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\models.py",
       "source_location": "L139",
       "id": "models_deployment",
-      "community": 2,
+      "community": 1,
       "norm_label": "deployment"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\session.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_db_session_py",
-      "community": 4,
+      "community": 5,
       "norm_label": "session.py"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\session.py",
       "source_location": "L17",
       "id": "session_init_db",
-      "community": 4,
+      "community": 5,
       "norm_label": "init_db()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\session.py",
       "source_location": "L22",
       "id": "session_get_db",
-      "community": 4,
+      "community": 5,
       "norm_label": "get_db()"
     },
     {
@@ -224,7 +224,7 @@
       "file_type": "rationale",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\db\\session.py",
       "source_location": "L18",
-      "community": 4,
+      "community": 5,
       "norm_label": "create all tables \u2014 used in dev mode.",
       "id": "session_rationale_18"
     },
@@ -234,7 +234,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\auth.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_auth_py",
-      "community": 1,
+      "community": 12,
       "norm_label": "auth.py"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\auth.py",
       "source_location": "L9",
       "id": "auth_tokenrequest",
-      "community": 1,
+      "community": 12,
       "norm_label": "tokenrequest"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\auth.py",
       "source_location": "L15",
       "id": "auth_healthz",
-      "community": 1,
+      "community": 12,
       "norm_label": "healthz()"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\auth.py",
       "source_location": "L20",
       "id": "auth_issue_token",
-      "community": 1,
+      "community": 12,
       "norm_label": "issue_token()"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\auth.py",
       "source_location": "L25",
       "id": "auth_me",
-      "community": 1,
+      "community": 12,
       "norm_label": "me()"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\dataset.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_dataset_py",
-      "community": 3,
+      "community": 4,
       "norm_label": "dataset.py"
     },
     {
@@ -288,7 +288,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\dataset.py",
       "source_location": "L17",
       "id": "dataset_datasetversionread",
-      "community": 3,
+      "community": 4,
       "norm_label": "datasetversionread"
     },
     {
@@ -297,7 +297,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\dataset.py",
       "source_location": "L25",
       "id": "dataset_datasetread",
-      "community": 3,
+      "community": 4,
       "norm_label": "datasetread"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\dataset.py",
       "source_location": "L33",
       "id": "dataset_upload_dataset",
-      "community": 3,
+      "community": 4,
       "norm_label": "upload_dataset()"
     },
     {
@@ -315,7 +315,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\dataset.py",
       "source_location": "L78",
       "id": "dataset_list_datasets",
-      "community": 3,
+      "community": 4,
       "norm_label": "list_datasets()"
     },
     {
@@ -324,7 +324,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\dataset.py",
       "source_location": "L102",
       "id": "dataset_get_dataset",
-      "community": 3,
+      "community": 4,
       "norm_label": "get_dataset()"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\experiments.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_experiments_py",
-      "community": 7,
+      "community": 6,
       "norm_label": "experiments.py"
     },
     {
@@ -342,7 +342,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\experiments.py",
       "source_location": "L14",
       "id": "experiments_experimentread",
-      "community": 7,
+      "community": 6,
       "norm_label": "experimentread"
     },
     {
@@ -351,7 +351,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\experiments.py",
       "source_location": "L23",
       "id": "experiments_comparerequest",
-      "community": 7,
+      "community": 6,
       "norm_label": "comparerequest"
     },
     {
@@ -360,7 +360,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\experiments.py",
       "source_location": "L28",
       "id": "experiments_list_experiments",
-      "community": 7,
+      "community": 6,
       "norm_label": "list_experiments()"
     },
     {
@@ -369,7 +369,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\experiments.py",
       "source_location": "L40",
       "id": "experiments_compare_experiments",
-      "community": 7,
+      "community": 6,
       "norm_label": "compare_experiments()"
     },
     {
@@ -378,7 +378,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\experiments.py",
       "source_location": "L50",
       "id": "experiments_create_experiment_from_job",
-      "community": 7,
+      "community": 6,
       "norm_label": "create_experiment_from_job()"
     },
     {
@@ -387,7 +387,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\experiments.py",
       "source_location": "L70",
       "id": "experiments_exp_to_read",
-      "community": 7,
+      "community": 6,
       "norm_label": "_exp_to_read()"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_models_py",
-      "community": 2,
+      "community": 1,
       "norm_label": "models.py"
     },
     {
@@ -405,7 +405,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L12",
       "id": "models_modelregister",
-      "community": 2,
+      "community": 1,
       "norm_label": "modelregister"
     },
     {
@@ -414,7 +414,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L20",
       "id": "models_modelread",
-      "community": 2,
+      "community": 1,
       "norm_label": "modelread"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L32",
       "id": "models_deployrequest",
-      "community": 2,
+      "community": 1,
       "norm_label": "deployrequest"
     },
     {
@@ -432,7 +432,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L37",
       "id": "models_deployread",
-      "community": 2,
+      "community": 1,
       "norm_label": "deployread"
     },
     {
@@ -441,7 +441,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L46",
       "id": "models_register_model",
-      "community": 2,
+      "community": 1,
       "norm_label": "register_model()"
     },
     {
@@ -450,7 +450,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L73",
       "id": "models_list_models",
-      "community": 2,
+      "community": 1,
       "norm_label": "list_models()"
     },
     {
@@ -459,7 +459,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L85",
       "id": "models_get_model",
-      "community": 2,
+      "community": 1,
       "norm_label": "get_model()"
     },
     {
@@ -468,7 +468,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L97",
       "id": "models_deploy_model",
-      "community": 2,
+      "community": 1,
       "norm_label": "deploy_model()"
     },
     {
@@ -477,7 +477,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\models.py",
       "source_location": "L125",
       "id": "models_model_to_read",
-      "community": 2,
+      "community": 1,
       "norm_label": "_model_to_read()"
     },
     {
@@ -486,7 +486,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\preprocessing.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_preprocessing_py",
-      "community": 1,
+      "community": 10,
       "norm_label": "preprocessing.py"
     },
     {
@@ -495,7 +495,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\preprocessing.py",
       "source_location": "L14",
       "id": "preprocessing_pipelinecreate",
-      "community": 1,
+      "community": 10,
       "norm_label": "pipelinecreate"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\preprocessing.py",
       "source_location": "L20",
       "id": "preprocessing_pipelineread",
-      "community": 1,
+      "community": 10,
       "norm_label": "pipelineread"
     },
     {
@@ -513,7 +513,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\preprocessing.py",
       "source_location": "L29",
       "id": "preprocessing_create_pipeline",
-      "community": 1,
+      "community": 10,
       "norm_label": "create_pipeline()"
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\preprocessing.py",
       "source_location": "L47",
       "id": "preprocessing_list_pipelines",
-      "community": 1,
+      "community": 10,
       "norm_label": "list_pipelines()"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\preprocessing.py",
       "source_location": "L58",
       "id": "preprocessing_to_read",
-      "community": 1,
+      "community": 10,
       "norm_label": "_to_read()"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\project.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_project_py",
-      "community": 5,
+      "community": 7,
       "norm_label": "project.py"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\project.py",
       "source_location": "L13",
       "id": "project_healthz",
-      "community": 5,
+      "community": 7,
       "norm_label": "healthz()"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\project.py",
       "source_location": "L18",
       "id": "project_list_projects",
-      "community": 5,
+      "community": 7,
       "norm_label": "list_projects()"
     },
     {
@@ -567,8 +567,35 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\project.py",
       "source_location": "L31",
       "id": "project_create_project",
-      "community": 5,
+      "community": 7,
       "norm_label": "create_project()"
+    },
+    {
+      "label": "system.py",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\system.py",
+      "source_location": "L1",
+      "id": "c_ic1101_ic1101_apps_api_app_routers_system_py",
+      "community": 16,
+      "norm_label": "system.py"
+    },
+    {
+      "label": "system_info()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\system.py",
+      "source_location": "L19",
+      "id": "system_system_info",
+      "community": 16,
+      "norm_label": "system_info()"
+    },
+    {
+      "label": "System telemetry endpoint \u2014 exposes live CPU/RAM/CUDA status.",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\system.py",
+      "source_location": "L1",
+      "id": "system_rationale_1",
+      "community": 16,
+      "norm_label": "system telemetry endpoint \u2014 exposes live cpu/ram/cuda status."
     },
     {
       "label": "training.py",
@@ -576,59 +603,77 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_training_py",
-      "community": 0,
+      "community": 2,
       "norm_label": "training.py"
     },
     {
       "label": "TrainingJobCreate",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "id": "training_trainingjobcreate",
-      "community": 0,
+      "community": 1,
       "norm_label": "trainingjobcreate"
     },
     {
       "label": "TrainingJobRead",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L25",
+      "source_location": "L30",
       "id": "training_trainingjobread",
-      "community": 0,
+      "community": 2,
       "norm_label": "trainingjobread"
     },
     {
       "label": "create_job()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L37",
+      "source_location": "L42",
       "id": "training_create_job",
-      "community": 0,
+      "community": 2,
       "norm_label": "create_job()"
     },
     {
       "label": "list_jobs()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L61",
+      "source_location": "L94",
       "id": "training_list_jobs",
-      "community": 0,
+      "community": 2,
       "norm_label": "list_jobs()"
     },
     {
       "label": "get_job()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L73",
+      "source_location": "L106",
       "id": "training_get_job",
-      "community": 0,
+      "community": 2,
       "norm_label": "get_job()"
+    },
+    {
+      "label": "get_training_status()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L118",
+      "id": "training_get_training_status",
+      "community": 2,
+      "norm_label": "get_training_status()"
+    },
+    {
+      "label": "download_model()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L164",
+      "id": "training_download_model",
+      "community": 2,
+      "norm_label": "download_model()"
     },
     {
       "label": "pause_job()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L85",
+      "source_location": "L180",
       "id": "training_pause_job",
       "community": 0,
       "norm_label": "pause_job()"
@@ -637,16 +682,16 @@
       "label": "resume_job()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L99",
+      "source_location": "L199",
       "id": "training_resume_job",
-      "community": 0,
+      "community": 2,
       "norm_label": "resume_job()"
     },
     {
       "label": "cancel_job()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L114",
+      "source_location": "L213",
       "id": "training_cancel_job",
       "community": 0,
       "norm_label": "cancel_job()"
@@ -655,46 +700,37 @@
       "label": "stream_events()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L128",
+      "source_location": "L232",
       "id": "training_stream_events",
-      "community": 0,
+      "community": 2,
       "norm_label": "stream_events()"
     },
     {
       "label": "_job_to_read()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L155",
+      "source_location": "L259",
       "id": "training_job_to_read",
-      "community": 0,
+      "community": 2,
       "norm_label": "_job_to_read()"
     },
     {
-      "label": "_run_training()",
-      "file_type": "code",
-      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L168",
-      "id": "training_run_training",
-      "community": 0,
-      "norm_label": "_run_training()"
-    },
-    {
-      "label": "_append_event()",
-      "file_type": "code",
-      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L201",
-      "id": "training_append_event",
-      "community": 0,
-      "norm_label": "_append_event()"
-    },
-    {
-      "label": "Simulated training loop \u2014 runs in background.",
+      "label": "Live polling endpoint \u2014 safe to call every 1 second.",
       "file_type": "rationale",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L169",
-      "community": 0,
-      "norm_label": "simulated training loop \u2014 runs in background.",
-      "id": "training_rationale_169"
+      "source_location": "L123",
+      "id": "training_rationale_123",
+      "community": 2,
+      "norm_label": "live polling endpoint \u2014 safe to call every 1 second."
+    },
+    {
+      "label": "Download the trained model as a ZIP file.",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L168",
+      "id": "training_rationale_168",
+      "community": 2,
+      "norm_label": "download the trained model as a zip file."
     },
     {
       "label": "workspace.py",
@@ -702,7 +738,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\workspace.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_workspace_py",
-      "community": 6,
+      "community": 8,
       "norm_label": "workspace.py"
     },
     {
@@ -711,7 +747,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\workspace.py",
       "source_location": "L13",
       "id": "workspace_healthz",
-      "community": 6,
+      "community": 8,
       "norm_label": "healthz()"
     },
     {
@@ -720,7 +756,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\workspace.py",
       "source_location": "L18",
       "id": "workspace_list_workspaces",
-      "community": 6,
+      "community": 8,
       "norm_label": "list_workspaces()"
     },
     {
@@ -729,7 +765,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\workspace.py",
       "source_location": "L27",
       "id": "workspace_create_workspace",
-      "community": 6,
+      "community": 8,
       "norm_label": "create_workspace()"
     },
     {
@@ -738,7 +774,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\__init__.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_routers_init_py",
-      "community": 23,
+      "community": 25,
       "norm_label": "__init__.py"
     },
     {
@@ -747,7 +783,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\project.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_schemas_project_py",
-      "community": 5,
+      "community": 7,
       "norm_label": "project.py"
     },
     {
@@ -756,7 +792,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\project.py",
       "source_location": "L4",
       "id": "project_projectcreate",
-      "community": 5,
+      "community": 7,
       "norm_label": "projectcreate"
     },
     {
@@ -765,7 +801,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\project.py",
       "source_location": "L11",
       "id": "project_projectread",
-      "community": 5,
+      "community": 7,
       "norm_label": "projectread"
     },
     {
@@ -774,7 +810,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\project.py",
       "source_location": "L18",
       "id": "project_config",
-      "community": 5,
+      "community": 7,
       "norm_label": "config"
     },
     {
@@ -783,7 +819,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\workspace.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_schemas_workspace_py",
-      "community": 6,
+      "community": 8,
       "norm_label": "workspace.py"
     },
     {
@@ -792,7 +828,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\workspace.py",
       "source_location": "L4",
       "id": "workspace_workspacecreate",
-      "community": 6,
+      "community": 8,
       "norm_label": "workspacecreate"
     },
     {
@@ -801,7 +837,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\workspace.py",
       "source_location": "L10",
       "id": "workspace_workspaceread",
-      "community": 6,
+      "community": 8,
       "norm_label": "workspaceread"
     },
     {
@@ -810,7 +846,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\schemas\\workspace.py",
       "source_location": "L16",
       "id": "workspace_config",
-      "community": 6,
+      "community": 8,
       "norm_label": "config"
     },
     {
@@ -837,7 +873,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\security\\auth.py",
       "source_location": "L18",
       "id": "auth_create_access_token",
-      "community": 1,
+      "community": 12,
       "norm_label": "create_access_token()"
     },
     {
@@ -864,7 +900,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_services_dataset_store_py",
-      "community": 8,
+      "community": 11,
       "norm_label": "dataset_store.py"
     },
     {
@@ -873,7 +909,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py",
       "source_location": "L8",
       "id": "dataset_store_datasetversion",
-      "community": 8,
+      "community": 11,
       "norm_label": "datasetversion"
     },
     {
@@ -882,7 +918,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py",
       "source_location": "L17",
       "id": "dataset_store_datasetrecord",
-      "community": 8,
+      "community": 11,
       "norm_label": "datasetrecord"
     },
     {
@@ -891,7 +927,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py",
       "source_location": "L23",
       "id": "dataset_store_datasetstore",
-      "community": 8,
+      "community": 11,
       "norm_label": "datasetstore"
     },
     {
@@ -900,7 +936,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py",
       "source_location": "L24",
       "id": "dataset_store_datasetstore_init",
-      "community": 8,
+      "community": 11,
       "norm_label": ".__init__()"
     },
     {
@@ -909,7 +945,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py",
       "source_location": "L27",
       "id": "dataset_store_datasetstore_upload_csv",
-      "community": 8,
+      "community": 11,
       "norm_label": ".upload_csv()"
     },
     {
@@ -918,8 +954,152 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py",
       "source_location": "L50",
       "id": "dataset_store_datasetstore_list",
-      "community": 8,
+      "community": 11,
       "norm_label": ".list()"
+    },
+    {
+      "label": "trainer.py",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L1",
+      "id": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "community": 3,
+      "norm_label": "trainer.py"
+    },
+    {
+      "label": "_get_device()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L55",
+      "id": "trainer_get_device",
+      "community": 3,
+      "norm_label": "_get_device()"
+    },
+    {
+      "label": "_system_metrics()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L62",
+      "id": "trainer_system_metrics",
+      "community": 3,
+      "norm_label": "_system_metrics()"
+    },
+    {
+      "label": "_write_inference_script()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L69",
+      "id": "trainer_write_inference_script",
+      "community": 3,
+      "norm_label": "_write_inference_script()"
+    },
+    {
+      "label": "_write_readme()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L101",
+      "id": "trainer_write_readme",
+      "community": 3,
+      "norm_label": "_write_readme()"
+    },
+    {
+      "label": "_create_zip()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L133",
+      "id": "trainer_create_zip",
+      "community": 3,
+      "norm_label": "_create_zip()"
+    },
+    {
+      "label": "_train_image_model()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L144",
+      "id": "trainer_train_image_model",
+      "community": 3,
+      "norm_label": "_train_image_model()"
+    },
+    {
+      "label": "_train_text_model()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L257",
+      "id": "trainer_train_text_model",
+      "community": 3,
+      "norm_label": "_train_text_model()"
+    },
+    {
+      "label": "start_training()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L388",
+      "id": "trainer_start_training",
+      "community": 3,
+      "norm_label": "start_training()"
+    },
+    {
+      "label": "get_model_zip_path()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L433",
+      "id": "trainer_get_model_zip_path",
+      "community": 3,
+      "norm_label": "get_model_zip_path()"
+    },
+    {
+      "label": "Real PyTorch training engine for Aetheris AI.  Supports two demo-friendly model",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L1",
+      "id": "trainer_rationale_1",
+      "community": 3,
+      "norm_label": "real pytorch training engine for aetheris ai.  supports two demo-friendly model"
+    },
+    {
+      "label": "Return (device_str, cuda_status).",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L56",
+      "id": "trainer_rationale_56",
+      "community": 3,
+      "norm_label": "return (device_str, cuda_status)."
+    },
+    {
+      "label": "Train MobileNetV2 on synthetic image data (demo-safe).",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L145",
+      "id": "trainer_rationale_145",
+      "community": 3,
+      "norm_label": "train mobilenetv2 on synthetic image data (demo-safe)."
+    },
+    {
+      "label": "Train a simple text CNN on synthetic data (demo-safe).",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L258",
+      "id": "trainer_rationale_258",
+      "community": 3,
+      "norm_label": "train a simple text cnn on synthetic data (demo-safe)."
+    },
+    {
+      "label": "Launch training in a background thread.      ``config`` should contain:       -",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L389",
+      "id": "trainer_rationale_389",
+      "community": 3,
+      "norm_label": "launch training in a background thread.      ``config`` should contain:       -"
+    },
+    {
+      "label": "Return the path to the model ZIP if it exists.",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L434",
+      "id": "trainer_rationale_434",
+      "community": 3,
+      "norm_label": "return the path to the model zip if it exists."
     },
     {
       "label": "training_jobs.py",
@@ -927,7 +1107,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_app_services_training_jobs_py",
-      "community": 0,
+      "community": 2,
       "norm_label": "training_jobs.py"
     },
     {
@@ -936,7 +1116,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py",
       "source_location": "L11",
       "id": "training_jobs_trainingjobservice",
-      "community": 0,
+      "community": 2,
       "norm_label": "trainingjobservice"
     },
     {
@@ -945,7 +1125,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py",
       "source_location": "L13",
       "id": "training_jobs_create",
-      "community": 0,
+      "community": 2,
       "norm_label": "create()"
     },
     {
@@ -954,7 +1134,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py",
       "source_location": "L29",
       "id": "training_jobs_append_event",
-      "community": 0,
+      "community": 2,
       "norm_label": "append_event()"
     },
     {
@@ -963,7 +1143,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py",
       "source_location": "L35",
       "id": "training_jobs_run",
-      "community": 0,
+      "community": 2,
       "norm_label": "run()"
     },
     {
@@ -972,8 +1152,125 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py",
       "source_location": "L77",
       "id": "training_jobs_read_events",
-      "community": 0,
+      "community": 2,
       "norm_label": "read_events()"
+    },
+    {
+      "label": "training_status.py",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L1",
+      "id": "c_ic1101_ic1101_apps_api_app_services_training_status_py",
+      "community": 0,
+      "norm_label": "training_status.py"
+    },
+    {
+      "label": "TrainingStatus",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L17",
+      "id": "training_status_trainingstatus",
+      "community": 3,
+      "norm_label": "trainingstatus"
+    },
+    {
+      "label": ".add_log()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L39",
+      "id": "training_status_trainingstatus_add_log",
+      "community": 3,
+      "norm_label": ".add_log()"
+    },
+    {
+      "label": ".to_dict()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L45",
+      "id": "training_status_trainingstatus_to_dict",
+      "community": 0,
+      "norm_label": ".to_dict()"
+    },
+    {
+      "label": "TrainingStatusManager",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L67",
+      "id": "training_status_trainingstatusmanager",
+      "community": 0,
+      "norm_label": "trainingstatusmanager"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L70",
+      "id": "training_status_trainingstatusmanager_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".create()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L74",
+      "id": "training_status_trainingstatusmanager_create",
+      "community": 3,
+      "norm_label": ".create()"
+    },
+    {
+      "label": ".get()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L85",
+      "id": "training_status_trainingstatusmanager_get",
+      "community": 0,
+      "norm_label": ".get()"
+    },
+    {
+      "label": ".get_dict()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L89",
+      "id": "training_status_trainingstatusmanager_get_dict",
+      "community": 0,
+      "norm_label": ".get_dict()"
+    },
+    {
+      "label": ".update()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L94",
+      "id": "training_status_trainingstatusmanager_update",
+      "community": 0,
+      "norm_label": ".update()"
+    },
+    {
+      "label": ".remove()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L102",
+      "id": "training_status_trainingstatusmanager_remove",
+      "community": 0,
+      "norm_label": ".remove()"
+    },
+    {
+      "label": "Thread-safe shared training status manager.  Maintains a ``dict[job_id, Training",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L1",
+      "id": "training_status_rationale_1",
+      "community": 0,
+      "norm_label": "thread-safe shared training status manager.  maintains a ``dict[job_id, training"
+    },
+    {
+      "label": "Singleton-style thread-safe status store.",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L68",
+      "id": "training_status_rationale_68",
+      "community": 0,
+      "norm_label": "singleton-style thread-safe status store."
     },
     {
       "label": "test_health.py",
@@ -981,7 +1278,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_health.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_tests_test_health_py",
-      "community": 13,
+      "community": 0,
       "norm_label": "test_health.py"
     },
     {
@@ -990,7 +1287,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_health.py",
       "source_location": "L8",
       "id": "test_health_test_root_healthz",
-      "community": 13,
+      "community": 0,
       "norm_label": "test_root_healthz()"
     },
     {
@@ -999,7 +1296,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_health.py",
       "source_location": "L14",
       "id": "test_health_test_v1_info",
-      "community": 13,
+      "community": 0,
       "norm_label": "test_v1_info()"
     },
     {
@@ -1008,7 +1305,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_health.py",
       "source_location": "L20",
       "id": "test_health_test_auth_me_placeholder",
-      "community": 13,
+      "community": 0,
       "norm_label": "test_auth_me_placeholder()"
     },
     {
@@ -1017,7 +1314,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_project_workspace_validation.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_tests_test_project_workspace_validation_py",
-      "community": 15,
+      "community": 0,
       "norm_label": "test_project_workspace_validation.py"
     },
     {
@@ -1026,7 +1323,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_project_workspace_validation.py",
       "source_location": "L8",
       "id": "test_project_workspace_validation_test_workspace_list_requires_auth",
-      "community": 15,
+      "community": 0,
       "norm_label": "test_workspace_list_requires_auth()"
     },
     {
@@ -1035,7 +1332,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_project_workspace_validation.py",
       "source_location": "L13",
       "id": "test_project_workspace_validation_test_project_filter_invalid_uuid_returns_401_without_auth",
-      "community": 15,
+      "community": 0,
       "norm_label": "test_project_filter_invalid_uuid_returns_401_without_auth()"
     },
     {
@@ -1044,7 +1341,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_api_tests_integration_test_auth_rbac_dataset_training_py",
-      "community": 9,
+      "community": 0,
       "norm_label": "test_auth_rbac_dataset_training.py"
     },
     {
@@ -1053,7 +1350,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py",
       "source_location": "L11",
       "id": "test_auth_rbac_dataset_training_token",
-      "community": 9,
+      "community": 0,
       "norm_label": "token()"
     },
     {
@@ -1062,7 +1359,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py",
       "source_location": "L17",
       "id": "test_auth_rbac_dataset_training_test_dataset_upload_requires_auth",
-      "community": 9,
+      "community": 0,
       "norm_label": "test_dataset_upload_requires_auth()"
     },
     {
@@ -1071,7 +1368,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py",
       "source_location": "L22",
       "id": "test_auth_rbac_dataset_training_test_dataset_upload_and_versioning_happy_path",
-      "community": 9,
+      "community": 0,
       "norm_label": "test_dataset_upload_and_versioning_happy_path()"
     },
     {
@@ -1080,7 +1377,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py",
       "source_location": "L36",
       "id": "test_auth_rbac_dataset_training_test_training_job_lifecycle_and_events",
-      "community": 9,
+      "community": 0,
       "norm_label": "test_training_job_lifecycle_and_events()"
     },
     {
@@ -1089,7 +1386,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py",
       "source_location": "L53",
       "id": "test_auth_rbac_dataset_training_test_rbac_viewer_cannot_create_training_job",
-      "community": 9,
+      "community": 0,
       "norm_label": "test_rbac_viewer_cannot_create_training_job()"
     },
     {
@@ -1098,7 +1395,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\middleware.ts",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_middleware_ts",
-      "community": 16,
+      "community": 17,
       "norm_label": "middleware.ts"
     },
     {
@@ -1107,7 +1404,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\middleware.ts",
       "source_location": "L4",
       "id": "middleware_middleware",
-      "community": 16,
+      "community": 17,
       "norm_label": "middleware()"
     },
     {
@@ -1116,7 +1413,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\next-env.d.ts",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_next_env_d_ts",
-      "community": 24,
+      "community": 26,
       "norm_label": "next-env.d.ts"
     },
     {
@@ -1125,7 +1422,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\next.config.mjs",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_next_config_mjs",
-      "community": 25,
+      "community": 27,
       "norm_label": "next.config.mjs"
     },
     {
@@ -1134,7 +1431,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\layout.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_layout_tsx",
-      "community": 26,
+      "community": 28,
       "norm_label": "layout.tsx"
     },
     {
@@ -1143,7 +1440,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\layout.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_layout_tsx",
-      "community": 27,
+      "community": 29,
       "norm_label": "layout.tsx"
     },
     {
@@ -1152,7 +1449,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\billing\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_billing_page_tsx",
-      "community": 28,
+      "community": 30,
       "norm_label": "page.tsx"
     },
     {
@@ -1161,7 +1458,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\dashboard\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_dashboard_page_tsx",
-      "community": 29,
+      "community": 31,
       "norm_label": "page.tsx"
     },
     {
@@ -1170,7 +1467,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\datasets\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_datasets_page_tsx",
-      "community": 30,
+      "community": 32,
       "norm_label": "page.tsx"
     },
     {
@@ -1179,7 +1476,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\deployments\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_deployments_page_tsx",
-      "community": 31,
+      "community": 33,
       "norm_label": "page.tsx"
     },
     {
@@ -1188,7 +1485,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\experiments\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_experiments_page_tsx",
-      "community": 32,
+      "community": 34,
       "norm_label": "page.tsx"
     },
     {
@@ -1197,7 +1494,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\models\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_models_page_tsx",
-      "community": 33,
+      "community": 35,
       "norm_label": "page.tsx"
     },
     {
@@ -1206,7 +1503,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\monitoring\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_monitoring_page_tsx",
-      "community": 34,
+      "community": 36,
       "norm_label": "page.tsx"
     },
     {
@@ -1215,7 +1512,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\preprocessing\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_preprocessing_page_tsx",
-      "community": 35,
+      "community": 37,
       "norm_label": "page.tsx"
     },
     {
@@ -1224,7 +1521,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\projects\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_projects_page_tsx",
-      "community": 36,
+      "community": 38,
       "norm_label": "page.tsx"
     },
     {
@@ -1233,7 +1530,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\settings\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_settings_page_tsx",
-      "community": 37,
+      "community": 39,
       "norm_label": "page.tsx"
     },
     {
@@ -1242,7 +1539,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\team\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_team_page_tsx",
-      "community": 38,
+      "community": 40,
       "norm_label": "page.tsx"
     },
     {
@@ -1251,17 +1548,62 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
-      "community": 11,
+      "community": 9,
       "norm_label": "page.tsx"
+    },
+    {
+      "label": "poll()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
+      "source_location": "L56",
+      "id": "page_poll",
+      "community": 9,
+      "norm_label": "poll()"
     },
     {
       "label": "handleAction()",
       "file_type": "code",
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
-      "source_location": "L54",
+      "source_location": "L73",
       "id": "page_handleaction",
-      "community": 11,
+      "community": 9,
       "norm_label": "handleaction()"
+    },
+    {
+      "label": "handleDownload()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
+      "source_location": "L82",
+      "id": "page_handledownload",
+      "community": 9,
+      "norm_label": "handledownload()"
+    },
+    {
+      "label": "formatTime()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
+      "source_location": "L88",
+      "id": "page_formattime",
+      "community": 9,
+      "norm_label": "formattime()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\new\\page.tsx",
+      "source_location": "L1",
+      "id": "c_ic1101_ic1101_apps_web_app_app_training_new_page_tsx",
+      "community": 18,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "handleLaunch()",
+      "file_type": "code",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\new\\page.tsx",
+      "source_location": "L26",
+      "id": "page_handlelaunch",
+      "community": 18,
+      "norm_label": "handlelaunch()"
     },
     {
       "label": "layout.tsx",
@@ -1269,7 +1611,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(auth)\\layout.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_auth_layout_tsx",
-      "community": 39,
+      "community": 41,
       "norm_label": "layout.tsx"
     },
     {
@@ -1278,7 +1620,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(auth)\\signin\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_auth_signin_page_tsx",
-      "community": 17,
+      "community": 19,
       "norm_label": "page.tsx"
     },
     {
@@ -1287,7 +1629,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(auth)\\signin\\page.tsx",
       "source_location": "L9",
       "id": "page_handlelogin",
-      "community": 17,
+      "community": 19,
       "norm_label": "handlelogin()"
     },
     {
@@ -1296,7 +1638,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(marketing)\\layout.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_marketing_layout_tsx",
-      "community": 40,
+      "community": 42,
       "norm_label": "layout.tsx"
     },
     {
@@ -1305,7 +1647,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(marketing)\\page.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_app_marketing_page_tsx",
-      "community": 41,
+      "community": 43,
       "norm_label": "page.tsx"
     },
     {
@@ -1314,7 +1656,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\BackgroundSimulation.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_components_backgroundsimulation_tsx",
-      "community": 42,
+      "community": 44,
       "norm_label": "backgroundsimulation.tsx"
     },
     {
@@ -1323,7 +1665,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\BootLoader.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_components_bootloader_tsx",
-      "community": 43,
+      "community": 45,
       "norm_label": "bootloader.tsx"
     },
     {
@@ -1332,7 +1674,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\CustomCursor.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_components_customcursor_tsx",
-      "community": 10,
+      "community": 13,
       "norm_label": "customcursor.tsx"
     },
     {
@@ -1341,7 +1683,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\CustomCursor.tsx",
       "source_location": "L17",
       "id": "customcursor_handlemousemove",
-      "community": 10,
+      "community": 13,
       "norm_label": "handlemousemove()"
     },
     {
@@ -1350,7 +1692,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\CustomCursor.tsx",
       "source_location": "L22",
       "id": "customcursor_handlemouseleave",
-      "community": 10,
+      "community": 13,
       "norm_label": "handlemouseleave()"
     },
     {
@@ -1359,7 +1701,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\CustomCursor.tsx",
       "source_location": "L26",
       "id": "customcursor_handlemouseover",
-      "community": 10,
+      "community": 13,
       "norm_label": "handlemouseover()"
     },
     {
@@ -1368,7 +1710,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\CustomCursor.tsx",
       "source_location": "L41",
       "id": "customcursor_handlemousedown",
-      "community": 10,
+      "community": 13,
       "norm_label": "handlemousedown()"
     },
     {
@@ -1377,7 +1719,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\CustomCursor.tsx",
       "source_location": "L42",
       "id": "customcursor_handlemouseup",
-      "community": 10,
+      "community": 13,
       "norm_label": "handlemouseup()"
     },
     {
@@ -1386,7 +1728,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\InteractiveMesh.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_components_interactivemesh_tsx",
-      "community": 18,
+      "community": 20,
       "norm_label": "interactivemesh.tsx"
     },
     {
@@ -1395,7 +1737,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\InteractiveMesh.tsx",
       "source_location": "L4",
       "id": "interactivemesh_interactivemesh",
-      "community": 18,
+      "community": 20,
       "norm_label": "interactivemesh()"
     },
     {
@@ -1404,7 +1746,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\service-status.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_components_service_status_tsx",
-      "community": 19,
+      "community": 21,
       "norm_label": "service-status.tsx"
     },
     {
@@ -1413,7 +1755,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\service-status.tsx",
       "source_location": "L10",
       "id": "service_status_servicestatus",
-      "community": 19,
+      "community": 21,
       "norm_label": "servicestatus()"
     },
     {
@@ -1422,7 +1764,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\components\\sidebar.tsx",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_components_sidebar_tsx",
-      "community": 44,
+      "community": 46,
       "norm_label": "sidebar.tsx"
     },
     {
@@ -1431,7 +1773,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\lib\\api.ts",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_apps_web_lib_api_ts",
-      "community": 11,
+      "community": 9,
       "norm_label": "api.ts"
     },
     {
@@ -1440,7 +1782,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\lib\\api.ts",
       "source_location": "L3",
       "id": "api_apifetch",
-      "community": 11,
+      "community": 9,
       "norm_label": "apifetch()"
     },
     {
@@ -1449,7 +1791,7 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\lib\\api.ts",
       "source_location": "L13",
       "id": "api_fetcheventstream",
-      "community": 11,
+      "community": 9,
       "norm_label": "fetcheventstream()"
     },
     {
@@ -1458,14 +1800,23 @@
       "source_file": "C:\\ic1101\\ic1101\\scripts\\dev-up.ps1",
       "source_location": "L1",
       "id": "c_ic1101_ic1101_scripts_dev_up_ps1",
-      "community": 45,
+      "community": 47,
       "norm_label": "dev-up.ps1"
+    },
+    {
+      "label": "Simulated training loop \u2014 runs in background.",
+      "file_type": "rationale",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L169",
+      "community": 1,
+      "norm_label": "simulated training loop \u2014 runs in background.",
+      "id": "training_rationale_169"
     },
     {
       "label": "Aetheris Studio",
       "file_type": "document",
       "source_file": "docs/v1-prd.md",
-      "community": 20,
+      "community": 22,
       "norm_label": "aetheris studio",
       "id": "v1_prd_aetheris_studio"
     },
@@ -1473,7 +1824,7 @@
       "label": "Dataset Manager",
       "file_type": "document",
       "source_file": "docs/v1-prd.md",
-      "community": 12,
+      "community": 14,
       "norm_label": "dataset manager",
       "id": "v1_prd_dataset_manager"
     },
@@ -1481,7 +1832,7 @@
       "label": "Preprocessing Studio",
       "file_type": "document",
       "source_file": "docs/v1-prd.md",
-      "community": 12,
+      "community": 14,
       "norm_label": "preprocessing studio",
       "id": "v1_prd_preprocessing_studio"
     },
@@ -1489,7 +1840,7 @@
       "label": "Training Setup Wizard",
       "file_type": "document",
       "source_file": "docs/v1-prd.md",
-      "community": 14,
+      "community": 15,
       "norm_label": "training setup wizard",
       "id": "v1_prd_training_setup_wizard"
     },
@@ -1497,7 +1848,7 @@
       "label": "Real-time Monitoring",
       "file_type": "document",
       "source_file": "docs/v1-prd.md",
-      "community": 46,
+      "community": 48,
       "norm_label": "real-time monitoring",
       "id": "v1_prd_real_time_monitoring"
     },
@@ -1505,7 +1856,7 @@
       "label": "Experimentation",
       "file_type": "document",
       "source_file": "docs/v1-prd.md",
-      "community": 21,
+      "community": 23,
       "norm_label": "experimentation",
       "id": "v1_prd_experimentation"
     },
@@ -1513,7 +1864,7 @@
       "label": "Deployment Center",
       "file_type": "document",
       "source_file": "docs/v1-prd.md",
-      "community": 22,
+      "community": 24,
       "norm_label": "deployment center",
       "id": "v1_prd_deployment_center"
     },
@@ -1521,7 +1872,7 @@
       "label": "Web UI",
       "file_type": "document",
       "source_file": "docs/v1-architecture.md",
-      "community": 47,
+      "community": 49,
       "norm_label": "web ui",
       "id": "v1_architecture_web_ui"
     },
@@ -1529,7 +1880,7 @@
       "label": "API Gateway",
       "file_type": "document",
       "source_file": "docs/v1-architecture.md",
-      "community": 48,
+      "community": 50,
       "norm_label": "api gateway",
       "id": "v1_architecture_api_gateway"
     },
@@ -1537,7 +1888,7 @@
       "label": "Auth Service",
       "file_type": "document",
       "source_file": "docs/v1-architecture.md",
-      "community": 49,
+      "community": 51,
       "norm_label": "auth service",
       "id": "v1_architecture_auth_service"
     },
@@ -1545,7 +1896,7 @@
       "label": "Dataset Service",
       "file_type": "document",
       "source_file": "docs/v1-architecture.md",
-      "community": 12,
+      "community": 14,
       "norm_label": "dataset service",
       "id": "v1_architecture_dataset_service"
     },
@@ -1553,7 +1904,7 @@
       "label": "Training Orchestrator",
       "file_type": "document",
       "source_file": "docs/v1-architecture.md",
-      "community": 14,
+      "community": 15,
       "norm_label": "training orchestrator",
       "id": "v1_architecture_training_orchestrator"
     },
@@ -1561,7 +1912,7 @@
       "label": "Experiment Service",
       "file_type": "document",
       "source_file": "docs/v1-architecture.md",
-      "community": 21,
+      "community": 23,
       "norm_label": "experiment service",
       "id": "v1_architecture_experiment_service"
     },
@@ -1569,7 +1920,7 @@
       "label": "Model Registry",
       "file_type": "document",
       "source_file": "docs/v1-architecture.md",
-      "community": 50,
+      "community": 52,
       "norm_label": "model registry",
       "id": "v1_architecture_model_registry"
     },
@@ -1577,7 +1928,7 @@
       "label": "Deployment Service",
       "file_type": "document",
       "source_file": "docs/v1-architecture.md",
-      "community": 22,
+      "community": 24,
       "norm_label": "deployment service",
       "id": "v1_architecture_deployment_service"
     },
@@ -1585,7 +1936,7 @@
       "label": "API Datasets",
       "file_type": "document",
       "source_file": "docs/v1-api-spec.md",
-      "community": 12,
+      "community": 14,
       "norm_label": "api datasets",
       "id": "v1_api_spec_datasets"
     },
@@ -1593,7 +1944,7 @@
       "label": "API Training Jobs",
       "file_type": "document",
       "source_file": "docs/v1-api-spec.md",
-      "community": 14,
+      "community": 15,
       "norm_label": "api training jobs",
       "id": "v1_api_spec_training_jobs"
     },
@@ -1601,7 +1952,7 @@
       "label": "M1 Foundations",
       "file_type": "document",
       "source_file": "docs/v1-build-plan.md",
-      "community": 51,
+      "community": 53,
       "norm_label": "m1 foundations",
       "id": "v1_build_plan_m1_foundations"
     },
@@ -1609,7 +1960,7 @@
       "label": "M2 Data Pipeline",
       "file_type": "document",
       "source_file": "docs/v1-build-plan.md",
-      "community": 12,
+      "community": 14,
       "norm_label": "m2 data pipeline",
       "id": "v1_build_plan_m2_data_pipeline"
     },
@@ -1617,7 +1968,7 @@
       "label": "M3 Training Realtime",
       "file_type": "document",
       "source_file": "docs/v1-build-plan.md",
-      "community": 14,
+      "community": 15,
       "norm_label": "m3 training realtime",
       "id": "v1_build_plan_m3_training_realtime"
     },
@@ -1625,7 +1976,7 @@
       "label": "M4 Experiment Registry Deploy",
       "file_type": "document",
       "source_file": "docs/v1-build-plan.md",
-      "community": 52,
+      "community": 54,
       "norm_label": "m4 experiment registry deploy",
       "id": "v1_build_plan_m4_experiment_registry_deploy"
     },
@@ -1633,7 +1984,7 @@
       "label": "Primary Flow",
       "file_type": "document",
       "source_file": "docs/v1-ux-flows.md",
-      "community": 20,
+      "community": 22,
       "norm_label": "primary flow",
       "id": "v1_ux_flows_primary_flow"
     }
@@ -1859,7 +2210,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_src": "training_trainingjobcreate",
       "_tgt": "basemodel",
@@ -1871,7 +2222,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L25",
+      "source_location": "L30",
       "weight": 1.0,
       "_src": "training_trainingjobread",
       "_tgt": "basemodel",
@@ -2423,13 +2774,25 @@
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L10",
+      "source_location": "L9",
       "weight": 0.8,
-      "_src": "models_trainingjob",
-      "_tgt": "training_rationale_169",
-      "confidence_score": 0.5,
+      "_src": "training_rationale_123",
+      "_tgt": "models_trainingjob",
       "source": "models_trainingjob",
-      "target": "training_rationale_169"
+      "target": "training_rationale_123",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "_src": "training_rationale_168",
+      "_tgt": "models_trainingjob",
+      "source": "models_trainingjob",
+      "target": "training_rationale_168",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -2473,6 +2836,18 @@
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
       "source_location": "L10",
       "weight": 0.8,
+      "_src": "models_trainingjob",
+      "_tgt": "training_rationale_169",
+      "confidence_score": 0.5,
+      "source": "models_trainingjob",
+      "target": "training_rationale_169"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L10",
+      "weight": 0.8,
       "_src": "models_trainingevent",
       "_tgt": "training_trainingjobcreate",
       "confidence_score": 0.5,
@@ -2495,13 +2870,25 @@
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L10",
+      "source_location": "L9",
       "weight": 0.8,
-      "_src": "models_trainingevent",
-      "_tgt": "training_rationale_169",
-      "confidence_score": 0.5,
+      "_src": "training_rationale_123",
+      "_tgt": "models_trainingevent",
       "source": "models_trainingevent",
-      "target": "training_rationale_169"
+      "target": "training_rationale_123",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "_src": "training_rationale_168",
+      "_tgt": "models_trainingevent",
+      "source": "models_trainingevent",
+      "target": "training_rationale_168",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -2519,18 +2906,6 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L202",
-      "weight": 1.0,
-      "_src": "models_trainingevent",
-      "_tgt": "training_append_event",
-      "source": "models_trainingevent",
-      "target": "training_append_event"
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py",
       "source_location": "L30",
       "weight": 1.0,
@@ -2538,6 +2913,18 @@
       "_tgt": "training_jobs_append_event",
       "source": "models_trainingevent",
       "target": "training_jobs_append_event"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "models_trainingevent",
+      "_tgt": "training_rationale_169",
+      "confidence_score": 0.5,
+      "source": "models_trainingevent",
+      "target": "training_rationale_169"
     },
     {
       "relation": "uses",
@@ -3514,8 +3901,32 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\system.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_routers_system_py",
+      "_tgt": "system_system_info",
+      "source": "c_ic1101_ic1101_apps_api_app_routers_system_py",
+      "target": "system_system_info",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\system.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "system_rationale_1",
+      "_tgt": "c_ic1101_ic1101_apps_api_app_routers_system_py",
+      "source": "c_ic1101_ic1101_apps_api_app_routers_system_py",
+      "target": "system_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_trainingjobcreate",
@@ -3527,7 +3938,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L25",
+      "source_location": "L30",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_trainingjobread",
@@ -3539,7 +3950,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L37",
+      "source_location": "L42",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_create_job",
@@ -3551,7 +3962,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L61",
+      "source_location": "L94",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_list_jobs",
@@ -3563,7 +3974,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L73",
+      "source_location": "L106",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_get_job",
@@ -3575,7 +3986,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L85",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
+      "_tgt": "training_get_training_status",
+      "source": "c_ic1101_ic1101_apps_api_app_routers_training_py",
+      "target": "training_get_training_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L164",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
+      "_tgt": "training_download_model",
+      "source": "c_ic1101_ic1101_apps_api_app_routers_training_py",
+      "target": "training_download_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L180",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_pause_job",
@@ -3587,7 +4022,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L99",
+      "source_location": "L199",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_resume_job",
@@ -3599,7 +4034,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L114",
+      "source_location": "L213",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_cancel_job",
@@ -3611,7 +4046,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L128",
+      "source_location": "L232",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_stream_events",
@@ -3623,36 +4058,12 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L155",
+      "source_location": "L259",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "_tgt": "training_job_to_read",
       "source": "c_ic1101_ic1101_apps_api_app_routers_training_py",
       "target": "training_job_to_read",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L168",
-      "weight": 1.0,
-      "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
-      "_tgt": "training_run_training",
-      "source": "c_ic1101_ic1101_apps_api_app_routers_training_py",
-      "target": "training_run_training",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L201",
-      "weight": 1.0,
-      "_src": "c_ic1101_ic1101_apps_api_app_routers_training_py",
-      "_tgt": "training_append_event",
-      "source": "c_ic1101_ic1101_apps_api_app_routers_training_py",
-      "target": "training_append_event",
       "confidence_score": 1.0
     },
     {
@@ -3671,7 +4082,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L156",
+      "source_location": "L260",
       "weight": 1.0,
       "_src": "training_job_to_read",
       "_tgt": "training_trainingjobread",
@@ -3695,19 +4106,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L56",
-      "weight": 1.0,
-      "_src": "training_create_job",
-      "_tgt": "training_run_training",
-      "source": "training_create_job",
-      "target": "training_run_training",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L57",
+      "source_location": "L90",
       "weight": 1.0,
       "_src": "training_create_job",
       "_tgt": "training_job_to_read",
@@ -3717,9 +4116,21 @@
     },
     {
       "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "training_create_job",
+      "_tgt": "trainer_start_training",
+      "source": "training_create_job",
+      "target": "trainer_start_training"
+    },
+    {
+      "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L69",
+      "source_location": "L102",
       "weight": 1.0,
       "_src": "training_list_jobs",
       "_tgt": "training_job_to_read",
@@ -3731,7 +4142,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L81",
+      "source_location": "L114",
       "weight": 1.0,
       "_src": "training_get_job",
       "_tgt": "training_job_to_read",
@@ -3740,52 +4151,124 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
+      "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L109",
+      "source_location": "L123",
       "weight": 1.0,
-      "_src": "training_resume_job",
-      "_tgt": "training_run_training",
-      "source": "training_resume_job",
-      "target": "training_run_training",
+      "_src": "training_rationale_123",
+      "_tgt": "training_get_training_status",
+      "source": "training_get_training_status",
+      "target": "training_rationale_123",
       "confidence_score": 1.0
     },
     {
       "relation": "calls",
-      "confidence": "EXTRACTED",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L183",
+      "source_location": "L124",
       "weight": 1.0,
-      "_src": "training_run_training",
-      "_tgt": "training_append_event",
-      "source": "training_run_training",
-      "target": "training_append_event",
-      "confidence_score": 1.0
+      "_src": "training_get_training_status",
+      "_tgt": "training_status_trainingstatusmanager_get_dict",
+      "source": "training_get_training_status",
+      "target": "training_status_trainingstatusmanager_get_dict"
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L168",
+      "weight": 1.0,
+      "_src": "training_rationale_168",
+      "_tgt": "training_download_model",
+      "source": "training_download_model",
+      "target": "training_rationale_168",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
       "source_location": "L169",
       "weight": 1.0,
-      "_src": "training_rationale_169",
-      "_tgt": "training_run_training",
-      "source": "training_run_training",
-      "target": "training_rationale_169",
-      "confidence_score": 1.0
+      "_src": "training_download_model",
+      "_tgt": "trainer_get_model_zip_path",
+      "source": "training_download_model",
+      "target": "trainer_get_model_zip_path"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L191",
+      "weight": 1.0,
+      "_src": "training_pause_job",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_pause_job",
+      "target": "training_status_trainingstatusmanager_get"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L194",
+      "weight": 1.0,
+      "_src": "training_pause_job",
+      "_tgt": "training_status_trainingstatus_add_log",
+      "source": "training_pause_job",
+      "target": "training_status_trainingstatus_add_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L224",
+      "weight": 1.0,
+      "_src": "training_cancel_job",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_cancel_job",
+      "target": "training_status_trainingstatusmanager_get"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L227",
+      "weight": 1.0,
+      "_src": "training_cancel_job",
+      "_tgt": "training_status_trainingstatus_add_log",
+      "source": "training_cancel_job",
+      "target": "training_status_trainingstatus_add_log"
     },
     {
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
-      "source_location": "L12",
+      "source_location": "L11",
       "weight": 0.8,
-      "_src": "training_rationale_169",
+      "_src": "training_rationale_123",
       "_tgt": "auth_principal",
-      "confidence_score": 0.5,
-      "source": "training_rationale_169",
-      "target": "auth_principal"
+      "source": "training_rationale_123",
+      "target": "auth_principal",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "training_rationale_168",
+      "_tgt": "auth_principal",
+      "source": "training_rationale_168",
+      "target": "auth_principal",
+      "confidence_score": 0.5
     },
     {
       "relation": "contains",
@@ -3980,6 +4463,30 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\routers\\training.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "training_rationale_169",
+      "_tgt": "auth_principal",
+      "confidence_score": 0.5,
+      "source": "auth_principal",
+      "target": "training_rationale_169"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\security\\auth.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "auth_get_principal",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "auth_get_principal",
+      "target": "training_status_trainingstatusmanager_get"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\dataset_store.py",
@@ -4090,6 +4597,462 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_get_device",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_get_device",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_system_metrics",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_system_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_write_inference_script",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_write_inference_script",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_write_readme",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_write_readme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_create_zip",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_create_zip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_train_image_model",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_train_image_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L257",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_train_text_model",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_train_text_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L388",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_start_training",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_start_training",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L433",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "_tgt": "trainer_get_model_zip_path",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_get_model_zip_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "trainer_rationale_1",
+      "_tgt": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "source": "c_ic1101_ic1101_apps_api_app_services_trainer_py",
+      "target": "trainer_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L146",
+      "weight": 1.0,
+      "_src": "trainer_train_image_model",
+      "_tgt": "trainer_get_device",
+      "source": "trainer_get_device",
+      "target": "trainer_train_image_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L259",
+      "weight": 1.0,
+      "_src": "trainer_train_text_model",
+      "_tgt": "trainer_get_device",
+      "source": "trainer_get_device",
+      "target": "trainer_train_text_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "trainer_rationale_56",
+      "_tgt": "trainer_get_device",
+      "source": "trainer_get_device",
+      "target": "trainer_rationale_56",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L220",
+      "weight": 1.0,
+      "_src": "trainer_train_image_model",
+      "_tgt": "trainer_system_metrics",
+      "source": "trainer_system_metrics",
+      "target": "trainer_train_image_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L352",
+      "weight": 1.0,
+      "_src": "trainer_train_text_model",
+      "_tgt": "trainer_system_metrics",
+      "source": "trainer_system_metrics",
+      "target": "trainer_train_text_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "_src": "trainer_train_image_model",
+      "_tgt": "trainer_write_inference_script",
+      "source": "trainer_write_inference_script",
+      "target": "trainer_train_image_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L379",
+      "weight": 1.0,
+      "_src": "trainer_train_text_model",
+      "_tgt": "trainer_write_inference_script",
+      "source": "trainer_write_inference_script",
+      "target": "trainer_train_text_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L251",
+      "weight": 1.0,
+      "_src": "trainer_train_image_model",
+      "_tgt": "trainer_write_readme",
+      "source": "trainer_write_readme",
+      "target": "trainer_train_image_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L380",
+      "weight": 1.0,
+      "_src": "trainer_train_text_model",
+      "_tgt": "trainer_write_readme",
+      "source": "trainer_write_readme",
+      "target": "trainer_train_text_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_src": "trainer_write_readme",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "trainer_write_readme",
+      "target": "training_status_trainingstatusmanager_get"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L252",
+      "weight": 1.0,
+      "_src": "trainer_train_image_model",
+      "_tgt": "trainer_create_zip",
+      "source": "trainer_create_zip",
+      "target": "trainer_train_image_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L381",
+      "weight": 1.0,
+      "_src": "trainer_train_text_model",
+      "_tgt": "trainer_create_zip",
+      "source": "trainer_create_zip",
+      "target": "trainer_train_text_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_src": "trainer_rationale_145",
+      "_tgt": "trainer_train_image_model",
+      "source": "trainer_train_image_model",
+      "target": "trainer_rationale_145",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_src": "trainer_train_image_model",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "trainer_train_image_model",
+      "target": "training_status_trainingstatusmanager_get"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L157",
+      "weight": 1.0,
+      "_src": "trainer_train_image_model",
+      "_tgt": "training_status_trainingstatus_add_log",
+      "source": "trainer_train_image_model",
+      "target": "training_status_trainingstatus_add_log"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L258",
+      "weight": 1.0,
+      "_src": "trainer_rationale_258",
+      "_tgt": "trainer_train_text_model",
+      "source": "trainer_train_text_model",
+      "target": "trainer_rationale_258",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L264",
+      "weight": 1.0,
+      "_src": "trainer_train_text_model",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "trainer_train_text_model",
+      "target": "training_status_trainingstatusmanager_get"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L272",
+      "weight": 1.0,
+      "_src": "trainer_train_text_model",
+      "_tgt": "training_status_trainingstatus_add_log",
+      "source": "trainer_train_text_model",
+      "target": "training_status_trainingstatus_add_log"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L389",
+      "weight": 1.0,
+      "_src": "trainer_rationale_389",
+      "_tgt": "trainer_start_training",
+      "source": "trainer_start_training",
+      "target": "trainer_rationale_389",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L398",
+      "weight": 1.0,
+      "_src": "trainer_start_training",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "trainer_start_training",
+      "target": "training_status_trainingstatusmanager_get"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L403",
+      "weight": 1.0,
+      "_src": "trainer_start_training",
+      "_tgt": "training_status_trainingstatusmanager_create",
+      "source": "trainer_start_training",
+      "target": "training_status_trainingstatusmanager_create"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L434",
+      "weight": 1.0,
+      "_src": "trainer_rationale_434",
+      "_tgt": "trainer_get_model_zip_path",
+      "source": "trainer_get_model_zip_path",
+      "target": "trainer_rationale_434",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L46",
+      "weight": 0.8,
+      "_src": "trainer_rationale_1",
+      "_tgt": "training_status_trainingstatus",
+      "source": "trainer_rationale_1",
+      "target": "training_status_trainingstatus",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L46",
+      "weight": 0.8,
+      "_src": "trainer_rationale_56",
+      "_tgt": "training_status_trainingstatus",
+      "source": "trainer_rationale_56",
+      "target": "training_status_trainingstatus",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L46",
+      "weight": 0.8,
+      "_src": "trainer_rationale_145",
+      "_tgt": "training_status_trainingstatus",
+      "source": "trainer_rationale_145",
+      "target": "training_status_trainingstatus",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L46",
+      "weight": 0.8,
+      "_src": "trainer_rationale_258",
+      "_tgt": "training_status_trainingstatus",
+      "source": "trainer_rationale_258",
+      "target": "training_status_trainingstatus",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L46",
+      "weight": 0.8,
+      "_src": "trainer_rationale_389",
+      "_tgt": "training_status_trainingstatus",
+      "source": "trainer_rationale_389",
+      "target": "training_status_trainingstatus",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\trainer.py",
+      "source_location": "L46",
+      "weight": 0.8,
+      "_src": "trainer_rationale_434",
+      "_tgt": "training_status_trainingstatus",
+      "source": "trainer_rationale_434",
+      "target": "training_status_trainingstatus",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_jobs.py",
       "source_location": "L11",
       "weight": 1.0,
@@ -4158,6 +5121,282 @@
       "source": "training_jobs_append_event",
       "target": "training_jobs_run",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_training_status_py",
+      "_tgt": "training_status_trainingstatus",
+      "source": "c_ic1101_ic1101_apps_api_app_services_training_status_py",
+      "target": "training_status_trainingstatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_api_app_services_training_status_py",
+      "_tgt": "training_status_trainingstatusmanager",
+      "source": "c_ic1101_ic1101_apps_api_app_services_training_status_py",
+      "target": "training_status_trainingstatusmanager",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "training_status_rationale_1",
+      "_tgt": "c_ic1101_ic1101_apps_api_app_services_training_status_py",
+      "source": "c_ic1101_ic1101_apps_api_app_services_training_status_py",
+      "target": "training_status_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatus",
+      "_tgt": "training_status_trainingstatus_add_log",
+      "source": "training_status_trainingstatus",
+      "target": "training_status_trainingstatus_add_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatus",
+      "_tgt": "training_status_trainingstatus_to_dict",
+      "source": "training_status_trainingstatus",
+      "target": "training_status_trainingstatus_to_dict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager_create",
+      "_tgt": "training_status_trainingstatus",
+      "source": "training_status_trainingstatus",
+      "target": "training_status_trainingstatusmanager_create",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager_get_dict",
+      "_tgt": "training_status_trainingstatus_to_dict",
+      "source": "training_status_trainingstatus_to_dict",
+      "target": "training_status_trainingstatusmanager_get_dict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager",
+      "_tgt": "training_status_trainingstatusmanager_init",
+      "source": "training_status_trainingstatusmanager",
+      "target": "training_status_trainingstatusmanager_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager",
+      "_tgt": "training_status_trainingstatusmanager_create",
+      "source": "training_status_trainingstatusmanager",
+      "target": "training_status_trainingstatusmanager_create",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager",
+      "target": "training_status_trainingstatusmanager_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager",
+      "_tgt": "training_status_trainingstatusmanager_get_dict",
+      "source": "training_status_trainingstatusmanager",
+      "target": "training_status_trainingstatusmanager_get_dict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager",
+      "_tgt": "training_status_trainingstatusmanager_update",
+      "source": "training_status_trainingstatusmanager",
+      "target": "training_status_trainingstatusmanager_update",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager",
+      "_tgt": "training_status_trainingstatusmanager_remove",
+      "source": "training_status_trainingstatusmanager",
+      "target": "training_status_trainingstatusmanager_remove",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "training_status_rationale_68",
+      "_tgt": "training_status_trainingstatusmanager",
+      "source": "training_status_trainingstatusmanager",
+      "target": "training_status_rationale_68",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager_get_dict",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "training_status_trainingstatusmanager_get_dict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\app\\services\\training_status.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_src": "training_status_trainingstatusmanager_update",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "training_status_trainingstatusmanager_update",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_health.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "test_health_test_root_healthz",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "test_health_test_root_healthz"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_health.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "test_health_test_v1_info",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "test_health_test_v1_info"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_health.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "test_health_test_auth_me_placeholder",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "test_health_test_auth_me_placeholder"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_project_workspace_validation.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "test_project_workspace_validation_test_workspace_list_requires_auth",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "test_project_workspace_validation_test_workspace_list_requires_auth"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\test_project_workspace_validation.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "test_project_workspace_validation_test_project_filter_invalid_uuid_returns_401_without_auth",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "test_project_workspace_validation_test_project_filter_invalid_uuid_returns_401_without_auth"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "test_auth_rbac_dataset_training_test_dataset_upload_requires_auth",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "test_auth_rbac_dataset_training_test_dataset_upload_requires_auth"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\api\\tests\\integration\\test_auth_rbac_dataset_training.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "test_auth_rbac_dataset_training_test_training_job_lifecycle_and_events",
+      "_tgt": "training_status_trainingstatusmanager_get",
+      "source": "training_status_trainingstatusmanager_get",
+      "target": "test_auth_rbac_dataset_training_test_training_job_lifecycle_and_events"
     },
     {
       "relation": "contains",
@@ -4331,13 +5570,61 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
-      "source_location": "L54",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
+      "_tgt": "page_poll",
+      "source": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
+      "target": "page_poll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
+      "source_location": "L73",
       "weight": 1.0,
       "_src": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
       "_tgt": "page_handleaction",
       "source": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
       "target": "page_handleaction",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
+      "_tgt": "page_handledownload",
+      "source": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
+      "target": "page_handledownload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
+      "_tgt": "page_formattime",
+      "source": "c_ic1101_ic1101_apps_web_app_app_training_page_tsx",
+      "target": "page_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\page.tsx",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "page_poll",
+      "_tgt": "api_apifetch",
+      "source": "page_poll",
+      "target": "api_apifetch"
     },
     {
       "relation": "calls",
@@ -4350,6 +5637,18 @@
       "_tgt": "api_apifetch",
       "source": "page_handleaction",
       "target": "api_apifetch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "C:\\ic1101\\ic1101\\apps\\web\\app\\(app)\\training\\new\\page.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "c_ic1101_ic1101_apps_web_app_app_training_new_page_tsx",
+      "_tgt": "page_handlelaunch",
+      "source": "c_ic1101_ic1101_apps_web_app_app_training_new_page_tsx",
+      "target": "page_handlelaunch",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",

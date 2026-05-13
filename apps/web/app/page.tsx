@@ -1,10 +1,12 @@
 import { ServiceStatus } from "../components/service-status";
 
+const defaultApiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+
 const services = [
-  { name: "api", url: process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000" },
-  { name: "auth", url: process.env.NEXT_PUBLIC_AUTH_BASE_URL ?? "http://localhost:8001" },
-  { name: "workspace", url: process.env.NEXT_PUBLIC_WORKSPACE_BASE_URL ?? "http://localhost:8002" },
-  { name: "project", url: process.env.NEXT_PUBLIC_PROJECT_BASE_URL ?? "http://localhost:8003" }
+  { name: "api", url: defaultApiBaseUrl },
+  { name: "auth", url: process.env.NEXT_PUBLIC_AUTH_BASE_URL ?? `${defaultApiBaseUrl}/auth` },
+  { name: "workspace", url: process.env.NEXT_PUBLIC_WORKSPACE_BASE_URL ?? `${defaultApiBaseUrl}/workspace` },
+  { name: "project", url: process.env.NEXT_PUBLIC_PROJECT_BASE_URL ?? `${defaultApiBaseUrl}/project` }
 ];
 
 export default function HomePage() {

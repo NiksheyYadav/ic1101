@@ -5,6 +5,7 @@ import {
   LayoutDashboard, FolderKanban, Database, Workflow, Cpu,
   FlaskConical, Box, Rocket, Activity, Users, CreditCard, Settings,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const NAV = [
   { section: "Platform" },
@@ -29,7 +30,12 @@ export function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <div className="brand-icon">A</div>
+        <motion.img 
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          src="/aetheris-logo.png" 
+          alt="Aetheris Logo" 
+          style={{ width: 32, height: 32, borderRadius: 8, marginRight: 12, boxShadow: "0 0 15px rgba(0, 212, 255, 0.2)", cursor: "pointer" }}
+        />
         <div>
           <h1>Aetheris AI</h1>
           <span>Intelligence OS</span>

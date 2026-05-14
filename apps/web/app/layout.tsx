@@ -12,12 +12,16 @@ export const metadata: Metadata = {
   description: "No-code AI training platform. Train, Monitor, Optimize, Deploy.",
 };
 
+import { Providers } from "../components/Providers";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable} dark`}>
       <body style={{ fontFamily: "var(--font-sans)" }}>
-        <BootLoader />
-        {children}
+        <Providers>
+          <BootLoader />
+          {children}
+        </Providers>
       </body>
     </html>
   );

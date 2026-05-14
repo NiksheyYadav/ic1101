@@ -90,7 +90,7 @@ export function BackgroundSimulation() {
         </div>
 
         {/* Center Top: Big Chart */}
-        <div style={{ position: "relative", border: "1px solid rgba(139, 92, 246, 0.1)", borderRadius: 16, background: "rgba(0,0,0,0.2)", overflow: "hidden" }}>
+        <div style={{ position: "relative", border: "1px solid rgba(139, 92, 246, 0.1)", borderRadius: 16, background: "rgba(0,0,0,0.2)", overflow: "hidden", minHeight: 120 }}>
           <div style={{ position: "absolute", top: 16, left: 16, fontSize: 10, color: "#8B5CF6", letterSpacing: 1 }} className="mono">MODEL ACCURACY OVER TIME</div>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data1}>
@@ -104,7 +104,7 @@ export function BackgroundSimulation() {
         </div>
 
         {/* Right Top: Throughput */}
-        <div style={{ position: "relative", border: "1px solid rgba(61, 220, 151, 0.1)", borderRadius: 16, background: "rgba(0,0,0,0.2)", overflow: "hidden" }}>
+        <div style={{ position: "relative", border: "1px solid rgba(61, 220, 151, 0.1)", borderRadius: 16, background: "rgba(0,0,0,0.2)", overflow: "hidden", minHeight: 120 }}>
           <div style={{ position: "absolute", top: 16, left: 16, fontSize: 10, color: "#3DDC97", letterSpacing: 1 }} className="mono">GPU THROUGHPUT</div>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data2}>
@@ -130,7 +130,7 @@ export function BackgroundSimulation() {
         </div>
 
         {/* Center Bottom: VRAM */}
-        <div style={{ position: "relative", border: "1px solid rgba(0, 212, 255, 0.1)", borderRadius: 16, background: "rgba(0,0,0,0.2)", overflow: "hidden" }}>
+        <div style={{ position: "relative", border: "1px solid rgba(0, 212, 255, 0.1)", borderRadius: 16, background: "rgba(0,0,0,0.2)", overflow: "hidden", minHeight: 120 }}>
           <div style={{ position: "absolute", top: 16, left: 16, fontSize: 10, color: "#00D4FF", letterSpacing: 1 }} className="mono">VRAM ALLOCATION</div>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data2}>
@@ -144,7 +144,7 @@ export function BackgroundSimulation() {
         </div>
         
         {/* Right Bottom: Loss */}
-        <div style={{ position: "relative", border: "1px solid rgba(245, 158, 11, 0.1)", borderRadius: 16, background: "rgba(0,0,0,0.2)", overflow: "hidden" }}>
+        <div style={{ position: "relative", border: "1px solid rgba(245, 158, 11, 0.1)", borderRadius: 16, background: "rgba(0,0,0,0.2)", overflow: "hidden", minHeight: 120 }}>
           <div style={{ position: "absolute", top: 16, left: 16, fontSize: 10, color: "#F59E0B", letterSpacing: 1 }} className="mono">LOSS FUNCTION</div>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data1}>

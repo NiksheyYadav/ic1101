@@ -1,10 +1,20 @@
-const API_BASE = "/api";
+import { getSession } from "next-auth/react";
+
+const API_BASE = "/api/proxy";
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const token =
+  let token =
     typeof window !== "undefined"
       ? localStorage.getItem("aetheris_token")
       : null;
+
+  // Try to get token from NextAuth session
+  if (typeof window !== "undefined") {
+    const session = await getSession();
+    if ((session as any)?.accessToken) {
+      token = (session as any).accessToken;
+    }
+  }
 
   const headers = new Headers(init?.headers);
 
@@ -33,10 +43,18 @@ async function fetchEventStream(
   onMessage: (data: any) => void,
   signal?: AbortSignal
 ) {
-  const token =
+  let token =
     typeof window !== "undefined"
       ? localStorage.getItem("aetheris_token")
       : null;
+
+  // Try to get token from NextAuth session
+  if (typeof window !== "undefined") {
+    const session = await getSession();
+    if ((session as any)?.accessToken) {
+      token = (session as any).accessToken;
+    }
+  }
 
   const headers = new Headers();
 

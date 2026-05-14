@@ -74,8 +74,14 @@ export function BootLoader() {
             <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 48 }}>
               <motion.div 
                 animate={{ rotate: 360 }}
-                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                style={{ width: 24, height: 24, border: "2px solid rgba(0, 212, 255, 0.1)", borderTopColor: "#00D4FF", borderRadius: "50%" }}
+                transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+                style={{ 
+                  width: 48, height: 48, borderRadius: 12, 
+                  background: "url('/aetheris-logo.png')", 
+                  backgroundSize: "cover",
+                  boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)"
+                }}
               />
               <span style={{ color: "#fff", fontSize: 14, fontWeight: 600, letterSpacing: 2 }}>
                 {isDashboard ? "AETHERIS SECURE LOGIN" : "AETHERIS BOOT"}

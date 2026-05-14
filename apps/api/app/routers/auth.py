@@ -57,6 +57,38 @@ def me() -> dict[str, str]:
 
 from app.core.config import settings
 
+class GithubSyncRequest(BaseModel):
+    email: str
+    name: str
+    github_id: str
+    avatar_url: str
+
+
+@router.post("/github-sync")
+def github_sync(payload: GithubSyncRequest, db: Session = Depends(get_db)) -> dict[str, str]:
+    user = db.query(User).filter(User.email == payload.email).first()
+    if not user:
+        user = db.query(User).filter(User.github_id == payload.github_id).first()
+    
+    if not user:
+        user = User(
+            email=payload.email,
+            display_name=payload.name,
+            github_id=payload.github_id,
+            avatar_url=payload.avatar_url
+        )
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+    else:
+        # Update existing user
+        user.github_id = payload.github_id
+        user.avatar_url = payload.avatar_url
+        db.commit()
+
+    return {"access_token": create_access_token(str(user.id), "owner"), "token_type": "bearer"}
+
+
 @router.get("/github/login")
 def github_login():
     client_id = os.getenv("GITHUB_CLIENT_ID")

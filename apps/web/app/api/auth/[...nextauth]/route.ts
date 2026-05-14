@@ -57,6 +57,7 @@ const backendUrl = process.env.NEXT_PUBLIC_API_URL ||
       // Initial sign in
       if (account && user) {
         if (account.provider === "github") {
+          try {
             const syncPayload = {
               email: user.email || `${account.providerAccountId}@github.com`,
               name: user.name || (profile as any)?.login || "Github User",
@@ -79,7 +80,6 @@ const backendUrl = process.env.NEXT_PUBLIC_API_URL ||
             } else {
               const errText = await res.text();
               console.error(`[NextAuth] Github sync failed (${res.status}): ${errText}`);
-              // Fallback: try to issue a manual token if we have to
             }
           } catch (error) {
             console.error("[NextAuth] Github sync network error:", error);

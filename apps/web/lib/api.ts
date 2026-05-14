@@ -1,4 +1,4 @@
-const API_BASE = "https://aetheris-api-prod.eba-3ijumbws.ap-south-1.elasticbeanstalk.com";
+const API_BASE = "/api";
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const token =

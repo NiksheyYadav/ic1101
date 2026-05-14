@@ -120,7 +120,11 @@ const backendUrl = process.env.NEXT_PUBLIC_API_URL ||
   pages: {
     signIn: "/signin",
   },
-  secret: process.env.NEXTAUTH_SECRET || "fallback-secret-for-dev",
+  secret: process.env.NEXTAUTH_SECRET,
 });
+
+if (!process.env.NEXTAUTH_SECRET && process.env.VERCEL) {
+  console.warn("!!! CRITICAL WARNING: NEXTAUTH_SECRET is missing on Vercel environment. Authentication will be unstable. !!!");
+}
 
 export { handler as GET, handler as POST };

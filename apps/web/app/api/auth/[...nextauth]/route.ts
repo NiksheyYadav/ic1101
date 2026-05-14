@@ -18,7 +18,8 @@ const handler = NextAuth({
         if (!credentials?.email || !credentials?.password) return null;
 
         try {
-          const backendUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const backendUrl = process.env.NEXT_PUBLIC_API_URL || 
+  (process.env.VERCEL ? "http://aetheris-api-prod.eba-3ijumbws.ap-south-1.elasticbeanstalk.com" : "http://localhost:8000");
           console.log(`[NextAuth] Authorizing ${credentials.email} against ${backendUrl}`);
           const res = await fetch(`${backendUrl}/v1/auth/login`, {
             method: "POST",
@@ -49,7 +50,8 @@ const handler = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user, account, profile }) {
-      const backendUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const backendUrl = process.env.NEXT_PUBLIC_API_URL || 
+        (process.env.VERCEL ? "http://aetheris-api-prod.eba-3ijumbws.ap-south-1.elasticbeanstalk.com" : "http://localhost:8000");
       console.log(`[NextAuth] JWT Callback: provider=${account?.provider}, user_id=${user?.id}`);
 
       // Initial sign in

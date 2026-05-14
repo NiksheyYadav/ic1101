@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, GitHub } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { API_BASE } from "../../../lib/api";
 
 export default function SignInPage() {

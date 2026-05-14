@@ -52,10 +52,15 @@ const backendUrl = process.env.NEXT_PUBLIC_API_URL ||
     async jwt({ token, user, account, profile }) {
       const backendUrl = process.env.NEXT_PUBLIC_API_URL || 
         (process.env.VERCEL ? "http://aetheris-api-prod.eba-3ijumbws.ap-south-1.elasticbeanstalk.com" : "http://localhost:8000");
-      console.log(`[NextAuth] JWT Callback: provider=${account?.provider}, user_id=${user?.id}`);
+
+      // Persistence check: If we have an accessToken in the current token, keep it!
+      if (token.accessToken) {
+        console.log("[NextAuth] JWT: Persisting existing accessToken.");
+      }
 
       // Initial sign in
       if (account && user) {
+        console.log(`[NextAuth] Initial sign-in for ${user.email} via ${account.provider}`);
         if (account.provider === "github") {
           try {
             const syncPayload = {
@@ -76,19 +81,10 @@ const backendUrl = process.env.NEXT_PUBLIC_API_URL ||
             if (res.ok) {
               const data = await res.json();
               token.accessToken = data.access_token;
-              console.log(`[NextAuth] SUCCESS: Github sync successful.`);
+              console.log(`[NextAuth] SUCCESS: Github sync successful. Token: ${token.accessToken?.substring(0, 10)}...`);
             } else {
               const errText = await res.text();
               console.error(`[NextAuth] ERROR: Github sync failed (${res.status}): ${errText}`);
-              
-              // CRITICAL FALLBACK: If sync fails, we still need a token for the demo!
-              // We'll try to issue one manually if the user is trusted
-              if (user.email === "nikshey.y@gmail.com" || user.email?.includes("nikshey")) {
-                 console.warn("[NextAuth] FALLBACK: Issuing emergency token for admin user.");
-                 // In a real app, this would call a secure internal-only endpoint
-                 // For now, we'll try to use the credentials login path as a backup if possible
-                 // or just hope the next retry works.
-              }
             }
           } catch (error) {
             console.error("[NextAuth] NETWORK ERROR: Cannot reach backend at " + backendUrl, error);
@@ -102,9 +98,9 @@ const backendUrl = process.env.NEXT_PUBLIC_API_URL ||
     },
     async session({ session, token }) {
       console.log(`[NextAuth] Session Callback: HasToken=${!!token.accessToken}`);
-      (session as any).accessToken = token.accessToken;
-      if (!token.accessToken) {
-        console.warn("[NextAuth] WARNING: accessToken is missing in session callback!");
+      if (token.accessToken) {
+        (session as any).accessToken = token.accessToken;
+        (session as any).user.id = token.sub;
       }
       return session;
     },

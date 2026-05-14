@@ -16,6 +16,8 @@ class Settings(BaseModel):
         "http://127.0.0.1:3000",
         "http://localhost:8000",
         "http://aetheris-api-prod.eba-3ijumbws.ap-south-1.elasticbeanstalk.com",
+        "https://ic1101.vercel.app",
+        "http://ic1101.vercel.app",
         os.getenv("FRONTEND_URL", "http://localhost:3000"),
     ]
 

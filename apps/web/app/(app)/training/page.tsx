@@ -79,10 +79,26 @@ export default function TrainingMonitorPage() {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!activeJobId) return;
-    const token = typeof window !== "undefined" ? localStorage.getItem("aetheris_token") : null;
-    window.open(`${API_BASE}/v1/training-jobs/${activeJobId}/download${token ? `?token=${token}` : ""}`, "_blank");
+    try {
+      const token = typeof window !== "undefined" ? localStorage.getItem("aetheris_token") : null;
+      const res = await fetch(`${API_BASE}/v1/training-jobs/${activeJobId}/download`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      if (!res.ok) throw new Error("Download failed");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `aetheris_model_${activeJobId.slice(0, 8)}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      console.error("Download error:", e);
+    }
   };
 
   const formatTime = (seconds: number) => {

@@ -26,11 +26,18 @@ def create_access_token(user_id: str, role: str, expires_minutes: int = 60) -> s
     return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
 
-def get_principal(authorization: str | None = Header(default=None)) -> Principal:
-    if not authorization or not authorization.startswith("Bearer "):
+def get_principal(
+    authorization: str | None = Header(default=None),
+    token: str | None = None,  # query-param fallback for downloads opened in new tabs
+) -> Principal:
+    if authorization and authorization.startswith("Bearer "):
+        raw_token = authorization.replace("Bearer ", "", 1)
+    elif token:
+        raw_token = token
+    else:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="missing bearer token")
 
-    token = authorization.replace("Bearer ", "", 1)
+    token = raw_token
     try:
         decoded = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
     except jwt.PyJWTError as exc:

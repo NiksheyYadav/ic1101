@@ -5,6 +5,7 @@ import os
 import shutil
 import zipfile
 from pathlib import Path
+import pandas as pd
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
 from pydantic import BaseModel
@@ -26,7 +27,7 @@ class DatasetVersionRead(BaseModel):
     filename: str
     rows: int
     columns: int
-    headers: list[str]
+    headers: list[dict] | list[str]
 
 
 class DatasetRead(BaseModel):
@@ -79,15 +80,30 @@ async def upload_dataset(
     headers = []
     
     if file.filename.endswith(".csv"):
-        with open(file_path, "r", encoding="utf-8", errors="replace") as f:
-            reader = csv.reader(f)
-            try:
-                headers = next(reader)
-                columns_count = len(headers)
-                rows_count = sum(1 for _ in reader)
-            except StopIteration:
-                shutil.rmtree(dataset_dir)
-                raise HTTPException(status_code=422, detail="Empty CSV file")
+        try:
+            df = pd.read_csv(file_path)
+            columns_count = len(df.columns)
+            rows_count = len(df)
+            headers = []
+            
+            for col in df.columns:
+                dtype = str(df[col].dtype)
+                missing_count = int(df[col].isna().sum())
+                missing_pct = f"{(missing_count / rows_count * 100):.1f}%" if rows_count > 0 else "0.0%"
+                
+                status = "ok"
+                if rows_count > 0 and missing_count / rows_count > 0.1:
+                    status = "warn"
+                    
+                headers.append({
+                    "name": col,
+                    "type": dtype,
+                    "missing": missing_pct,
+                    "status": status
+                })
+        except Exception as e:
+            shutil.rmtree(dataset_dir)
+            raise HTTPException(status_code=422, detail=f"Invalid CSV file: {str(e)}")
     elif file.filename.endswith(".zip"):
         try:
             with zipfile.ZipFile(file_path, "r") as zf:
@@ -99,7 +115,9 @@ async def upload_dataset(
                 
                 # Extract class names from folder structure
                 folders = {Path(img).parent.name for img in valid_images if Path(img).parent.name}
-                headers = list(folders)
+                
+                # Provide mock types for ZIP folders
+                headers = [{"name": folder, "type": "image_folder", "missing": "0.0%", "status": "ok"} for folder in folders]
                 columns_count = len(headers)
                 rows_count = len(valid_images)
         except zipfile.BadZipFile:

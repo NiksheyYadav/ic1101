@@ -1,7 +1,7 @@
 "use client";
 import { Upload, CloudLightning, Link2, CheckCircle, AlertTriangle, Sparkles, Database, Server, Key, Box } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { apiFetch } from "../../../lib/api";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,21 +20,48 @@ export default function DatasetsPage() {
   const [datasets, setDatasets] = useState<any[]>([]);
   const [activeTab, setActiveTab] = useState<"upload" | "connect" | "url">("upload");
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isUploading, setIsUploading] = useState(false);
+
   useEffect(() => {
     apiFetch<any[]>("/v1/datasets")
       .then(setDatasets)
       .catch(console.error);
   }, []);
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("workspace_id", "ws-default");
+      const name = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+      formData.append("name", name);
+      formData.append("file", file);
+
+      const res = await apiFetch<any>("/v1/datasets", {
+        method: "POST",
+        body: formData,
+      });
+      
+      setDatasets((prev) => [...prev.filter(d => d.name !== res.name), res]);
+    } catch (err) {
+      console.error("Upload failed", err);
+      alert("Failed to upload dataset.");
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
+
   const currentDataset = datasets.length > 0 ? datasets[datasets.length - 1] : null;
   const latestVersion = currentDataset?.versions?.[currentDataset.versions.length - 1] || null;
 
-  const dynamicColumns = latestVersion?.headers?.map((header: string) => ({
-    name: header,
-    type: "string", // Mocked type
-    missing: "0%", // Mocked missing
-    status: "ok", // Mocked status
-  })) || [
+  const dynamicColumns = Array.isArray(latestVersion?.headers) && latestVersion.headers.length > 0 && typeof latestVersion.headers[0] === 'object' 
+    ? latestVersion.headers 
+    : [
     { name: "age", type: "int64", missing: "0%", status: "ok" },
     { name: "income", type: "float64", missing: "2.1%", status: "ok" },
     { name: "gender", type: "category", missing: "0%", status: "ok" },
@@ -92,10 +119,15 @@ export default function DatasetsPage() {
                 transition={{ duration: 0.2 }}
                 style={{ position: "absolute", inset: 0 }}
               >
-                <div className="pro-glass-panel" style={{ padding: "48px 24px", textAlign: "center", borderRadius: 16, background: "rgba(10,10,15,0.4)", border: "2px dashed rgba(255,255,255,0.1)", marginBottom: 24 }}>
+                <div 
+                  className="pro-glass-panel" 
+                  onClick={() => !isUploading && fileInputRef.current?.click()}
+                  style={{ padding: "48px 24px", textAlign: "center", borderRadius: 16, background: "rgba(10,10,15,0.4)", border: "2px dashed rgba(255,255,255,0.1)", marginBottom: 24, cursor: isUploading ? "wait" : "pointer", opacity: isUploading ? 0.5 : 1 }}
+                >
+                  <input type="file" ref={fileInputRef} onChange={handleFileChange} style={{ display: "none" }} accept=".csv,.zip" />
                   <Upload size={48} color="#00D4FF" style={{ margin: "0 auto 16px auto", opacity: 0.8 }} />
-                  <h3 style={{ fontSize: 20, fontWeight: 600, marginBottom: 8 }}>Drag & Drop files here</h3>
-                  <p style={{ color: "var(--text-muted)", fontSize: 14 }}>Supports CSV, JSON, Parquet, Image folders, Audio files — Max 10 GB</p>
+                  <h3 style={{ fontSize: 20, fontWeight: 600, marginBottom: 8 }}>{isUploading ? "Uploading..." : "Click or Drag & Drop files here"}</h3>
+                  <p style={{ color: "var(--text-muted)", fontSize: 14 }}>Supports CSV, ZIP (Images) — Max 100 MB</p>
                 </div>
                 
                 <h3 style={{ fontSize: 14, fontWeight: 600, marginBottom: 16, color: "#E4E4E7" }}>Connect Sources</h3>

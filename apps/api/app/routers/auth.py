@@ -32,101 +32,80 @@ def me() -> dict[str, str]:
     return {"message": "use bearer token to access protected resources"}
 
 
-"""@router.get("/github/login")
-def github_login():
-    """Redirect to GitHub OAuth consent screen."""
-    client_id = os.getenv("GITHUB_CLIENT_ID")
-    if not client_id:
-        raise HTTPException(status_code=500, detail="GitHub Client ID not configured")
-        
-    # We use our own callback URL
-    redirect_uri = os.getenv("GITHUB_CALLBACK_URL", "http://localhost:8000/v1/auth/github/callback")
-    url = f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=user:email"
-    return RedirectResponse(url)
-
-
-@router.get("/github/callback")
-async def github_callback(code: str, db: Session = Depends(get_db)):
-    """Handle GitHub callback, exchange code, create user, issue JWT."""
-    client_id = os.getenv("GITHUB_CLIENT_ID")
-    client_secret = os.getenv("GITHUB_CLIENT_SECRET")
-    frontend_url = os.getenv("NEXT_PUBLIC_URL", "http://localhost:3000")
-    
-    async with httpx.AsyncClient() as client:
-        # 1. Exchange code for access_token
-        token_res = await client.post(
-            "https://github.com/login/oauth/access_token",
-            headers={"Accept": "application/json"},
-            data={
-                "client_id": client_id,
-                "client_secret": client_secret,
-                "code": code
-            }
-        )
-        token_data = token_res.json()
-        access_token = token_data.get("access_token")
-        if not access_token:
-            raise HTTPException(status_code=400, detail="Failed to get access token from GitHub")
-            
-        # 2. Get user profile
-        user_res = await client.get(
-            "https://api.github.com/user",
-            headers={"Authorization": f"Bearer {access_token}"}
-        )
-        github_user = user_res.json()
-        
-        # 3. Get user email
-        email = github_user.get("email")
-        if not email:
-            emails_res = await client.get(
-                "https://api.github.com/user/emails",
-                headers={"Authorization": f"Bearer {access_token}"}
-            )
-            emails = emails_res.json()
-            primary = next((e for e in emails if e.get("primary")), None)
-            if primary:
-                email = primary.get("email")
-            elif emails:
-                email = emails[0].get("email")
-                
-        if not email:
-            raise HTTPException(status_code=400, detail="No email available from GitHub")
-            
-    # 4. Check if user exists in DB or create
-    github_id = str(github_user.get("id"))
-    user = db.query(User).filter(User.email == email).first()
-    if not user:
-        user = db.query(User).filter(User.github_id == github_id).first()
-        
-    if not user:
-        # Create new user
-        user = User(
-            email=email,
-            display_name=github_user.get("name") or github_user.get("login"),
-            github_id=github_id,
-            avatar_url=github_user.get("avatar_url")
-        )
-        db.add(user)
-        db.commit()
-        db.refresh(user)
-    else:
-        # Update github_id/avatar if not set
-        if not user.github_id:
-            user.github_id = github_id
-            user.avatar_url = github_user.get("avatar_url")
-            db.commit()
-            
-    # 5. Issue our JWT (give them owner role by default for demo)
-    jwt_token = create_access_token(user.id, "owner")
-    
-    # 6. Redirect to frontend with token
-    return RedirectResponse(f"{frontend_url}/callback?token={jwt_token}")
-"""
-
+# GitHub OAuth - static stubs for now (real implementation preserved below)
 @router.get("/github/login")
 def github_login():
-    return {"message": "HTTP 503: GitHub Server down. Please try again later."}
+    return {"message": "GitHub OAuth is not configured yet. Please use email login."}
+
 
 @router.get("/github/callback")
 def github_callback():
     return {"message": "OAuth disabled."}
+
+
+# ──────────────────────────────────────────────────────────────────────
+# Full GitHub OAuth implementation (activate when GITHUB_CLIENT_ID is set)
+# ──────────────────────────────────────────────────────────────────────
+#
+# @router.get("/github/login")
+# def github_login():
+#     client_id = os.getenv("GITHUB_CLIENT_ID")
+#     if not client_id:
+#         raise HTTPException(status_code=500, detail="GitHub Client ID not configured")
+#     redirect_uri = os.getenv("GITHUB_CALLBACK_URL", "http://localhost:8000/v1/auth/github/callback")
+#     url = f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=user:email"
+#     return RedirectResponse(url)
+#
+#
+# @router.get("/github/callback")
+# async def github_callback(code: str, db: Session = Depends(get_db)):
+#     client_id = os.getenv("GITHUB_CLIENT_ID")
+#     client_secret = os.getenv("GITHUB_CLIENT_SECRET")
+#     frontend_url = os.getenv("NEXT_PUBLIC_URL", "http://localhost:3000")
+#
+#     async with httpx.AsyncClient() as client:
+#         token_res = await client.post(
+#             "https://github.com/login/oauth/access_token",
+#             headers={"Accept": "application/json"},
+#             data={"client_id": client_id, "client_secret": client_secret, "code": code}
+#         )
+#         token_data = token_res.json()
+#         access_token = token_data.get("access_token")
+#         if not access_token:
+#             raise HTTPException(status_code=400, detail="Failed to get access token from GitHub")
+#
+#         user_res = await client.get("https://api.github.com/user", headers={"Authorization": f"Bearer {access_token}"})
+#         github_user = user_res.json()
+#
+#         email = github_user.get("email")
+#         if not email:
+#             emails_res = await client.get("https://api.github.com/user/emails", headers={"Authorization": f"Bearer {access_token}"})
+#             emails = emails_res.json()
+#             primary = next((e for e in emails if e.get("primary")), None)
+#             email = primary.get("email") if primary else (emails[0].get("email") if emails else None)
+#
+#         if not email:
+#             raise HTTPException(status_code=400, detail="No email available from GitHub")
+#
+#     github_id = str(github_user.get("id"))
+#     user = db.query(User).filter(User.email == email).first()
+#     if not user:
+#         user = db.query(User).filter(User.github_id == github_id).first()
+#     if not user:
+#         user = User(
+#             email=email,
+#             display_name=github_user.get("name") or github_user.get("login"),
+#             github_id=github_id,
+#             avatar_url=github_user.get("avatar_url")
+#         )
+#         db.add(user)
+#         db.commit()
+#         db.refresh(user)
+#     else:
+#         if not user.github_id:
+#             user.github_id = github_id
+#             user.avatar_url = github_user.get("avatar_url")
+#             db.commit()
+#
+#     jwt_token = create_access_token(user.id, "owner")
+#     return RedirectResponse(f"{frontend_url}/callback?token={jwt_token}")

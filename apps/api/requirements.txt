@@ -13,3 +13,4 @@ torch
 torchvision
 boto3
 python-dotenv
+httpx

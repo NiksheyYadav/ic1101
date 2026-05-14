@@ -37,6 +37,7 @@ export default function NewTrainingJobPage() {
           learning_rate: parseFloat(learningRate),
           optimizer,
           precision,
+          dataset_s3_key: dataset === "hymenoptera" ? "datasets/hymenoptera.zip" : undefined,
         }),
       });
       // Redirect to the training monitor page
@@ -105,8 +106,10 @@ export default function NewTrainingJobPage() {
                 onChange={(e) => setDataset(e.target.value)}
                 style={{ width: "100%", padding: "14px 16px", borderRadius: 8, background: "rgba(0,0,0,0.4)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", appearance: "none", fontFamily: "var(--font-sans)", fontSize: 14 }}
               >
-                <option value="imagenet-1k-subset">Synthetic Demo Dataset</option>
-                <option value="custom-upload">Custom Upload</option>
+                <option value="synthetic">Synthetic Data (Demo)</option>
+                <option value="hymenoptera">Hymenoptera (Ants vs Bees - 45MB)</option>
+                <option value="imagenet-1k-subset">ImageNet 1K (Subset)</option>
+                <option value="cifar-10">CIFAR-10</option>
               </select>
             </div>
           </div>

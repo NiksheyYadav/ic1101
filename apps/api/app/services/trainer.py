@@ -203,6 +203,10 @@ def _train_image_model(status: TrainingStatus, config: dict, job_dir: Path) -> N
             subdirs = [d for d in dataset_dir.iterdir() if d.is_dir() and d.name != "__MACOSX"]
             if len(subdirs) == 1:
                 img_dir = subdirs[0]
+            
+            # If the dataset contains a 'train' split, use that for training
+            if (img_dir / "train").exists() and (img_dir / "train").is_dir():
+                img_dir = img_dir / "train"
                 
             dataset = ImageFolder(root=str(img_dir), transform=transform)
             num_classes = len(dataset.classes)

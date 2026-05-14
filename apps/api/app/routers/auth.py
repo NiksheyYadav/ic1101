@@ -32,7 +32,7 @@ def me() -> dict[str, str]:
     return {"message": "use bearer token to access protected resources"}
 
 
-@router.get("/github/login")
+"""@router.get("/github/login")
 def github_login():
     """Redirect to GitHub OAuth consent screen."""
     client_id = os.getenv("GITHUB_CLIENT_ID")
@@ -121,3 +121,12 @@ async def github_callback(code: str, db: Session = Depends(get_db)):
     
     # 6. Redirect to frontend with token
     return RedirectResponse(f"{frontend_url}/callback?token={jwt_token}")
+"""
+
+@router.get("/github/login")
+def github_login():
+    return {"message": "HTTP 503: GitHub Server down. Please try again later."}
+
+@router.get("/github/callback")
+def github_callback():
+    return {"message": "OAuth disabled."}

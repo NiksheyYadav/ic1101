@@ -1,0 +1,10 @@
+{
+  "dataset_s3_key": null,
+  "model_type": "image",
+  "epochs": 40,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "optimizer": "AdamW",
+  "precision": "fp16",
+  "num_classes": 5
+}

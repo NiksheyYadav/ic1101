@@ -47,6 +47,7 @@ except ImportError:
 
 from app.services.training_status import TrainingStatus, status_manager
 from app.services.s3_service import s3_service
+from app.services.models import TextCNN
 
 # Base directory for saved outputs
 OUTPUT_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "outputs"
@@ -333,34 +334,7 @@ def _train_text_model(status: TrainingStatus, config: dict, job_dir: Path) -> No
     status.add_log(f"Initializing TextCNN on {device_str.upper()}")
     status.current_model = "TextCNN"
 
-    model = nn.Sequential(
-        nn.Embedding(vocab_size, 64),
-        nn.Conv1d(64, 32, kernel_size=3, padding=1),
-        nn.ReLU(),
-        nn.AdaptiveAvgPool1d(1),
-        nn.Flatten(),
-        nn.Linear(32, num_classes),
-    )
-
-    # Fix: Conv1d expects (batch, channels, seq) but Embedding gives (batch, seq, embed)
-    class TextCNN(nn.Module):
-        def __init__(self):
-            super().__init__()
-            self.embed = nn.Embedding(vocab_size, 64)
-            self.conv = nn.Conv1d(64, 32, kernel_size=3, padding=1)
-            self.relu = nn.ReLU()
-            self.pool = nn.AdaptiveAvgPool1d(1)
-            self.fc = nn.Linear(32, num_classes)
-
-        def forward(self, x):
-            x = self.embed(x)          # (B, seq, 64)
-            x = x.permute(0, 2, 1)     # (B, 64, seq)
-            x = self.conv(x)
-            x = self.relu(x)
-            x = self.pool(x).squeeze(-1)
-            return self.fc(x)
-
-    model = TextCNN().to(device)
+    model = TextCNN(vocab_size=vocab_size, num_classes=num_classes).to(device)
 
     # Synthetic text data
     n_samples = 500

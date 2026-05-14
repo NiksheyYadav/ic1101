@@ -2,13 +2,26 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { API_BASE } from "../../../lib/api";
 
 export default function SignInPage() {
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login delay, then redirect to dashboard
+    try {
+      const res = await fetch(`${API_BASE}/v1/auth/token`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: "admin", role: "owner" })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        localStorage.setItem("aetheris_token", data.access_token);
+      }
+    } catch (err) {
+      console.error("Login failed", err);
+    }
     // The BootLoader sitewide component will automatically run if we do a hard navigation,
     // but with router.push it's a soft navigation. We can do window.location.href to trigger
     // the full cinematic boot loader experience!

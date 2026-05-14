@@ -3,13 +3,16 @@ from pathlib import Path
 import boto3
 from botocore.exceptions import ClientError
 import logging
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_REGION = os.environ.get("AWS_REGION", "ap-south-1")
-S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME", "aetheris-production-bucket")
+S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME", "aetheris-ai-models-013943758705")
 
 class S3Service:
     def __init__(self):

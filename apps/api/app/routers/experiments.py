@@ -1,12 +1,16 @@
 import json
 
-from fastapi import APIRouter, Depends, HTTPException
+import io
+from typing import Optional
+
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.db.models import Experiment, TrainingJob
 from app.db.session import get_db
 from app.security.auth import Principal, require_role
+from app.services.predictor import predictor
 
 router = APIRouter()
 
@@ -76,3 +80,39 @@ def _exp_to_read(e: Experiment) -> ExperimentRead:
         metrics=json.loads(e.metrics_json) if e.metrics_json else None,
         created_at=str(e.created_at) if e.created_at else None,
     )
+
+
+@router.post("/{experiment_id}/predict")
+async def predict_experiment(
+    experiment_id: str,
+    file: Optional[UploadFile] = File(None),
+    text: Optional[str] = Form(None),
+    principal: Principal = Depends(require_role("owner", "admin", "member", "viewer")),
+    db: Session = Depends(get_db),
+):
+    """Run live inference on the chosen experiment."""
+    exp = db.query(Experiment).filter(Experiment.id == experiment_id).first()
+    if not exp:
+        raise HTTPException(status_code=404, detail="Experiment not found")
+        
+    job_id = exp.job_id
+    
+    try:
+        if file:
+            # It's likely an image
+            from PIL import Image
+            contents = await file.read()
+            img = Image.open(io.BytesIO(contents)).convert("RGB")
+            res = predictor.predict(job_id, img)
+            return res
+        elif text:
+            res = predictor.predict(job_id, text)
+            return res
+        else:
+            raise HTTPException(status_code=400, detail="Must provide either 'file' or 'text'")
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")

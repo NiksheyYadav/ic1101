@@ -1,6 +1,4 @@
-const API_BASE = process.env.NEXT_PUBLIC_USE_DIRECT_API === "true" 
-  ? (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000") 
-  : "/api";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const token =

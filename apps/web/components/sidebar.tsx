@@ -6,6 +6,8 @@ import {
   FlaskConical, Box, Rocket, Activity, Users, CreditCard, Settings,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { signOut } from "next-auth/react";
+import { LogOut } from "lucide-react";
 
 const NAV = [
   { section: "Platform" },
@@ -58,9 +60,15 @@ export function Sidebar() {
           )
         )}
       </nav>
-      <div className="sidebar-footer">
-        <div className="pulse-dot" />
-        <span>All systems operational</span>
+      <div className="sidebar-footer" style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: 16 }}>
+        <div className="nav-item" onClick={() => signOut({ callbackUrl: "/signin" })} style={{ cursor: "pointer", color: "var(--danger)", opacity: 0.8 }}>
+          <LogOut size={18} />
+          Sign Out
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 12, fontSize: 10, color: "var(--text-muted)" }}>
+          <div className="pulse-dot" />
+          <span>All systems operational</span>
+        </div>
       </div>
     </aside>
   );

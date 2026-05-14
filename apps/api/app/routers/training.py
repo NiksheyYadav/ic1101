@@ -1,7 +1,7 @@
 import asyncio
 import json
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Response
 from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
@@ -178,7 +178,7 @@ def get_training_status(
 def download_model(
     job_id: str,
     _principal: Principal = Depends(require_role("owner", "admin", "member")),
-) -> RedirectResponse:
+):
     """Download the trained model from S3 via presigned URL."""
     s3_key = f"models/{job_id}/model_package.zip"
     filename = f"aetheris_model_{job_id[:8]}.zip"
@@ -188,7 +188,6 @@ def download_model(
         # Fallback to local if S3 fails or is not configured
         zip_path = get_model_zip_path(job_id)
         if zip_path:
-            from fastapi.responses import FileResponse
             return FileResponse(
                 path=str(zip_path),
                 filename=filename,
@@ -196,7 +195,8 @@ def download_model(
             )
         raise HTTPException(status_code=404, detail="Model not ready or job not found")
         
-    return RedirectResponse(url=url)
+    # Return 307 with manual Location header to prevent Starlette from double-encoding the URL parameters
+    return Response(status_code=307, headers={"Location": url})
 
 
 @router.post("/{job_id}/pause")

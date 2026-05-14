@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 import { Zap, Upload, Rocket, GitCompare, TrendingUp, TrendingDown, Sparkles } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { apiFetch } from "../../../lib/api";
 
 // --- DEMO DATA REMOVED FOR PRODUCTION ---
 // const initialLossData = Array.from({ length: 30 }, (_, i) => ({
@@ -31,57 +32,56 @@ export default function DashboardPage() {
     const poll = async () => {
       try {
         // Fetch System Info
-        const sysRes = await fetch("/api/v1/system/info");
-        if (sysRes.ok && mounted) {
-          const sys = await sysRes.json();
-          // Use CPU usage if CUDA is not available as a proxy for the demo
-          const usage = sys.cuda_available ? sys.gpu_memory_used_mb / sys.gpu_memory_total_mb * 100 : sys.cpu_usage;
-          setGpuData(prev => {
-            const next = [...prev.slice(1), { h: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'}), usage }];
-            return next;
-          });
-          setKpis(k => ({...k, gpuUtilization: `${usage.toFixed(0)}%`}));
-        }
+        try {
+          const sys = await apiFetch<any>("/v1/system/info");
+          if (mounted) {
+            const usage = sys.cuda_available ? sys.gpu_memory_used_mb / sys.gpu_memory_total_mb * 100 : sys.cpu_usage;
+            setGpuData(prev => {
+              const next = [...prev.slice(1), { h: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'}), usage }];
+              return next;
+            });
+            setKpis(k => ({...k, gpuUtilization: `${usage.toFixed(0)}%`}));
+          }
+        } catch(e) {}
 
         // Fetch Jobs
-        const jobsRes = await fetch("/api/v1/training?workspace_id=default");
-        if (jobsRes.ok && mounted) {
-          const fetchedJobs = await jobsRes.json();
-          setJobs(fetchedJobs.map((j: any) => ({
-            name: j.model_type || j.id.substring(0, 8),
-            progress: j.progress,
-            acc: "-",
-            eta: "-",
-            status: j.status
-          })));
-          
-          const running = fetchedJobs.filter((j: any) => j.status === "running");
-          setKpis(k => ({...k, activeTrainings: running.length}));
-          
-          if (running.length > 0) {
-            const statusRes = await fetch(`/api/v1/training/${running[0].id}/status`);
-            if (statusRes.ok && mounted) {
-              const st = await statusRes.json();
-              if (st.epoch_history && st.epoch_history.length > 0) {
+        try {
+          const fetchedJobs = await apiFetch<any[]>("/v1/training-jobs?workspace_id=default");
+          if (mounted) {
+            setJobs(fetchedJobs.map((j: any) => ({
+              name: j.model_type || j.id.substring(0, 8),
+              progress: j.progress,
+              acc: "-",
+              eta: "-",
+              status: j.status
+            })));
+            
+            const running = fetchedJobs.filter((j: any) => j.status === "running");
+            setKpis(k => ({...k, activeTrainings: running.length}));
+            
+            if (running.length > 0) {
+              const st = await apiFetch<any>(`/v1/training-jobs/${running[0].id}/status`);
+              if (mounted && st.epoch_history && st.epoch_history.length > 0) {
                 setLossData(st.epoch_history);
               }
             }
           }
-        }
+        } catch(e) {}
 
         // Fetch Experiments
-        const expRes = await fetch("/api/v1/experiments?workspace_id=default");
-        if (expRes.ok && mounted) {
-          const fetchedExp = await expRes.json();
-          setExperiments(fetchedExp.map((e: any) => ({
-            id: e.name,
-            model: e.name,
-            acc: e.metrics?.accuracy ? (e.metrics.accuracy * 100).toFixed(1) + "%" : "-",
-            loss: e.metrics?.loss || "-",
-            status: "completed"
-          })));
-          setKpis(k => ({...k, modelsInProd: fetchedExp.length}));
-        }
+        try {
+          const fetchedExp = await apiFetch<any[]>("/v1/experiments?workspace_id=default");
+          if (mounted) {
+            setExperiments(fetchedExp.map((e: any) => ({
+              id: e.name,
+              model: e.name,
+              acc: e.metrics?.accuracy ? (e.metrics.accuracy * 100).toFixed(1) + "%" : "-",
+              loss: e.metrics?.loss || "-",
+              status: "completed"
+            })));
+            setKpis(k => ({...k, modelsInProd: fetchedExp.length}));
+          }
+        } catch(e) {}
       } catch (e) {
         console.error("Dashboard polling error:", e);
       }

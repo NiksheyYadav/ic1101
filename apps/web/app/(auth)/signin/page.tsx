@@ -3,14 +3,17 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { API_BASE } from "../../../lib/api";
 
+
 export default function SignInPage() {
-  const handleGithubLogin = () => {
-    window.location.href = `${API_BASE}/v1/auth/github/login`;
+  const handleLogin = () => {
+    localStorage.setItem("aetheris_token", "demo-token");
+    window.location.href = "/dashboard";
   };
+
 
   return (
     <div style={{ display: "flex", justifyContent: "center", width: "100%", padding: 24 }}>
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }} // Delayed for BootLoader
@@ -24,7 +27,7 @@ export default function SignInPage() {
         <h1 style={{ fontSize: 24, fontWeight: 600, color: "#fff", marginBottom: 8, letterSpacing: "-0.02em" }}>Welcome back</h1>
         <p style={{ color: "var(--text-muted)", fontSize: 14, marginBottom: 32, textAlign: "center" }}>Enter your credentials to access the command center.</p>
 
-        <form style={{ width: "100%", display: "flex", flexDirection: "column", gap: 16 }} onSubmit={(e) => { e.preventDefault(); handleGithubLogin(); }}>
+        <form style={{ width: "100%", display: "flex", onSubmit={(e) => { e.preventDefault(); handleLogin(); }}flexDirection: "column", gap: 16 }} >
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <label style={{ fontSize: 12, fontWeight: 600, color: "#fff", textTransform: "uppercase", letterSpacing: 1 }}>Email</label>
             <input 
@@ -64,7 +67,7 @@ export default function SignInPage() {
         </div>
 
         <button 
-          onClick={handleGithubLogin}
+          onClick={handleLogin}
           className="btn-outline-cinematic" 
           style={{ width: "100%", justifyContent: "center", color: "#fff", borderColor: "rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}
         >

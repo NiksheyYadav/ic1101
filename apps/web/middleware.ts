@@ -46,18 +46,21 @@ export async function middleware(request: NextRequest) {
   }
 
   // Verify NextAuth session token
+  const secret = process.env.NEXTAUTH_SECRET || 'fallback-secret-for-dev';
   const token = await getToken({
     req: request,
-    secret: process.env.NEXTAUTH_SECRET || 'fallback-secret-for-dev',
+    secret: secret,
   });
 
   if (!token) {
+    console.warn(`[Middleware] No token found for ${pathname}. Redirecting to /signin. (Secret check: ${secret.substring(0, 5)}...)`);
     // Redirect unauthenticated users to sign-in
     const signInUrl = new URL('/signin', request.url);
     signInUrl.searchParams.set('callbackUrl', pathname);
     return NextResponse.redirect(signInUrl);
   }
 
+  console.log(`[Middleware] Authenticated access to ${pathname} for user ${token.email}`);
   return NextResponse.next();
 }
 

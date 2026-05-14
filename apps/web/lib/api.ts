@@ -18,8 +18,15 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
 
   if (typeof window !== "undefined") {
     const session = await getSession();
-    if ((session as any)?.accessToken) {
-      token = (session as any).accessToken;
+    if (session) {
+      if ((session as any)?.accessToken) {
+        token = (session as any).accessToken;
+      } else {
+        // Log this but don't redirect to avoided loops
+        console.warn("User is signed into NextAuth but backend accessToken is missing.");
+      }
+    } else {
+      // Completely unauthenticated
     }
   }
 
@@ -39,10 +46,13 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   });
 
   if (res.status === 401) {
-    // Redirect to sign-in once (avoid redirect storm)
+    // Only redirect if they are not signed into NextAuth at all
     if (typeof window !== "undefined" && !redirecting) {
-      redirecting = true;
-      signIn(undefined, { callbackUrl: window.location.pathname });
+      const session = await getSession();
+      if (!session) {
+        redirecting = true;
+        signIn(undefined, { callbackUrl: window.location.pathname });
+      }
     }
     throw new AuthError();
   }
@@ -82,8 +92,11 @@ async function fetchEventStream(
 
   if (res.status === 401) {
     if (typeof window !== "undefined" && !redirecting) {
-      redirecting = true;
-      signIn(undefined, { callbackUrl: window.location.pathname });
+      const session = await getSession();
+      if (!session) {
+        redirecting = true;
+        signIn(undefined, { callbackUrl: window.location.pathname });
+      }
     }
     throw new AuthError();
   }

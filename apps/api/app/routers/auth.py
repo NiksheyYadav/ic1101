@@ -1,7 +1,5 @@
 import os
-import httpx
-from fastapi import APIRouter, Depends, HTTPException, Request
-from fastapi.responses import RedirectResponse
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -22,6 +20,13 @@ class LoginRequest(BaseModel):
     password: str
 
 
+class GithubSyncRequest(BaseModel):
+    email: str
+    name: str
+    github_id: str
+    avatar_url: str
+
+
 @router.get("/healthz")
 def healthz() -> dict[str, str]:
     return {"status": "ok", "service": "auth-service"}
@@ -34,10 +39,10 @@ def issue_token(payload: TokenRequest) -> dict[str, str]:
 
 @router.post("/login")
 def login(payload: LoginRequest, db: Session = Depends(get_db)) -> dict[str, str]:
-    # Very basic manual sign-in (for demo purposes)
+    """Authenticate with email/password. Used by NextAuth CredentialsProvider."""
     user = db.query(User).filter(User.email == payload.email).first()
     if not user:
-        # Create a new user automatically
+        # Auto-register for demo purposes
         user = User(
             email=payload.email,
             display_name=payload.email.split("@")[0]
@@ -46,30 +51,17 @@ def login(payload: LoginRequest, db: Session = Depends(get_db)) -> dict[str, str
         db.commit()
         db.refresh(user)
 
-    # Issue token
-    return {"access_token": create_access_token(str(user.id), "owner"), "token_type": "bearer"}
-
-
-@router.get("/me")
-def me() -> dict[str, str]:
-    return {"message": "use bearer token to access protected resources"}
-
-
-from app.core.config import settings
-
-class GithubSyncRequest(BaseModel):
-    email: str
-    name: str
-    github_id: str
-    avatar_url: str
+    return {"access_token": create_access_token(str(user.id), "owner"), "token_type": "bearer", "user_id": str(user.id)}
 
 
 @router.post("/github-sync")
 def github_sync(payload: GithubSyncRequest, db: Session = Depends(get_db)) -> dict[str, str]:
+    """Sync a GitHub-authenticated user with the backend database.
+    Called by NextAuth's jwt callback after a successful GitHub OAuth sign-in."""
     user = db.query(User).filter(User.email == payload.email).first()
     if not user:
         user = db.query(User).filter(User.github_id == payload.github_id).first()
-    
+
     if not user:
         user = User(
             email=payload.email,
@@ -81,77 +73,16 @@ def github_sync(payload: GithubSyncRequest, db: Session = Depends(get_db)) -> di
         db.commit()
         db.refresh(user)
     else:
-        # Update existing user
+        # Update existing user with latest GitHub info
         user.github_id = payload.github_id
         user.avatar_url = payload.avatar_url
+        if payload.name and not user.display_name:
+            user.display_name = payload.name
         db.commit()
 
     return {"access_token": create_access_token(str(user.id), "owner"), "token_type": "bearer"}
 
 
-@router.get("/github/login")
-def github_login():
-    client_id = os.getenv("GITHUB_CLIENT_ID")
-    # Get the frontend URL from settings (usually the last one in cors_origins or from env)
-    frontend_url = os.getenv("FRONTEND_URL") or os.getenv("NEXT_PUBLIC_URL") or "https://ic1101.vercel.app"
-    
-    if not client_id:
-        return RedirectResponse(f"{frontend_url}/signin?error=github_not_configured")
-    
-    redirect_uri = os.getenv("GITHUB_CALLBACK_URL", "http://localhost:8000/v1/auth/github/callback")
-    url = f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=user:email"
-    return RedirectResponse(url)
-
-
-@router.get("/github/callback")
-async def github_callback(code: str, db: Session = Depends(get_db)):
-    client_id = os.getenv("GITHUB_CLIENT_ID")
-    client_secret = os.getenv("GITHUB_CLIENT_SECRET")
-    frontend_url = os.getenv("NEXT_PUBLIC_URL", "http://localhost:3000")
-
-    async with httpx.AsyncClient() as client:
-        token_res = await client.post(
-            "https://github.com/login/oauth/access_token",
-            headers={"Accept": "application/json"},
-            data={"client_id": client_id, "client_secret": client_secret, "code": code}
-        )
-        token_data = token_res.json()
-        access_token = token_data.get("access_token")
-        if not access_token:
-            raise HTTPException(status_code=400, detail="Failed to get access token from GitHub")
-
-        user_res = await client.get("https://api.github.com/user", headers={"Authorization": f"Bearer {access_token}"})
-        github_user = user_res.json()
-
-        email = github_user.get("email")
-        if not email:
-            emails_res = await client.get("https://api.github.com/user/emails", headers={"Authorization": f"Bearer {access_token}"})
-            emails = emails_res.json()
-            primary = next((e for e in emails if e.get("primary")), None)
-            email = primary.get("email") if primary else (emails[0].get("email") if emails else None)
-
-        if not email:
-            raise HTTPException(status_code=400, detail="No email available from GitHub")
-
-    github_id = str(github_user.get("id"))
-    user = db.query(User).filter(User.email == email).first()
-    if not user:
-        user = db.query(User).filter(User.github_id == github_id).first()
-    if not user:
-        user = User(
-            email=email,
-            display_name=github_user.get("name") or github_user.get("login"),
-            github_id=github_id,
-            avatar_url=github_user.get("avatar_url")
-        )
-        db.add(user)
-        db.commit()
-        db.refresh(user)
-    else:
-        if not user.github_id:
-            user.github_id = github_id
-            user.avatar_url = github_user.get("avatar_url")
-            db.commit()
-
-    jwt_token = create_access_token(str(user.id), "owner")
-    return RedirectResponse(f"{frontend_url}/callback?token={jwt_token}")
+@router.get("/me")
+def me() -> dict[str, str]:
+    return {"message": "use bearer token to access protected resources"}

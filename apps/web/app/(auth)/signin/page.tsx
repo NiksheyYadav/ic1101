@@ -1,33 +1,36 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { API_BASE } from "../../../lib/api";
 import { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function SignInPage() {
+function SignInContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const error = params.get("error");
-    if (error === "github_not_configured") {
-      setErrorMsg("GitHub Login is currently unavailable. Please use email/password.");
-    } else if (error === "CredentialsSignin") {
+    const error = searchParams.get("error");
+    if (error === "CredentialsSignin") {
       setErrorMsg("Invalid email or password. Please try again.");
+    } else if (error === "OAuthAccountNotLinked") {
+      setErrorMsg("This email is already linked to another account.");
     } else if (error) {
       setErrorMsg("An authentication error occurred. Please try again.");
     }
-  }, []);
+  }, [searchParams]);
 
   const handleLogin = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setLoading(true);
     setErrorMsg("");
-    
+
+    const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+
     const result = await signIn("credentials", {
       email,
       password,
@@ -39,21 +42,21 @@ export default function SignInPage() {
     if (result?.error) {
       setErrorMsg("Invalid credentials. Please try again.");
     } else {
-      window.location.href = "/dashboard";
+      window.location.href = callbackUrl;
     }
   };
 
   const handleGithubLogin = () => {
-    signIn("github", { callbackUrl: "/dashboard" });
+    const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+    signIn("github", { callbackUrl });
   };
-
 
   return (
     <div style={{ display: "flex", justifyContent: "center", width: "100%", padding: 24 }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }} // Delayed for BootLoader
+        transition={{ duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
         className="pro-glass-panel" 
         style={{ width: "100%", maxWidth: 420, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", background: "rgba(10,10,15,0.3)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 20px 40px rgba(0,0,0,0.4)" }}
       >
@@ -92,7 +95,7 @@ export default function SignInPage() {
           style={{ width: "100%", display: "flex", flexDirection: "column", gap: 16 }}
           onSubmit={handleLogin}
         >
-          {errorMsg && !window.location.search.includes("github") && (
+          {errorMsg && (
             <div style={{ width: "100%", padding: "10px 12px", background: "rgba(255, 68, 68, 0.1)", border: "1px solid rgba(255, 68, 68, 0.2)", borderRadius: 8, color: "#ff4444", fontSize: 12, textAlign: "center", marginBottom: 8 }}>
               {errorMsg}
             </div>
@@ -122,7 +125,6 @@ export default function SignInPage() {
               placeholder="••••••••" 
               required
               value={password}
-              suppressHydrationWarning
               onChange={(e) => setPassword(e.target.value)}
               style={{ width: "100%", padding: "12px 16px", borderRadius: 8, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", fontSize: 14, transition: "all 0.2s" }}
               onFocus={(e) => e.target.style.borderColor = "#00D4FF"}
@@ -130,8 +132,13 @@ export default function SignInPage() {
             />
           </div>
 
-          <button type="submit" className="btn-cinematic" style={{ width: "100%", marginTop: 8, justifyContent: "center" }}>
-            Sign In <ArrowRight size={16} />
+          <button 
+            type="submit" 
+            className="btn-cinematic" 
+            style={{ width: "100%", marginTop: 8, justifyContent: "center" }}
+            disabled={loading}
+          >
+            {loading ? "Signing in..." : "Sign In"} <ArrowRight size={16} />
           </button>
         </form>
 
@@ -140,12 +147,6 @@ export default function SignInPage() {
           <span style={{ fontSize: 12, color: "var(--text-muted)" }}>OR</span>
           <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.05)" }} />
         </div>
-
-        {errorMsg && window.location.search.includes("github") && (
-          <div style={{ width: "100%", padding: "10px 12px", background: "rgba(255, 68, 68, 0.1)", border: "1px solid rgba(255, 68, 68, 0.2)", borderRadius: 8, color: "#ff4444", fontSize: 12, textAlign: "center", marginBottom: 16 }}>
-            {errorMsg}
-          </div>
-        )}
 
         <button 
           onClick={handleGithubLogin}
@@ -164,5 +165,13 @@ export default function SignInPage() {
         </p>
       </motion.div>
     </div>
+  );
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={<div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", color: "#fff" }}>Loading...</div>}>
+      <SignInContent />
+    </Suspense>
   );
 }

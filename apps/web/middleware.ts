@@ -1,35 +1,66 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
-export function middleware(request: NextRequest) {
-  // Mock authentication logic
-  // Since we don't have a real backend yet, we just check if the user is trying to access
-  // the dashboard without an 'aetheris_session' cookie.
-  // In a real app, you would verify a JWT or session token here.
+// Routes that require authentication
+const PROTECTED_PREFIXES = [
+  '/dashboard',
+  '/projects',
+  '/datasets',
+  '/preprocessing',
+  '/training',
+  '/experiments',
+  '/models',
+  '/deployments',
+  '/monitoring',
+  '/team',
+  '/billing',
+  '/settings',
+];
 
-  const isDashboardRoute = request.nextUrl.pathname.startsWith('/dashboard') || 
-                           request.nextUrl.pathname.startsWith('/projects') ||
-                           request.nextUrl.pathname.startsWith('/training');
+// Routes that are always public
+const PUBLIC_PATHS = [
+  '/signin',
+  '/signup',
+  '/sentry-example-page',
+];
 
-  // We are currently not setting the cookie in the signin page, because 
-  // window.location.href = "/dashboard" allows us to simulate the flow easily.
-  // However, if we want to block the dashboard strictly, we can check for a cookie.
-  // For the sake of the cinematic frontend demo, we will allow access to the dashboard 
-  // if they come from the signin page, or we just let them through. 
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
 
-  // Since this is a demo, let's just log it and pass through to avoid breaking the UX,
-  // but if you want strict checking, uncomment the lines below:
-  
-  /*
-  const sessionCookie = request.cookies.get('aetheris_session');
-  if (isDashboardRoute && !sessionCookie) {
-    return NextResponse.redirect(new URL('/signin', request.url));
+  // Skip API routes, static files, and Next.js internals
+  if (
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/favicon') ||
+    pathname.includes('.')
+  ) {
+    return NextResponse.next();
   }
-  */
+
+  // Check if the route is protected
+  const isProtected = PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+
+  if (!isProtected) {
+    return NextResponse.next();
+  }
+
+  // Verify NextAuth session token
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET || 'fallback-secret-for-dev',
+  });
+
+  if (!token) {
+    // Redirect unauthenticated users to sign-in
+    const signInUrl = new URL('/signin', request.url);
+    signInUrl.searchParams.set('callbackUrl', pathname);
+    return NextResponse.redirect(signInUrl);
+  }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 };

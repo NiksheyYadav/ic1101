@@ -3,12 +3,9 @@ import { getSession } from "next-auth/react";
 const API_BASE = "/api/proxy";
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  let token =
-    typeof window !== "undefined"
-      ? localStorage.getItem("aetheris_token")
-      : null;
+  // Get token exclusively from NextAuth session
+  let token: string | null = null;
 
-  // Try to get token from NextAuth session
   if (typeof window !== "undefined") {
     const session = await getSession();
     if ((session as any)?.accessToken) {
@@ -43,12 +40,9 @@ async function fetchEventStream(
   onMessage: (data: any) => void,
   signal?: AbortSignal
 ) {
-  let token =
-    typeof window !== "undefined"
-      ? localStorage.getItem("aetheris_token")
-      : null;
+  // Get token exclusively from NextAuth session
+  let token: string | null = null;
 
-  // Try to get token from NextAuth session
   if (typeof window !== "undefined") {
     const session = await getSession();
     if ((session as any)?.accessToken) {

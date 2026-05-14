@@ -19,7 +19,9 @@ export async function DELETE(request: NextRequest, { params }: { params: { path:
 async function handleProxy(request: NextRequest, pathArray: string[]) {
   try {
     // Determine target URL
-    let baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    const backendProdUrl = "http://aetheris-api-prod.eba-3ijumbws.ap-south-1.elasticbeanstalk.com";
+    let baseUrl = process.env.NEXT_PUBLIC_API_URL || 
+      (process.env.VERCEL ? backendProdUrl : "http://localhost:8000");
     
     // Fix common mistake where user adds /docs to the API URL
     if (baseUrl.endsWith("/docs")) {
@@ -34,6 +36,7 @@ async function handleProxy(request: NextRequest, pathArray: string[]) {
     const searchParams = request.nextUrl.search;
     
     const targetUrl = `${baseUrl}/${path}${searchParams}`;
+    console.log(`[proxy] ${request.method} ${path} -> ${targetUrl}`);
 
     // Read request body if present
     const hasBody = request.method !== "GET" && request.method !== "HEAD";

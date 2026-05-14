@@ -68,7 +68,7 @@ export default function SignInPage() {
           className="btn-outline-cinematic" 
           style={{ width: "100%", justifyContent: "center", color: "#fff", borderColor: "rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}
         >
-          <GitHub size={18} />
+          <span style={{ fontWeight: 600 }}>⌘</span>
           Continue with GitHub
         </button>
 

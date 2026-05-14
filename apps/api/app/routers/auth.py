@@ -55,12 +55,17 @@ def me() -> dict[str, str]:
     return {"message": "use bearer token to access protected resources"}
 
 
+from app.core.config import settings
+
 @router.get("/github/login")
 def github_login():
     client_id = os.getenv("GITHUB_CLIENT_ID")
-    frontend_url = os.getenv("NEXT_PUBLIC_URL", "http://localhost:3000")
+    # Get the frontend URL from settings (usually the last one in cors_origins or from env)
+    frontend_url = os.getenv("FRONTEND_URL") or os.getenv("NEXT_PUBLIC_URL") or "https://ic1101.vercel.app"
+    
     if not client_id:
         return RedirectResponse(f"{frontend_url}/signin?error=github_not_configured")
+    
     redirect_uri = os.getenv("GITHUB_CALLBACK_URL", "http://localhost:8000/v1/auth/github/callback")
     url = f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=user:email"
     return RedirectResponse(url)

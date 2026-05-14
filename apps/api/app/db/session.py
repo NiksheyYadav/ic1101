@@ -25,3 +25,13 @@ def get_db() -> Generator[Session, None, None]:
         yield db
     finally:
         db.close()
+from sqlalchemy.exc import OperationalError
+
+def init_db():
+    try:
+        Base.metadata.create_all(bind=engine)
+    except OperationalError as e:
+        if "already exists" in str(e):
+            pass
+        else:
+            raise

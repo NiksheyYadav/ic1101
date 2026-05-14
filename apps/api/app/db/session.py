@@ -1,6 +1,7 @@
 from collections.abc import Generator
 
 from sqlalchemy import create_engine
+from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session, declarative_base, sessionmaker
 
 from app.core.config import settings
@@ -16,18 +17,6 @@ Base = declarative_base()
 
 def init_db() -> None:
     """Create all tables — used in dev mode."""
-    Base.metadata.create_all(bind=engine)
-
-
-def get_db() -> Generator[Session, None, None]:
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-from sqlalchemy.exc import OperationalError
-
-def init_db():
     try:
         Base.metadata.create_all(bind=engine)
     except OperationalError as e:
@@ -35,3 +24,11 @@ def init_db():
             pass
         else:
             raise
+
+
+def get_db() -> Generator[Session, None, None]:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

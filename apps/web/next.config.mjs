@@ -8,17 +8,16 @@ const nextConfig = {
 };
 
 export default withSentryConfig(nextConfig, {
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options
-
   // Suppresses source map uploading logs during bundling
   silent: true,
   org: "niksheyyadav",
   project: "javascript-nextjs",
-}, {
-  // For all available options, see:
-  // https://nextjs.org/docs/api-reference/next.config.js/introduction
 
+  // Don't fail the build if Sentry source map upload fails
+  errorHandler: (err) => {
+    console.warn("Sentry source map upload error (non-fatal):", err.message);
+  },
+}, {
   // Upload a larger set of source maps for prettier stack traces (increases build time)
   widenClientFileUpload: true,
 
@@ -35,8 +34,5 @@ export default withSentryConfig(nextConfig, {
   disableLogger: true,
 
   // Enables automatic instrumentation of Vercel Cron Monitors.
-  // See the following for more information:
-  // https://docs.sentry.io/product/crons/
-  // https://vercel.com/docs/cron-jobs
   automaticVercelMonitors: true,
 });

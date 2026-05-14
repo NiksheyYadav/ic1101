@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowRight, GitHub } from "lucide-react";
 import { API_BASE } from "../../../lib/api";
 
 export default function SignInPage() {
@@ -68,7 +68,7 @@ export default function SignInPage() {
           className="btn-outline-cinematic" 
           style={{ width: "100%", justifyContent: "center", color: "#fff", borderColor: "rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}
         >
-          <Github size={18} />
+          <GitHub size={18} />
           Continue with GitHub
         </button>
 

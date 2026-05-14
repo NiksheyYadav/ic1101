@@ -27,7 +27,13 @@ export default function SignInPage() {
         <h1 style={{ fontSize: 24, fontWeight: 600, color: "#fff", marginBottom: 8, letterSpacing: "-0.02em" }}>Welcome back</h1>
         <p style={{ color: "var(--text-muted)", fontSize: 14, marginBottom: 32, textAlign: "center" }}>Enter your credentials to access the command center.</p>
 
-        <form style={{ width: "100%", display: "flex", onSubmit={(e) => { e.preventDefault(); handleLogin(); }}flexDirection: "column", gap: 16 }} >
+        <form
+          style={{ width: "100%", display: "flex", flexDirection: "column", gap: 16 }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleLogin();
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <label style={{ fontSize: 12, fontWeight: 600, color: "#fff", textTransform: "uppercase", letterSpacing: 1 }}>Email</label>
             <input 

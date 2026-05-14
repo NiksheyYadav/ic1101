@@ -45,12 +45,16 @@ class S3Service:
             logger.error(f"Failed to download from S3: {e}")
             return False
 
-    def generate_presigned_url(self, s3_key: str, expiration: int = 3600) -> str | None:
+    def generate_presigned_url(self, s3_key: str, expiration: int = 3600, filename: str | None = None) -> str | None:
         """Generate a presigned URL to share an S3 object"""
         try:
+            params = {'Bucket': self.bucket, 'Key': s3_key}
+            if filename:
+                params['ResponseContentDisposition'] = f'attachment; filename="{filename}"'
+            
             response = self.s3_client.generate_presigned_url(
                 'get_object',
-                Params={'Bucket': self.bucket, 'Key': s3_key},
+                Params=params,
                 ExpiresIn=expiration
             )
             return response

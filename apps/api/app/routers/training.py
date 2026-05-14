@@ -178,21 +178,25 @@ def get_training_status(
 def download_model(
     job_id: str,
     _principal: Principal = Depends(require_role("owner", "admin", "member")),
-) -> FileResponse:
-    """Download the trained model from the local node as requested."""
-    zip_path = get_model_zip_path(job_id)
-    if not zip_path:
+) -> RedirectResponse:
+    """Download the trained model from S3 via presigned URL."""
+    s3_key = f"models/{job_id}/model_package.zip"
+    filename = f"aetheris_model_{job_id[:8]}.zip"
+    url = s3_service.generate_presigned_url(s3_key, filename=filename)
+    
+    if not url:
+        # Fallback to local if S3 fails or is not configured
+        zip_path = get_model_zip_path(job_id)
+        if zip_path:
+            from fastapi.responses import FileResponse
+            return FileResponse(
+                path=str(zip_path),
+                filename=filename,
+                media_type="application/zip",
+            )
         raise HTTPException(status_code=404, detail="Model not ready or job not found")
         
-    return FileResponse(
-        path=str(zip_path),
-        filename=f"aetheris_model_{job_id[:8]}.zip",
-        media_type="application/zip",
-        headers={
-            "Content-Disposition": f"attachment; filename=aetheris_model_{job_id[:8]}.zip",
-            "Content-Type": "application/zip",
-        }
-    )
+    return RedirectResponse(url=url)
 
 
 @router.post("/{job_id}/pause")

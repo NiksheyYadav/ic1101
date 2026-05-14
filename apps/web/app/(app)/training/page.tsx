@@ -79,36 +79,13 @@ export default function TrainingMonitorPage() {
     }
   };
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     if (!activeJobId) return;
-    try {
-      const token = typeof window !== "undefined" ? localStorage.getItem("aetheris_token") : null;
-      const headers: Record<string, string> = {};
-      if (token) {
-        headers["Authorization"] = `Bearer ${token}`;
-      }
-
-      const response = await fetch(`${API_BASE}/v1/training-jobs/${activeJobId}/download`, {
-        headers,
-      });
-
-      if (!response.ok) {
-        throw new Error("Download failed");
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `aetheris_model_${activeJobId.slice(0, 8)}.zip`;
-
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Failed to download model:", error);
-    }
+    const token = typeof window !== "undefined" ? localStorage.getItem("aetheris_token") : null;
+    // We use window.location.assign to trigger the download.
+    // The backend endpoint will validate the token, generate an S3 presigned URL
+    // (with ResponseContentDisposition to force the correct filename), and redirect to it.
+    window.location.assign(`${API_BASE}/v1/training-jobs/${activeJobId}/download${token ? `?token=${token}` : ""}`);
   };
 
   const formatTime = (seconds: number) => {

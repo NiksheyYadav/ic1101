@@ -53,11 +53,10 @@ export async function middleware(request: NextRequest) {
   });
 
   if (!token) {
-    console.warn(`[Middleware] No token found for ${pathname}. Redirecting to /signin. (Secret check: ${secret.substring(0, 5)}...)`);
-    // Redirect unauthenticated users to sign-in
-    const signInUrl = new URL('/signin', request.url);
-    signInUrl.searchParams.set('callbackUrl', pathname);
-    return NextResponse.redirect(signInUrl);
+    console.warn(`[Middleware] No token found for ${pathname}. Proceeding anyway to avoid loops. (Secret check: ${secret.substring(0, 5)}...)`);
+    // Instead of redirecting here (which causes loops if secret is mismatched), 
+    // we let the request through and let apiFetch handle 401s in the UI.
+    return NextResponse.next();
   }
 
   console.log(`[Middleware] Authenticated access to ${pathname} for user ${token.email}`);

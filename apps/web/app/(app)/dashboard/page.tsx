@@ -95,26 +95,62 @@ export default function DashboardPage() {
             authFailed = true; 
             if (intervalId) clearInterval(intervalId); 
             console.error("Dashboard: Auth failure on experiments, stopping poll.");
-            return; 
+    const initDashboard = async () => {
+      if (status === "loading") return;
+      
+      if (status === "unauthenticated") {
+        router.push("/signin");
+        return;
+      }
+
+      let token = (session as any)?.accessToken;
+
+      // Emergency Client-Side Sync Fallback
+      if (!token && session?.user) {
+        console.warn("[Dashboard] AccessToken missing, attempting emergency client-side sync...");
+        try {
+          const syncPayload = {
+            email: session.user.email || "user@github.com",
+            name: session.user.name || "Aetheris User",
+            github_id: (session as any).user?.id || "unknown", // Fallback to user ID if available
+            avatar_url: session.user.image || "",
+          };
+
+          const res = await fetch("/api/auth/sync-fallback", {
+             method: "POST",
+             headers: { "Content-Type": "application/json" },
+             body: JSON.stringify(syncPayload)
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            token = data.access_token;
+            console.log("[Dashboard] Emergency sync successful!");
+            // Update the session in memory for this component
+            (session as any).accessToken = token;
+          } else {
+            console.error("[Dashboard] Emergency sync failed.");
           }
+        } catch (e) {
+          console.error("[Dashboard] Emergency sync error:", e);
         }
-      } catch (e) {
-        if (e instanceof AuthError) { 
-          authFailed = true; 
-          if (intervalId) clearInterval(intervalId); 
-          return; 
-        }
-        console.error("Dashboard polling error:", e);
+      }
+
+      if (token) {
+        fetchData();
+        const id = setInterval(fetchData, 5000);
+        setIntervalId(id);
+      } else {
+        console.error("User is signed into NextAuth but backend accessToken is missing.");
       }
     };
-    
-    intervalId = setInterval(poll, 2000);
-    poll(); // Run first poll AFTER intervalId is assigned
+
+    initDashboard();
+
     return () => {
-      mounted = false;
       if (intervalId) clearInterval(intervalId);
     };
-  }, []);
+  }, [status, session, router]);
 
   const container: Variants = {
     hidden: { opacity: 0 },

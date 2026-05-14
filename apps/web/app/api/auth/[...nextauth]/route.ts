@@ -57,17 +57,19 @@ const backendUrl = process.env.NEXT_PUBLIC_API_URL ||
       // Initial sign in
       if (account && user) {
         if (account.provider === "github") {
-          try {
-            console.log(`[NextAuth] Syncing Github user ${user.email} to ${backendUrl}`);
+            const syncPayload = {
+              email: user.email || `${account.providerAccountId}@github.com`,
+              name: user.name || (profile as any)?.login || "Github User",
+              github_id: account.providerAccountId,
+              avatar_url: user.image || (profile as any)?.avatar_url || "",
+            };
+            
+            console.log(`[NextAuth] Syncing Github user to ${backendUrl}`, syncPayload);
+            
             const res = await fetch(`${backendUrl}/v1/auth/github-sync`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                email: user.email,
-                name: user.name || (profile as any)?.login || "Github User",
-                github_id: account.providerAccountId,
-                avatar_url: user.image || (profile as any)?.avatar_url || "",
-              }),
+              body: JSON.stringify(syncPayload),
             });
 
             if (res.ok) {
@@ -76,7 +78,8 @@ const backendUrl = process.env.NEXT_PUBLIC_API_URL ||
               console.log(`[NextAuth] Github sync successful, token obtained.`);
             } else {
               const errText = await res.text();
-              console.error(`[NextAuth] Github sync failed: ${res.status} - ${errText}`);
+              console.error(`[NextAuth] Github sync failed (${res.status}): ${errText}`);
+              // Fallback: try to issue a manual token if we have to
             }
           } catch (error) {
             console.error("[NextAuth] Github sync network error:", error);

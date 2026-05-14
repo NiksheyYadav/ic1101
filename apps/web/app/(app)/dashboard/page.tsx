@@ -38,7 +38,12 @@ export default function DashboardPage() {
             setKpis(k => ({...k, gpuUtilization: `${usage.toFixed(0)}%`}));
           }
         } catch(e) {
-          if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+          if (e instanceof AuthError) { 
+            authFailed = true; 
+            if (intervalId) clearInterval(intervalId); 
+            console.error("Dashboard: Auth failure on system info, stopping poll.");
+            return; 
+          }
         }
 
         // Fetch Jobs
@@ -64,7 +69,12 @@ export default function DashboardPage() {
             }
           }
         } catch(e) {
-          if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+          if (e instanceof AuthError) { 
+            authFailed = true; 
+            if (intervalId) clearInterval(intervalId); 
+            console.error("Dashboard: Auth failure on training jobs, stopping poll.");
+            return; 
+          }
         }
 
         // Fetch Experiments
@@ -81,16 +91,25 @@ export default function DashboardPage() {
             setKpis(k => ({...k, modelsInProd: fetchedExp.length}));
           }
         } catch(e) {
-          if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+          if (e instanceof AuthError) { 
+            authFailed = true; 
+            if (intervalId) clearInterval(intervalId); 
+            console.error("Dashboard: Auth failure on experiments, stopping poll.");
+            return; 
+          }
         }
       } catch (e) {
-        if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+        if (e instanceof AuthError) { 
+          authFailed = true; 
+          if (intervalId) clearInterval(intervalId); 
+          return; 
+        }
         console.error("Dashboard polling error:", e);
       }
     };
     
-    poll();
     intervalId = setInterval(poll, 2000);
+    poll(); // Run first poll AFTER intervalId is assigned
     return () => {
       mounted = false;
       if (intervalId) clearInterval(intervalId);

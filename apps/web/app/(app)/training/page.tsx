@@ -56,26 +56,37 @@ export default function TrainingMonitorPage() {
     if (!activeJobId) return;
     let authFailed = false;
     let intervalId: ReturnType<typeof setInterval> | null = null;
+    let mounted = true;
 
     const poll = () => {
-      if (authFailed) return;
+      if (authFailed || !mounted) return;
       apiFetch<TrainingStatusData>(`/v1/training-jobs/${activeJobId}/status`)
         .then((data) => {
-          setLiveStatus(data);
-          setTelemetry([
-            { label: "CPU", value: data.cpu_usage, color: "var(--cyan)" },
-            { label: "RAM", value: data.ram_usage, color: "var(--violet)" },
-          ]);
+          if (mounted) {
+            setLiveStatus(data);
+            setTelemetry([
+              { label: "CPU", value: data.cpu_usage, color: "var(--cyan)" },
+              { label: "RAM", value: data.ram_usage, color: "var(--violet)" },
+            ]);
+          }
         })
         .catch((e) => {
-          if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+          if (e instanceof AuthError) { 
+            authFailed = true; 
+            if (intervalId) clearInterval(intervalId); 
+            console.error("TrainingMonitor: Auth failure, stopping poll.");
+            return; 
+          }
           console.error(e);
         });
     };
 
-    poll(); // initial fetch
     intervalId = setInterval(poll, 1000);
-    return () => { if (intervalId) clearInterval(intervalId); };
+    poll(); // Run first poll AFTER intervalId is assigned
+    return () => { 
+      mounted = false;
+      if (intervalId) clearInterval(intervalId); 
+    };
   }, [activeJobId]);
 
   const handleAction = async (action: "pause" | "resume" | "cancel") => {

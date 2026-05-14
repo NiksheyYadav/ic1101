@@ -2,14 +2,23 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { API_BASE } from "../../../lib/api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error") === "github_not_configured") {
+      setErrorMsg("GitHub Login is currently unavailable. Please use email/password.");
+    }
+  }, []);
 
   const handleLogin = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
+    setErrorMsg(""); // Clear previous errors
     try {
       const res = await fetch(`${API_BASE}/v1/auth/login`, {
         method: "POST",
@@ -19,14 +28,19 @@ export default function SignInPage() {
       if (res.ok) {
         const data = await res.json();
         localStorage.setItem("aetheris_token", data.access_token);
+        window.location.href = "/dashboard";
       } else {
-        localStorage.setItem("aetheris_token", "demo-token");
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg(data.detail || "Invalid email or password. Please try again.");
       }
     } catch (err) {
       console.error("Login failed", err);
-      localStorage.setItem("aetheris_token", "demo-token");
+      setErrorMsg("Connection error. Using offline mode...");
+      setTimeout(() => {
+        localStorage.setItem("aetheris_token", "demo-token");
+        window.location.href = "/dashboard";
+      }, 1500);
     }
-    window.location.href = "/dashboard";
   };
 
   const handleGithubLogin = () => {
@@ -54,6 +68,12 @@ export default function SignInPage() {
           style={{ width: "100%", display: "flex", flexDirection: "column", gap: 16 }}
           onSubmit={handleLogin}
         >
+          {errorMsg && !window.location.search.includes("github") && (
+            <div style={{ width: "100%", padding: "10px 12px", background: "rgba(255, 68, 68, 0.1)", border: "1px solid rgba(255, 68, 68, 0.2)", borderRadius: 8, color: "#ff4444", fontSize: 12, textAlign: "center", marginBottom: 8 }}>
+              {errorMsg}
+            </div>
+          )}
+
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <label style={{ fontSize: 12, fontWeight: 600, color: "#fff", textTransform: "uppercase", letterSpacing: 1 }}>Email</label>
             <input 
@@ -95,6 +115,12 @@ export default function SignInPage() {
           <span style={{ fontSize: 12, color: "var(--text-muted)" }}>OR</span>
           <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.05)" }} />
         </div>
+
+        {errorMsg && window.location.search.includes("github") && (
+          <div style={{ width: "100%", padding: "10px 12px", background: "rgba(255, 68, 68, 0.1)", border: "1px solid rgba(255, 68, 68, 0.2)", borderRadius: 8, color: "#ff4444", fontSize: 12, textAlign: "center", marginBottom: 16 }}>
+            {errorMsg}
+          </div>
+        )}
 
         <button 
           onClick={handleGithubLogin}

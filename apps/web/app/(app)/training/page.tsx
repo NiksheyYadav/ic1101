@@ -83,21 +83,31 @@ export default function TrainingMonitorPage() {
     if (!activeJobId) return;
     try {
       const token = typeof window !== "undefined" ? localStorage.getItem("aetheris_token") : null;
-      const res = await fetch(`${API_BASE}/v1/training-jobs/${activeJobId}/download`, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      const headers: Record<string, string> = {};
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
+      const response = await fetch(`${API_BASE}/v1/training-jobs/${activeJobId}/download`, {
+        headers,
       });
-      if (!res.ok) throw new Error("Download failed");
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
+
+      if (!response.ok) {
+        throw new Error("Download failed");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
       a.download = `aetheris_model_${activeJobId.slice(0, 8)}.zip`;
+
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    } catch (e) {
-      console.error("Download error:", e);
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Failed to download model:", error);
     }
   };
 

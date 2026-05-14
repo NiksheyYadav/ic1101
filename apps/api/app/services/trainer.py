@@ -38,12 +38,15 @@ except ImportError:
 
 try:
     import torchvision.models as tv_models
+    import torchvision.transforms as transforms
+    from torchvision.datasets import ImageFolder
 
     TORCHVISION_AVAILABLE = True
 except ImportError:
     TORCHVISION_AVAILABLE = False
 
 from app.services.training_status import TrainingStatus, status_manager
+from app.services.s3_service import s3_service
 
 # Base directory for saved outputs
 OUTPUT_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "outputs"
@@ -138,6 +141,14 @@ def _create_zip(out_dir: Path) -> Path:
                 zf.write(f, f.name)
     return zip_path
 
+def _upload_model_to_s3(status: TrainingStatus, job_id: str, zip_path: Path) -> None:
+    status.add_log("Uploading model package to S3...")
+    model_s3_key = f"models/{job_id}/model_package.zip"
+    if s3_service.upload_file(zip_path, model_s3_key):
+        status.add_log("Model package uploaded to S3 successfully ✓")
+    else:
+        status.add_log("Warning: Failed to upload model package to S3.")
+
 
 # ── training loops ───────────────────────────────────────────────────
 
@@ -168,12 +179,51 @@ def _train_image_model(status: TrainingStatus, config: dict, job_dir: Path) -> N
         )
     model = model.to(device)
 
-    # Synthetic dataset (small, fast, reliable for demo)
-    n_samples = 200
-    X = torch.randn(n_samples, 3, 32, 32)
-    y = torch.randint(0, num_classes, (n_samples,))
-    dataset = TensorDataset(X, y)
-    loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+    dataset_s3_key = config.get("dataset_s3_key")
+    dataset_dir = job_dir / "dataset"
+    use_synthetic = True
+
+    if dataset_s3_key:
+        status.add_log("Downloading dataset from S3...")
+        local_dataset_zip = job_dir / "dataset.zip"
+        if s3_service.download_file(dataset_s3_key, local_dataset_zip):
+            if str(dataset_s3_key).endswith(".zip"):
+                status.add_log("Extracting dataset...")
+                with zipfile.ZipFile(local_dataset_zip, 'r') as zf:
+                    zf.extractall(dataset_dir)
+                use_synthetic = False
+
+    if not use_synthetic and TORCHVISION_AVAILABLE:
+        transform = transforms.Compose([
+            transforms.Resize((32, 32)),
+            transforms.ToTensor(),
+        ])
+        try:
+            img_dir = dataset_dir
+            subdirs = [d for d in dataset_dir.iterdir() if d.is_dir() and d.name != "__MACOSX"]
+            if len(subdirs) == 1:
+                img_dir = subdirs[0]
+                
+            dataset = ImageFolder(root=str(img_dir), transform=transform)
+            num_classes = len(dataset.classes)
+            loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+            status.add_log(f"Loaded {len(dataset)} images across {num_classes} classes from S3 dataset.")
+            
+            # Recreate model if num_classes changed based on dataset
+            if TORCHVISION_AVAILABLE:
+                model = tv_models.mobilenet_v2(weights=None, num_classes=num_classes).to(device)
+                
+        except Exception as e:
+            status.add_log(f"Failed to load ImageFolder from extracted zip: {e}. Falling back to synthetic.")
+            use_synthetic = True
+
+    if use_synthetic:
+        status.add_log("Using synthetic image dataset.")
+        n_samples = 200
+        X = torch.randn(n_samples, 3, 32, 32)
+        y = torch.randint(0, num_classes, (n_samples,))
+        dataset = TensorDataset(X, y)
+        loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
     criterion = nn.CrossEntropyLoss()
     if optimizer_name == "SGD":
@@ -249,7 +299,14 @@ def _train_image_model(status: TrainingStatus, config: dict, job_dir: Path) -> N
     (job_dir / "config.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
     _write_inference_script(job_dir, "image", num_classes)
     _write_readme(job_dir, config)
-    _create_zip(job_dir)
+    zip_path = _create_zip(job_dir)
+    
+    _upload_model_to_s3(status, job_dir.name, zip_path)
+    
+    # Cleanup temp dataset files
+    shutil.rmtree(job_dir / "dataset", ignore_errors=True)
+    if (job_dir / "dataset.zip").exists():
+        (job_dir / "dataset.zip").unlink()
 
     status.add_log("Model package ready for download ✓")
 
@@ -378,7 +435,9 @@ def _train_text_model(status: TrainingStatus, config: dict, job_dir: Path) -> No
     (job_dir / "config.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
     _write_inference_script(job_dir, "text", num_classes)
     _write_readme(job_dir, config)
-    _create_zip(job_dir)
+    zip_path = _create_zip(job_dir)
+    
+    _upload_model_to_s3(status, job_dir.name, zip_path)
 
     status.add_log("Model package ready for download ✓")
 

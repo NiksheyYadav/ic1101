@@ -4,59 +4,95 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, 
 import { Zap, Upload, Rocket, GitCompare, TrendingUp, TrendingDown, Sparkles } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
-const initialLossData = Array.from({ length: 30 }, (_, i) => ({
-  epoch: i + 1, loss: +(1 / (i + 1) + Math.random() * 0.05).toFixed(4),
-  acc: +(0.5 + (i / 50) + Math.random() * 0.02).toFixed(4),
-}));
-
-const initialGpuData = Array.from({ length: 12 }, (_, i) => ({ 
-  h: `${i * 2}:00`, usage: 60 + Math.random() * 30 
-}));
+// --- DEMO DATA REMOVED FOR PRODUCTION ---
+// const initialLossData = Array.from({ length: 30 }, (_, i) => ({
+//   epoch: i + 1, loss: +(1 / (i + 1) + Math.random() * 0.05).toFixed(4),
+//   acc: +(0.5 + (i / 50) + Math.random() * 0.02).toFixed(4),
+// }));
+//
+// const initialGpuData = Array.from({ length: 12 }, (_, i) => ({ 
+//   h: `${i * 2}:00`, usage: 60 + Math.random() * 30 
+// }));
 
 export default function DashboardPage() {
-  const [lossData, setLossData] = useState(initialLossData);
-  const [gpuData, setGpuData] = useState(initialGpuData);
-  const [jobs, setJobs] = useState([
-    { name: "VisionTransformer-v3", progress: 71, acc: "94.28%", eta: "1h 42m", status: "running" },
-    { name: "BERT-FineTune-v2", progress: 45, acc: "88.71%", eta: "3h 15m", status: "running" },
-    { name: "ResNet-50-Retrain", progress: 92, acc: "96.12%", eta: "12m", status: "running" },
-  ]);
-
-  const experiments = [
-    { id: "EXP-042", model: "VisionTransformer", acc: "96.2%", loss: "0.041", status: "completed" },
-    { id: "EXP-041", model: "EfficientNet-B4", acc: "94.8%", loss: "0.058", status: "completed" },
-    { id: "EXP-039", model: "XGBoost-v3", acc: "91.3%", loss: "0.092", status: "completed" },
-  ];
+  const [lossData, setLossData] = useState<any[]>([]);
+  const [gpuData, setGpuData] = useState<any[]>(Array.from({length: 12}, (_, i) => ({h: `-`, usage: 0})));
+  const [jobs, setJobs] = useState<any[]>([]);
+  const [experiments, setExperiments] = useState<any[]>([]);
+  const [kpis, setKpis] = useState({
+    activeTrainings: 0,
+    gpuUtilization: "0%",
+    dataVolume: "0 GB",
+    modelsInProd: 0
+  });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Live tick the loss data
-      setLossData(prev => {
-        const last = prev[prev.length - 1];
-        let newLoss = last.loss * 0.98 + (Math.random() * 0.008 - 0.004);
-        if (newLoss < 0.001) newLoss = 0.001;
-        let newAcc = last.acc + (1 - last.acc) * 0.03 + (Math.random() * 0.006 - 0.003);
-        if (newAcc > 0.999) newAcc = 0.999;
-        return [...prev.slice(1), { epoch: last.epoch + 1, loss: +newLoss.toFixed(4), acc: +newAcc.toFixed(4) }];
-      });
-
-      // Live jitter the GPU usage
-      setGpuData(prev => prev.map(d => ({
-        ...d,
-        usage: Math.max(10, Math.min(100, d.usage + (Math.random() * 6 - 3)))
-      })));
-
-      // Tick the progress bars
-      setJobs(prev => prev.map(job => {
-        if (job.status === "running" && job.progress < 100) {
-          const newProgress = job.progress + (Math.random() * 0.5);
-          return { ...job, progress: newProgress > 100 ? 100 : newProgress };
+    let mounted = true;
+    const poll = async () => {
+      try {
+        // Fetch System Info
+        const sysRes = await fetch("/api/v1/system/info");
+        if (sysRes.ok && mounted) {
+          const sys = await sysRes.json();
+          // Use CPU usage if CUDA is not available as a proxy for the demo
+          const usage = sys.cuda_available ? sys.gpu_memory_used_mb / sys.gpu_memory_total_mb * 100 : sys.cpu_usage;
+          setGpuData(prev => {
+            const next = [...prev.slice(1), { h: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'}), usage }];
+            return next;
+          });
+          setKpis(k => ({...k, gpuUtilization: `${usage.toFixed(0)}%`}));
         }
-        return job;
-      }));
 
-    }, 800);
-    return () => clearInterval(interval);
+        // Fetch Jobs
+        const jobsRes = await fetch("/api/v1/training?workspace_id=default");
+        if (jobsRes.ok && mounted) {
+          const fetchedJobs = await jobsRes.json();
+          setJobs(fetchedJobs.map((j: any) => ({
+            name: j.model_type || j.id.substring(0, 8),
+            progress: j.progress,
+            acc: "-",
+            eta: "-",
+            status: j.status
+          })));
+          
+          const running = fetchedJobs.filter((j: any) => j.status === "running");
+          setKpis(k => ({...k, activeTrainings: running.length}));
+          
+          if (running.length > 0) {
+            const statusRes = await fetch(`/api/v1/training/${running[0].id}/status`);
+            if (statusRes.ok && mounted) {
+              const st = await statusRes.json();
+              if (st.epoch_history && st.epoch_history.length > 0) {
+                setLossData(st.epoch_history);
+              }
+            }
+          }
+        }
+
+        // Fetch Experiments
+        const expRes = await fetch("/api/v1/experiments?workspace_id=default");
+        if (expRes.ok && mounted) {
+          const fetchedExp = await expRes.json();
+          setExperiments(fetchedExp.map((e: any) => ({
+            id: e.name,
+            model: e.name,
+            acc: e.metrics?.accuracy ? (e.metrics.accuracy * 100).toFixed(1) + "%" : "-",
+            loss: e.metrics?.loss || "-",
+            status: "completed"
+          })));
+          setKpis(k => ({...k, modelsInProd: fetchedExp.length}));
+        }
+      } catch (e) {
+        console.error("Dashboard polling error:", e);
+      }
+    };
+    
+    poll();
+    const interval = setInterval(poll, 2000);
+    return () => {
+      mounted = false;
+      clearInterval(interval);
+    };
   }, []);
 
   const container: Variants = {
@@ -88,23 +124,23 @@ export default function DashboardPage() {
       <motion.div variants={item} className="kpi-grid" style={{ marginBottom: 40, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
         <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)" }}>
           <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Active Trainings</div>
-          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#00D4FF", marginBottom: 12 }}>3</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> +1 from yesterday</div>
+          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#00D4FF", marginBottom: 12 }}>{kpis.activeTrainings}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> Live update</div>
         </div>
         <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)", borderLeft: "2px solid var(--emerald)" }}>
-          <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>GPU Utilization</div>
-          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#3DDC97", marginBottom: 12 }}>87%</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> Optimal</div>
+          <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>GPU/CPU Utilization</div>
+          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#3DDC97", marginBottom: 12 }}>{kpis.gpuUtilization}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> System Node</div>
         </div>
         <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)", borderLeft: "2px solid var(--violet)" }}>
           <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Data Volume</div>
-          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#8B5CF6", marginBottom: 12 }}>61.3 GB</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> +2.4 GB today</div>
+          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#8B5CF6", marginBottom: 12 }}>{kpis.dataVolume}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#A1A1AA", fontWeight: 500 }}><TrendingUp size={14} /> Storage Total</div>
         </div>
         <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)", borderLeft: "2px solid var(--amber)" }}>
           <div style={{ fontSize: 12, fontWeight: 600, color: "#A1A1AA", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Models in Production</div>
-          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#F59E0B", marginBottom: 12 }}>12</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> All healthy</div>
+          <div className="mono" style={{ fontSize: 32, fontWeight: 600, color: "#F59E0B", marginBottom: 12 }}>{kpis.modelsInProd}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#3DDC97", fontWeight: 500 }}><TrendingUp size={14} /> Based on Experiments</div>
         </div>
       </motion.div>
 
@@ -141,8 +177,9 @@ export default function DashboardPage() {
       <motion.div variants={item} className="grid-2" style={{ marginBottom: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
         <div className="pro-glass-panel" style={{ padding: 24, borderRadius: 16, background: "rgba(10,10,15,0.4)" }}>
           <h3 style={{ marginBottom: 24, fontSize: 16, fontWeight: 600 }}>Active Training Jobs</h3>
-          {jobs.map((j) => (
-            <div key={j.name} style={{ padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+          {jobs.length === 0 && <div style={{ color: "#A1A1AA", fontSize: 14 }}>No jobs running or queued.</div>}
+          {jobs.map((j, idx) => (
+            <div key={`${j.name}-${idx}`} style={{ padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
               <div className="flex-between" style={{ marginBottom: 16 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div className="pulse-dot" style={{ backgroundColor: "#00D4FF" }} />
@@ -165,8 +202,10 @@ export default function DashboardPage() {
             <h3 style={{ marginBottom: 20, fontSize: 16, fontWeight: 600 }}>Recent Experiments</h3>
             <table className="data-table" style={{ width: "100%", textAlign: "left", borderCollapse: "collapse" }}>
               <thead><tr style={{ color: "#A1A1AA", fontSize: 12, textTransform: "uppercase", letterSpacing: 1 }}><th style={{ paddingBottom: 16, fontWeight: 600 }}>ID</th><th style={{ paddingBottom: 16, fontWeight: 600 }}>Model</th><th style={{ paddingBottom: 16, fontWeight: 600 }}>Accuracy</th><th style={{ paddingBottom: 16, fontWeight: 600 }}>Loss</th></tr></thead>
-              <tbody>{experiments.map((e) => (
-                <tr key={e.id} style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+              <tbody>
+                {experiments.length === 0 && <tr><td colSpan={4} style={{ padding: "16px 0", color: "#A1A1AA", fontSize: 14 }}>No recent experiments.</td></tr>}
+                {experiments.map((e, idx) => (
+                <tr key={`${e.id}-${idx}`} style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
                   <td className="mono" style={{ padding: "16px 0", color: "var(--cyan)", fontSize: 13 }}>{e.id}</td>
                   <td style={{ padding: "16px 0", fontSize: 14 }}>{e.model}</td>
                   <td style={{ padding: "16px 0", color: "var(--emerald)", fontWeight: 600 }}>{e.acc}</td>

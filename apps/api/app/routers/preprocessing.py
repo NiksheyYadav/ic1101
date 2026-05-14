@@ -11,10 +11,20 @@ from app.security.auth import Principal, require_role
 router = APIRouter()
 
 
+from pydantic import BaseModel, Field, field_validator
+
 class PipelineCreate(BaseModel):
     workspace_id: str
     name: str
     steps: list[dict] = Field(default_factory=list)
+
+    @field_validator("steps")
+    @classmethod
+    def validate_steps(cls, v: list[dict]) -> list[dict]:
+        for idx, step in enumerate(v):
+            if "operation" not in step:
+                raise ValueError(f"Step {idx} is missing the required 'operation' key")
+        return v
 
 
 class PipelineRead(BaseModel):

@@ -2,13 +2,14 @@ import asyncio
 import json
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from app.db.models import TrainingEvent, TrainingJob
+from app.db.models import DatasetVersion, TrainingEvent, TrainingJob
 from app.db.session import get_db
 from app.security.auth import Principal, require_role
+from app.services.s3_service import s3_service
 from app.services.trainer import get_model_zip_path, start_training
 from app.services.training_status import status_manager
 
@@ -67,8 +68,21 @@ async def create_job(
     db.commit()
     db.refresh(job)
 
+    # Resolve dataset S3 key if provided
+    dataset_s3_key = None
+    if payload.dataset_version_id:
+        # Assuming dataset_version_id format is "{dataset_id}:{version}" or just latest if dataset_id
+        # For demo purposes, we will try to find the latest version of this dataset
+        ds_id = payload.dataset_version_id.split(":")[0]
+        dv = db.query(DatasetVersion).filter(DatasetVersion.dataset_id == ds_id).order_by(DatasetVersion.version.desc()).first()
+        if dv and dv.headers_json:
+            meta = json.loads(dv.headers_json)
+            if isinstance(meta, dict) and "s3_key" in meta:
+                dataset_s3_key = meta["s3_key"]
+
     # Start real PyTorch training in background thread
     training_config = {
+        "dataset_s3_key": dataset_s3_key,
         "model_type": payload.model_type or "image",
         "epochs": payload.epochs,
         "batch_size": payload.batch_size,
@@ -165,14 +179,19 @@ def download_model(
     job_id: str,
     _principal: Principal = Depends(require_role("owner", "admin", "member")),
 ) -> FileResponse:
-    """Download the trained model as a ZIP file."""
+    """Download the trained model from the local node as requested."""
     zip_path = get_model_zip_path(job_id)
     if not zip_path:
         raise HTTPException(status_code=404, detail="Model not ready or job not found")
+        
     return FileResponse(
         path=str(zip_path),
         filename=f"aetheris_model_{job_id[:8]}.zip",
         media_type="application/zip",
+        headers={
+            "Content-Disposition": f"attachment; filename=aetheris_model_{job_id[:8]}.zip",
+            "Content-Type": "application/zip",
+        }
     )
 
 

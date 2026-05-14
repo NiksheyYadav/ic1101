@@ -1,7 +1,7 @@
 "use client";
 import { Sparkles, Star } from "lucide-react";
 import { useState, useEffect } from "react";
-import { apiFetch } from "../../../lib/api";
+import { apiFetch, AuthError } from "../../../lib/api";
 
 const recommended = [
   { name: "Vision Transformer", task: "Image Classification", acc: "96.2%", speed: "Medium", cost: "$0.12/hr", framework: "PyTorch", vram: "8 GB", color: "var(--violet)" },
@@ -17,7 +17,9 @@ export default function ModelSelectionPage() {
   useEffect(() => {
     apiFetch<any[]>("/v1/models")
       .then(setAllModels)
-      .catch(console.error);
+      .catch((e) => {
+        if (!(e instanceof AuthError)) console.error(e);
+      });
   }, []);
 
   return (

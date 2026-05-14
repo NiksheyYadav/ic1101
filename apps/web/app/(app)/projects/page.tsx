@@ -1,7 +1,7 @@
 "use client";
 import { Plus } from "lucide-react";
 import { useState, useEffect } from "react";
-import { apiFetch } from "../../../lib/api";
+import { apiFetch, AuthError } from "../../../lib/api";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<any[]>([]);
@@ -9,7 +9,9 @@ export default function ProjectsPage() {
   useEffect(() => {
     apiFetch<any[]>("/v1/projects")
       .then(setProjects)
-      .catch(console.error);
+      .catch((e) => {
+        if (!(e instanceof AuthError)) console.error(e);
+      });
   }, []);
 
   return (

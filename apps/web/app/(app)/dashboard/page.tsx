@@ -3,17 +3,7 @@ import { useState, useEffect } from "react";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 import { Zap, Upload, Rocket, GitCompare, TrendingUp, TrendingDown, Sparkles } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-import { apiFetch } from "../../../lib/api";
-
-// --- DEMO DATA REMOVED FOR PRODUCTION ---
-// const initialLossData = Array.from({ length: 30 }, (_, i) => ({
-//   epoch: i + 1, loss: +(1 / (i + 1) + Math.random() * 0.05).toFixed(4),
-//   acc: +(0.5 + (i / 50) + Math.random() * 0.02).toFixed(4),
-// }));
-//
-// const initialGpuData = Array.from({ length: 12 }, (_, i) => ({ 
-//   h: `${i * 2}:00`, usage: 60 + Math.random() * 30 
-// }));
+import { apiFetch, AuthError } from "../../../lib/api";
 
 export default function DashboardPage() {
   const [lossData, setLossData] = useState<any[]>([]);
@@ -29,7 +19,12 @@ export default function DashboardPage() {
 
   useEffect(() => {
     let mounted = true;
+    let authFailed = false;
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+
     const poll = async () => {
+      if (authFailed || !mounted) return;
+
       try {
         // Fetch System Info
         try {
@@ -42,7 +37,9 @@ export default function DashboardPage() {
             });
             setKpis(k => ({...k, gpuUtilization: `${usage.toFixed(0)}%`}));
           }
-        } catch(e) {}
+        } catch(e) {
+          if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+        }
 
         // Fetch Jobs
         try {
@@ -66,7 +63,9 @@ export default function DashboardPage() {
               }
             }
           }
-        } catch(e) {}
+        } catch(e) {
+          if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+        }
 
         // Fetch Experiments
         try {
@@ -81,17 +80,20 @@ export default function DashboardPage() {
             })));
             setKpis(k => ({...k, modelsInProd: fetchedExp.length}));
           }
-        } catch(e) {}
+        } catch(e) {
+          if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+        }
       } catch (e) {
+        if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
         console.error("Dashboard polling error:", e);
       }
     };
     
     poll();
-    const interval = setInterval(poll, 2000);
+    intervalId = setInterval(poll, 2000);
     return () => {
       mounted = false;
-      clearInterval(interval);
+      if (intervalId) clearInterval(intervalId);
     };
   }, []);
 

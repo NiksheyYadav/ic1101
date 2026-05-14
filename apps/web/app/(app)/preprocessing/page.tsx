@@ -1,7 +1,7 @@
 "use client";
 import { Sparkles, Play, Save, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { apiFetch } from "../../../lib/api";
+import { apiFetch, AuthError } from "../../../lib/api";
 
 const defaultSteps = [
   { label: "Load Dataset", color: "var(--cyan)", icon: "📥", operation: "Load Dataset" },
@@ -30,7 +30,9 @@ export default function PreprocessingPage() {
           setCurrentSteps(data[0].steps.map((s: any) => ({...s, label: s.operation, color: s.color || "var(--cyan)", icon: s.icon || "⚙️"})));
         }
       })
-      .catch(console.error);
+      .catch((e) => {
+        if (!(e instanceof AuthError)) console.error(e);
+      });
   }, []);
 
   const addBlock = (block: any) => {
@@ -56,7 +58,9 @@ export default function PreprocessingPage() {
       });
       alert("Pipeline saved successfully!");
     } catch (e) {
-      alert("Failed to save pipeline.");
+      if (!(e instanceof AuthError)) {
+        alert("Failed to save pipeline.");
+      }
     } finally {
       setIsSaving(false);
     }

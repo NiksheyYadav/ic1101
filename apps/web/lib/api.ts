@@ -1,6 +1,16 @@
-import { getSession } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 
 const API_BASE = "/api/proxy";
+
+/** Thrown on 401 — polling loops should catch this and stop retrying. */
+export class AuthError extends Error {
+  constructor() {
+    super("Unauthorized – session has no access token");
+    this.name = "AuthError";
+  }
+}
+
+let redirecting = false;
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   // Get token exclusively from NextAuth session
@@ -27,6 +37,15 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
     ...init,
     headers,
   });
+
+  if (res.status === 401) {
+    // Redirect to sign-in once (avoid redirect storm)
+    if (typeof window !== "undefined" && !redirecting) {
+      redirecting = true;
+      signIn(undefined, { callbackUrl: window.location.pathname });
+    }
+    throw new AuthError();
+  }
 
   if (!res.ok) {
     throw new Error(`API ${res.status}`);
@@ -60,6 +79,14 @@ async function fetchEventStream(
     headers,
     signal,
   });
+
+  if (res.status === 401) {
+    if (typeof window !== "undefined" && !redirecting) {
+      redirecting = true;
+      signIn(undefined, { callbackUrl: window.location.pathname });
+    }
+    throw new AuthError();
+  }
 
   if (!res.body) return;
 

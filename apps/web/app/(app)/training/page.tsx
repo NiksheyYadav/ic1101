@@ -2,7 +2,7 @@
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Pause, Play, Square, Download, Sparkles, RefreshCw } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
-import { apiFetch, API_BASE } from "../../../lib/api";
+import { apiFetch, AuthError, API_BASE } from "../../../lib/api";
 import Link from "next/link";
 
 const telemetryInit = [
@@ -46,14 +46,19 @@ export default function TrainingMonitorPage() {
           setActiveJobId(running?.id || data[0].id);
         }
       })
-      .catch(console.error);
+      .catch((e) => {
+        if (!(e instanceof AuthError)) console.error(e);
+      });
   }, []);
 
   // Poll /status every 1 second for the active job
   useEffect(() => {
     if (!activeJobId) return;
+    let authFailed = false;
+    let intervalId: ReturnType<typeof setInterval> | null = null;
 
     const poll = () => {
+      if (authFailed) return;
       apiFetch<TrainingStatusData>(`/v1/training-jobs/${activeJobId}/status`)
         .then((data) => {
           setLiveStatus(data);
@@ -62,12 +67,15 @@ export default function TrainingMonitorPage() {
             { label: "RAM", value: data.ram_usage, color: "var(--violet)" },
           ]);
         })
-        .catch(console.error);
+        .catch((e) => {
+          if (e instanceof AuthError) { authFailed = true; if (intervalId) clearInterval(intervalId); return; }
+          console.error(e);
+        });
     };
 
     poll(); // initial fetch
-    const interval = setInterval(poll, 1000);
-    return () => clearInterval(interval);
+    intervalId = setInterval(poll, 1000);
+    return () => { if (intervalId) clearInterval(intervalId); };
   }, [activeJobId]);
 
   const handleAction = async (action: "pause" | "resume" | "cancel") => {

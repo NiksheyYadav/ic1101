@@ -2,7 +2,7 @@
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Download, Sparkles, Trophy, UploadCloud, FileText, ImageIcon, Play, Loader2, Activity } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { apiFetch, API_BASE } from "../../../lib/api";
+import { apiFetch, AuthError, API_BASE } from "../../../lib/api";
 
 const chartData = Array.from({ length: 100 }, (_, i) => ({
   epoch: i + 1,
@@ -37,7 +37,9 @@ export default function ExperimentsPage() {
           setSelectedExpId(highestAccExp.id);
         }
       })
-      .catch(console.error);
+      .catch((e) => {
+        if (!(e instanceof AuthError)) console.error(e);
+      });
   }, []);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,22 +69,15 @@ export default function ExperimentsPage() {
         formData.append("text", inputText);
       }
 
-      const token = localStorage.getItem("aetheris_token");
-      const res = await fetch(`${API_BASE}/v1/experiments/${selectedExpId}/predict`, {
+      const data = await apiFetch<any>(`/v1/experiments/${selectedExpId}/predict`, {
         method: "POST",
-        headers: token ? { "Authorization": `Bearer ${token}` } : {},
-        body: formData
+        body: formData,
       });
-
-      if (!res.ok) {
-        const errData = await res.json().catch(() => null);
-        throw new Error(errData?.detail || `Error ${res.status}`);
-      }
-
-      const data = await res.json();
       setPredictionResult(data);
     } catch (err: any) {
-      setError(err.message || "Failed to run prediction");
+      if (!(err instanceof AuthError)) {
+        setError(err.message || "Failed to run prediction");
+      }
     } finally {
       setIsPredicting(false);
     }

@@ -2,7 +2,7 @@
 import { Upload, CloudLightning, Link2, CheckCircle, AlertTriangle, Sparkles, Database, Server, Key, Box } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { useState, useEffect, useRef } from "react";
-import { apiFetch } from "../../../lib/api";
+import { apiFetch, AuthError } from "../../../lib/api";
 import { motion, AnimatePresence } from "framer-motion";
 
 const distData = Array.from({ length: 10 }, (_, i) => ({ bin: `${i * 10}-${(i + 1) * 10}`, count: Math.floor(Math.random() * 500 + 50) }));
@@ -26,7 +26,9 @@ export default function DatasetsPage() {
   useEffect(() => {
     apiFetch<any[]>("/v1/datasets")
       .then(setDatasets)
-      .catch(console.error);
+      .catch((e) => {
+        if (!(e instanceof AuthError)) console.error(e);
+      });
   }, []);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,8 +50,10 @@ export default function DatasetsPage() {
       
       setDatasets((prev) => [...prev.filter(d => d.name !== res.name), res]);
     } catch (err) {
-      console.error("Upload failed", err);
-      alert("Failed to upload dataset.");
+      if (!(err instanceof AuthError)) {
+        console.error("Upload failed", err);
+        alert("Failed to upload dataset.");
+      }
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";

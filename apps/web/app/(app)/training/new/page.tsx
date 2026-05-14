@@ -4,7 +4,7 @@ import { motion, Variants } from "framer-motion";
 import { Cpu, Database, Box, Settings2, Zap, Rocket, ChevronLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { apiFetch } from "../../../../lib/api";
+import { apiFetch, AuthError } from "../../../../lib/api";
 
 export default function NewTrainingJobPage() {
   const router = useRouter();
@@ -43,7 +43,9 @@ export default function NewTrainingJobPage() {
       // Redirect to the training monitor page
       router.push("/training");
     } catch (err: any) {
-      setError(err.message || "Failed to start training");
+      if (!(err instanceof AuthError)) {
+        setError(err.message || "Failed to start training");
+      }
       setLaunching(false);
     }
   };

@@ -1,7 +1,7 @@
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  dsn: "https://6c8620e52e2c5d6228a7c649e135a5ba@o4511389758914560.ingest.de.sentry.io/4511389769465936",
   
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1,
@@ -15,12 +15,18 @@ Sentry.init({
   // in development and sample at a lower rate in production
   replaysSessionSampleRate: 0.1,
 
-  // You can remove this option if you're not planning to use the Sentry browser profiling feature:
+  // Enable logs to be sent to Sentry
+  enableLogs: true,
+
   integrations: [
+    Sentry.browserTracingIntegration(),
     Sentry.replayIntegration({
       // Additional Replay configuration goes in here, for example:
       maskAllText: true,
       blockAllMedia: true,
     }),
+    // send console.log, console.warn, and console.error calls as logs to Sentry
+    Sentry.consoleLoggingIntegration({ levels: ["log", "warn", "error"] }),
   ],
+  tracePropagationTargets: ["localhost", /^https:\/\/ic1101\.vercel\.app\/api/],
 });

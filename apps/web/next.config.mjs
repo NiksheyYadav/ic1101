@@ -13,8 +13,8 @@ export default withSentryConfig(nextConfig, {
 
   // Suppresses source map uploading logs during bundling
   silent: true,
-  org: "aetheris-ai",
-  project: "web-client",
+  org: "niksheyyadav",
+  project: "javascript-nextjs",
 }, {
   // For all available options, see:
   // https://nextjs.org/docs/api-reference/next.config.js/introduction

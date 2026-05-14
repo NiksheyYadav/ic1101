@@ -2,14 +2,19 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { API_BASE } from "../../../lib/api";
+import { useState } from "react";
 
 export default function SignInPage() {
-  const handleLogin = async () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     try {
-      const res = await fetch(`${API_BASE}/v1/auth/token`, {
+      const res = await fetch(`${API_BASE}/v1/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: "admin", role: "owner" })
+        body: JSON.stringify({ email, password })
       });
       if (res.ok) {
         const data = await res.json();
@@ -22,6 +27,10 @@ export default function SignInPage() {
       localStorage.setItem("aetheris_token", "demo-token");
     }
     window.location.href = "/dashboard";
+  };
+
+  const handleGithubLogin = () => {
+    window.location.href = `${API_BASE}/v1/auth/github/login`;
   };
 
 
@@ -43,10 +52,7 @@ export default function SignInPage() {
 
         <form
           style={{ width: "100%", display: "flex", flexDirection: "column", gap: 16 }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleLogin();
-          }}
+          onSubmit={handleLogin}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <label style={{ fontSize: 12, fontWeight: 600, color: "#fff", textTransform: "uppercase", letterSpacing: 1 }}>Email</label>
@@ -54,6 +60,8 @@ export default function SignInPage() {
               type="email" 
               placeholder="admin@aetheris.ai" 
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{ width: "100%", padding: "12px 16px", borderRadius: 8, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", fontSize: 14, transition: "all 0.2s" }}
               onFocus={(e) => e.target.style.borderColor = "#00D4FF"}
               onBlur={(e) => e.target.style.borderColor = "rgba(255,255,255,0.1)"}
@@ -69,6 +77,8 @@ export default function SignInPage() {
               type="password" 
               placeholder="••••••••" 
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               style={{ width: "100%", padding: "12px 16px", borderRadius: 8, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", fontSize: 14, transition: "all 0.2s" }}
               onFocus={(e) => e.target.style.borderColor = "#00D4FF"}
               onBlur={(e) => e.target.style.borderColor = "rgba(255,255,255,0.1)"}
@@ -87,7 +97,8 @@ export default function SignInPage() {
         </div>
 
         <button 
-          onClick={handleLogin}
+          onClick={handleGithubLogin}
+          type="button"
           className="btn-outline-cinematic" 
           style={{ width: "100%", justifyContent: "center", color: "#fff", borderColor: "rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}
         >

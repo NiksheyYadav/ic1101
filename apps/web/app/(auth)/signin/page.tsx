@@ -1,12 +1,26 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-//import { API_BASE } from "../../../lib/api";
-
+import { API_BASE } from "../../../lib/api";
 
 export default function SignInPage() {
-  const handleLogin = () => {
-    localStorage.setItem("aetheris_token", "demo-token");
+  const handleLogin = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/v1/auth/token`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: "admin", role: "owner" })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        localStorage.setItem("aetheris_token", data.access_token);
+      } else {
+        localStorage.setItem("aetheris_token", "demo-token");
+      }
+    } catch (err) {
+      console.error("Login failed", err);
+      localStorage.setItem("aetheris_token", "demo-token");
+    }
     window.location.href = "/dashboard";
   };
 

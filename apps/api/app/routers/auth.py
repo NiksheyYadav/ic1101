@@ -55,12 +55,12 @@ def me() -> dict[str, str]:
     return {"message": "use bearer token to access protected resources"}
 
 
-# GitHub OAuth implementation
 @router.get("/github/login")
 def github_login():
     client_id = os.getenv("GITHUB_CLIENT_ID")
+    frontend_url = os.getenv("NEXT_PUBLIC_URL", "http://localhost:3000")
     if not client_id:
-        raise HTTPException(status_code=500, detail="GitHub Client ID not configured")
+        return RedirectResponse(f"{frontend_url}/signin?error=github_not_configured")
     redirect_uri = os.getenv("GITHUB_CALLBACK_URL", "http://localhost:8000/v1/auth/github/callback")
     url = f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=user:email"
     return RedirectResponse(url)
